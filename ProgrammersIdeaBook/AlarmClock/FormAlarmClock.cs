@@ -12,11 +12,26 @@ namespace AlarmClock
 {
     public partial class FormAlarmClock : Form
     {
+        private List<DateTime> alarms = new List<DateTime>();
+
         public FormAlarmClock()
         {
             InitializeComponent();
+
             timerSecond_Tick(this, EventArgs.Empty);
 
+            PopulateTextBoxesWithCurrentTime();
+        }
+
+        private void UpdateAlarmBox()
+        {
+            listBoxAlarms.DataSource = null;
+            listBoxAlarms.DataSource = alarms;
+            listBoxAlarms.DisplayMember = "DateTime";
+        }
+
+        private void PopulateTextBoxesWithCurrentTime()
+        {
             var now = DateTime.Now;
             textBoxMonth.Text = now.Month.ToString();
             textBoxDay.Text = now.Day.ToString();
@@ -26,7 +41,7 @@ namespace AlarmClock
             comboBoxAmPm.Items.Add("am");
             comboBoxAmPm.Items.Add("pm");
 
-            if(hour >= 12)
+            if (hour >= 12)
             {
                 comboBoxAmPm.SelectedIndex = 1;
                 hour -= 12;
@@ -39,7 +54,7 @@ namespace AlarmClock
             textBoxHour.Text = hour.ToString();
 
             textBoxMinute.Text = now.Minute.ToString();
-            if(textBoxMinute.Text.Length != 2)
+            if (textBoxMinute.Text.Length != 2)
             {
                 textBoxMinute.Text = $"0{textBoxMinute.Text}";
             }
@@ -56,16 +71,21 @@ namespace AlarmClock
             lblCurrentTime.Text = $"Current date and time: {DateTime.Now}";
         }
 
-        private void btnValidiate_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (!IsValidForm())
+            if (!IsValidForm(out DateTime date))
             {
                 MessageBox.Show("Please enter a valid date and time.", "Date Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            alarms.Add(date);
+            UpdateAlarmBox();
         }
 
-        private bool IsValidForm()
+        private bool IsValidForm(out DateTime date)
         {
+            date = new DateTime();
+
             bool valid = true;
             int day;
             int month;
@@ -109,7 +129,6 @@ namespace AlarmClock
                 hour += 12;
             }
 
-            DateTime date = new DateTime();
             try
             {
                 date = new DateTime(year, month, day, hour, minute, second);

@@ -52,6 +52,7 @@
             // 
             this.lblCurrentTime.AutoSize = true;
             this.lblCurrentTime.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblCurrentTime.ForeColor = System.Drawing.Color.Navy;
             this.lblCurrentTime.Location = new System.Drawing.Point(13, 13);
             this.lblCurrentTime.Name = "lblCurrentTime";
             this.lblCurrentTime.Size = new System.Drawing.Size(139, 30);
@@ -123,7 +124,7 @@
             this.btnAdd.TabIndex = 4;
             this.btnAdd.Text = "Add Alarm";
             this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnValidiate_Click);
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // lblTime
             // 
@@ -178,6 +179,7 @@
             this.groupBoxSetDate.Controls.Add(this.textBoxHour);
             this.groupBoxSetDate.Controls.Add(this.textBoxYear);
             this.groupBoxSetDate.Controls.Add(this.lblTime);
+            this.groupBoxSetDate.ForeColor = System.Drawing.Color.Navy;
             this.groupBoxSetDate.Location = new System.Drawing.Point(13, 82);
             this.groupBoxSetDate.Name = "groupBoxSetDate";
             this.groupBoxSetDate.Size = new System.Drawing.Size(257, 245);
@@ -187,17 +189,20 @@
             // 
             // listBoxAlarms
             // 
+            this.listBoxAlarms.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listBoxAlarms.ForeColor = System.Drawing.Color.Navy;
             this.listBoxAlarms.FormattingEnabled = true;
-            this.listBoxAlarms.ItemHeight = 15;
+            this.listBoxAlarms.ItemHeight = 25;
             this.listBoxAlarms.Location = new System.Drawing.Point(292, 82);
             this.listBoxAlarms.Name = "listBoxAlarms";
-            this.listBoxAlarms.Size = new System.Drawing.Size(274, 244);
+            this.listBoxAlarms.Size = new System.Drawing.Size(204, 229);
             this.listBoxAlarms.TabIndex = 7;
             // 
             // FormAlarmClock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(780, 361);
             this.Controls.Add(this.listBoxAlarms);
             this.Controls.Add(this.groupBoxSetDate);
