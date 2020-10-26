@@ -27,7 +27,8 @@ namespace AlarmClock
         {
             listBoxAlarms.DataSource = null;
             listBoxAlarms.DataSource = alarms;
-            listBoxAlarms.DisplayMember = "DateTime";
+            //listBoxAlarms.DisplayMember = nameof(DateTime);
+            listBoxAlarms.DisplayMember = $"DateTime.IsLeapYear()";
         }
 
         private void PopulateTextBoxesWithCurrentTime()
@@ -80,6 +81,11 @@ namespace AlarmClock
 
             alarms.Add(date);
             UpdateAlarmBox();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            PopulateTextBoxesWithCurrentTime();
         }
 
         private bool IsValidForm(out DateTime date)
