@@ -36,7 +36,7 @@ namespace AlarmClock
 
         public static string ConnectionString()
         {
-            return $"DataSource=.\\{SQLiteFile};Version=3";
+            return $"DataSource={SQLitePath}{SQLiteFile};Version=3";
         }
     }
 }
