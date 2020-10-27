@@ -41,10 +41,8 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.lblDate = new System.Windows.Forms.Label();
             this.listBoxAlarms = new System.Windows.Forms.ListBox();
-            this.groupBoxModifyAlarms = new System.Windows.Forms.GroupBox();
             this.btnDeleteAlarm = new System.Windows.Forms.Button();
             this.groupBoxSetDate.SuspendLayout();
-            this.groupBoxModifyAlarms.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblCurrentTime
@@ -113,19 +111,19 @@
             this.dateTimePickerDate.Name = "dateTimePickerDate";
             this.dateTimePickerDate.ShowUpDown = true;
             this.dateTimePickerDate.Size = new System.Drawing.Size(255, 29);
-            this.dateTimePickerDate.TabIndex = 8;
+            this.dateTimePickerDate.TabIndex = 1;
             // 
             // dateTimePickerTime
             // 
             this.dateTimePickerTime.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePickerTime.CustomFormat = "hh:mm tt";
+            this.dateTimePickerTime.CustomFormat = "hh:mm:ss tt";
             this.dateTimePickerTime.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePickerTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerTime.Location = new System.Drawing.Point(76, 105);
             this.dateTimePickerTime.Name = "dateTimePickerTime";
             this.dateTimePickerTime.ShowUpDown = true;
-            this.dateTimePickerTime.Size = new System.Drawing.Size(114, 33);
-            this.dateTimePickerTime.TabIndex = 7;
+            this.dateTimePickerTime.Size = new System.Drawing.Size(124, 33);
+            this.dateTimePickerTime.TabIndex = 2;
             // 
             // textBoxAlarmMessage
             // 
@@ -136,7 +134,7 @@
             this.textBoxAlarmMessage.Name = "textBoxAlarmMessage";
             this.textBoxAlarmMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxAlarmMessage.Size = new System.Drawing.Size(269, 69);
-            this.textBoxAlarmMessage.TabIndex = 6;
+            this.textBoxAlarmMessage.TabIndex = 3;
             // 
             // lblMessage
             // 
@@ -156,7 +154,7 @@
             this.btnReset.Location = new System.Drawing.Point(145, 249);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(130, 45);
-            this.btnReset.TabIndex = 4;
+            this.btnReset.TabIndex = 5;
             this.btnReset.Text = "Reset Time";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
@@ -179,30 +177,20 @@
             this.listBoxAlarms.ItemHeight = 21;
             this.listBoxAlarms.Location = new System.Drawing.Point(316, 58);
             this.listBoxAlarms.Name = "listBoxAlarms";
-            this.listBoxAlarms.Size = new System.Drawing.Size(204, 298);
-            this.listBoxAlarms.TabIndex = 7;
-            // 
-            // groupBoxModifyAlarms
-            // 
-            this.groupBoxModifyAlarms.Controls.Add(this.btnDeleteAlarm);
-            this.groupBoxModifyAlarms.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxModifyAlarms.ForeColor = System.Drawing.Color.Navy;
-            this.groupBoxModifyAlarms.Location = new System.Drawing.Point(551, 58);
-            this.groupBoxModifyAlarms.Name = "groupBoxModifyAlarms";
-            this.groupBoxModifyAlarms.Size = new System.Drawing.Size(241, 298);
-            this.groupBoxModifyAlarms.TabIndex = 8;
-            this.groupBoxModifyAlarms.TabStop = false;
-            this.groupBoxModifyAlarms.Text = "Modify Alarms";
+            this.listBoxAlarms.Size = new System.Drawing.Size(204, 235);
+            this.listBoxAlarms.TabIndex = 6;
             // 
             // btnDeleteAlarm
             // 
             this.btnDeleteAlarm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.btnDeleteAlarm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnDeleteAlarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteAlarm.Location = new System.Drawing.Point(33, 34);
+            this.btnDeleteAlarm.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDeleteAlarm.ForeColor = System.Drawing.Color.Navy;
+            this.btnDeleteAlarm.Location = new System.Drawing.Point(330, 299);
             this.btnDeleteAlarm.Name = "btnDeleteAlarm";
             this.btnDeleteAlarm.Size = new System.Drawing.Size(174, 45);
-            this.btnDeleteAlarm.TabIndex = 0;
+            this.btnDeleteAlarm.TabIndex = 7;
             this.btnDeleteAlarm.Text = "Delete Alarm";
             this.btnDeleteAlarm.UseVisualStyleBackColor = true;
             this.btnDeleteAlarm.Click += new System.EventHandler(this.btnDeleteAlarm_Click);
@@ -212,8 +200,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(802, 370);
-            this.Controls.Add(this.groupBoxModifyAlarms);
+            this.ClientSize = new System.Drawing.Size(550, 366);
+            this.Controls.Add(this.btnDeleteAlarm);
             this.Controls.Add(this.listBoxAlarms);
             this.Controls.Add(this.groupBoxSetDate);
             this.Controls.Add(this.lblCurrentTime);
@@ -221,7 +209,6 @@
             this.Text = "Alarm Clock";
             this.groupBoxSetDate.ResumeLayout(false);
             this.groupBoxSetDate.PerformLayout();
-            this.groupBoxModifyAlarms.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -235,7 +222,6 @@
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.GroupBox groupBoxSetDate;
         private System.Windows.Forms.ListBox listBoxAlarms;
-        private System.Windows.Forms.GroupBox groupBoxModifyAlarms;
         private System.Windows.Forms.Button btnDeleteAlarm;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Label lblMessage;

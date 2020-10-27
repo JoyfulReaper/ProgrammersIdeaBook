@@ -38,6 +38,15 @@ namespace AlarmClock
         private void timerSecond_Tick(object sender, EventArgs e)
         {
             lblCurrentTime.Text = $"Current date and time: {DateTime.Now}";
+
+            var expired = alarms.Where(x => x.AlarmDateTime < DateTime.Now).ToList();
+            foreach (AlarmModel alarm in expired)
+            {
+                GlobalConfig.Connection.DeleteAlarm(alarm);
+                alarms.Remove(alarm);
+                UpdateAlarmBox();
+                MessageBox.Show($"An Alarm has occured!\nMessage: {alarm.Message}", "Alarm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -46,8 +55,8 @@ namespace AlarmClock
 
             date = dateTimePickerDate.Value.Date;
             date = date.Add(dateTimePickerTime.Value.TimeOfDay);
-            date = date.AddSeconds(-date.Second);
-            date = date.AddMilliseconds(-date.Millisecond);
+            //date = date.AddSeconds(-date.Second);
+            //date = date.AddMilliseconds(-date.Millisecond);
 
             if (date < DateTime.Now)
             {
