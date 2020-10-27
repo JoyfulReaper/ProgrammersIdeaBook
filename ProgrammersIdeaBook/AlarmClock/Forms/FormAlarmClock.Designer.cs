@@ -42,6 +42,8 @@
             this.lblDate = new System.Windows.Forms.Label();
             this.listBoxAlarms = new System.Windows.Forms.ListBox();
             this.btnDeleteAlarm = new System.Windows.Forms.Button();
+            this.lblCredits = new System.Windows.Forms.Label();
+            this.linkLabelGitHub = new System.Windows.Forms.LinkLabel();
             this.groupBoxSetDate.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -195,15 +197,38 @@
             this.btnDeleteAlarm.UseVisualStyleBackColor = true;
             this.btnDeleteAlarm.Click += new System.EventHandler(this.btnDeleteAlarm_Click);
             // 
+            // lblCredits
+            // 
+            this.lblCredits.AutoSize = true;
+            this.lblCredits.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblCredits.Location = new System.Drawing.Point(12, 366);
+            this.lblCredits.Name = "lblCredits";
+            this.lblCredits.Size = new System.Drawing.Size(192, 21);
+            this.lblCredits.TabIndex = 0;
+            this.lblCredits.Text = "Alarm Clock by Kyle Givler";
+            // 
+            // linkLabelGitHub
+            // 
+            this.linkLabelGitHub.AutoSize = true;
+            this.linkLabelGitHub.Location = new System.Drawing.Point(210, 371);
+            this.linkLabelGitHub.Name = "linkLabelGitHub";
+            this.linkLabelGitHub.Size = new System.Drawing.Size(176, 15);
+            this.linkLabelGitHub.TabIndex = 8;
+            this.linkLabelGitHub.TabStop = true;
+            this.linkLabelGitHub.Text = "http://github.com/JoyfulReaper";
+            this.linkLabelGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGitHub_LinkClicked);
+            // 
             // FormAlarmClock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(550, 366);
+            this.ClientSize = new System.Drawing.Size(550, 396);
+            this.Controls.Add(this.linkLabelGitHub);
             this.Controls.Add(this.btnDeleteAlarm);
             this.Controls.Add(this.listBoxAlarms);
             this.Controls.Add(this.groupBoxSetDate);
+            this.Controls.Add(this.lblCredits);
             this.Controls.Add(this.lblCurrentTime);
             this.Name = "FormAlarmClock";
             this.Text = "Alarm Clock";
@@ -229,6 +254,8 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerTime;
         private System.Windows.Forms.DateTimePicker dateTimePickerDate;
         private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Label lblCredits;
+        private System.Windows.Forms.LinkLabel linkLabelGitHub;
     }
 }
 

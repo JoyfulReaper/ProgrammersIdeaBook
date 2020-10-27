@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace AlarmClock
@@ -12,10 +12,24 @@ namespace AlarmClock
         public FormAlarmClock()
         {
             InitializeComponent();
+            
+            DisplayExpiredAlarms(alarms);
 
             timerSecond_Tick(this, EventArgs.Empty);
+
             ResetTimeDatePickerToCurrent();
+
             UpdateAlarmBox();
+        }
+
+        private void DisplayExpiredAlarms(List<AlarmModel> alarms)
+        {
+            var missedAlarms = AlarmHelpers.GetExipredAlarmsAndDeleteFromDatabase(alarms);
+            if (missedAlarms.Count > 0)
+            {
+                MissedAlarmsForm frm = new MissedAlarmsForm(missedAlarms);
+                frm.Show(this);
+            }
         }
 
         private void ResetTimeDatePickerToCurrent()
@@ -39,13 +53,16 @@ namespace AlarmClock
         {
             lblCurrentTime.Text = $"Current date and time: {DateTime.Now}";
 
-            var expired = alarms.Where(x => x.AlarmDateTime < DateTime.Now).ToList();
-            foreach (AlarmModel alarm in expired)
+            var expired = AlarmHelpers.GetExipredAlarmsAndDeleteFromDatabase(alarms);
+
+            UpdateAlarmBox();
+
+            foreach (var alarm in expired)
             {
-                GlobalConfig.Connection.DeleteAlarm(alarm);
-                alarms.Remove(alarm);
-                UpdateAlarmBox();
-                MessageBox.Show($"An Alarm has occured!\nMessage: {alarm.Message}", "Alarm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"An Alarm has occured!" +
+                    $"\nTimestamp:{alarm.AlarmDateTime}\n" +
+                    $"Message: {alarm.Message}","Alarm",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -70,7 +87,6 @@ namespace AlarmClock
             alarms.Add(alarm);
 
             textBoxAlarmMessage.Text = "";
-            ResetTimeDatePickerToCurrent();
 
             UpdateAlarmBox();
         }
@@ -89,6 +105,11 @@ namespace AlarmClock
                 GlobalConfig.Connection.DeleteAlarm(selectedAlarm);
                 UpdateAlarmBox();
             }
+        }
+
+        private void linkLabelGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://github.com/JoyfulReaper") { UseShellExecute = true });
         }
     }
 }
