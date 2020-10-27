@@ -14,6 +14,8 @@ namespace AlarmClock
         [STAThread]
         static void Main()
         {
+            GlobalConfig.InitializeConnection(DatabaseType.SQLite);
+
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

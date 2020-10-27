@@ -205,6 +205,7 @@
             this.btnDeleteAlarm.TabIndex = 0;
             this.btnDeleteAlarm.Text = "Delete Alarm";
             this.btnDeleteAlarm.UseVisualStyleBackColor = true;
+            this.btnDeleteAlarm.Click += new System.EventHandler(this.btnDeleteAlarm_Click);
             // 
             // FormAlarmClock
             // 

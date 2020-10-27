@@ -6,6 +6,8 @@ namespace AlarmClock
 {
     public class AlarmModel
     {
+        public int Id { get; set; }
+
         /// <summary>
         /// The DateTime to trigger the alarm
         /// </summary>
