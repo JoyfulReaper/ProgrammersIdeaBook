@@ -36,8 +36,9 @@ namespace AlarmClock.DataAccess
                 var p = new DynamicParameters();
                 p.Add("@AlarmDateTime", alarm.AlarmDateTime.ToString(CultureInfo.InvariantCulture));
                 p.Add("@Message", alarm.Message);
+                p.Add("@Name", alarm.Name);
 
-                int lastId = (int)connection.QueryFirst<Int64>("INSERT INTO Alarms (AlarmDateTime, Message) VALUES (@AlarmDateTime, @Message); select last_insert_rowid();", alarm);
+                int lastId = (int)connection.QueryFirst<Int64>("INSERT INTO Alarms (AlarmDateTime, Name, Message) VALUES (@AlarmDateTime, @Name, @Message); select last_insert_rowid();", alarm);
                 alarm.Id = lastId;
             }
         }
@@ -46,6 +47,7 @@ namespace AlarmClock.DataAccess
         {
             string sql = @"CREATE TABLE ""Alarms"" (
                           ""Id""    INTEGER NOT NULL UNIQUE,
+                          ""Name"" TEXT NOT NULL,
                           ""AlarmDateTime"" TEXT NOT NULL,
 	                      ""Message""   TEXT,
 	                       PRIMARY KEY(""Id"" AUTOINCREMENT)

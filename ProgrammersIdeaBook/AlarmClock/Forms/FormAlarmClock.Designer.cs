@@ -31,20 +31,15 @@
             this.components = new System.ComponentModel.Container();
             this.lblCurrentTime = new System.Windows.Forms.Label();
             this.timerSecond = new System.Windows.Forms.Timer(this.components);
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.lblTime = new System.Windows.Forms.Label();
-            this.groupBoxSetDate = new System.Windows.Forms.GroupBox();
-            this.dateTimePickerDate = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerTime = new System.Windows.Forms.DateTimePicker();
-            this.textBoxAlarmMessage = new System.Windows.Forms.TextBox();
-            this.lblMessage = new System.Windows.Forms.Label();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.lblDate = new System.Windows.Forms.Label();
             this.listBoxAlarms = new System.Windows.Forms.ListBox();
             this.btnDeleteAlarm = new System.Windows.Forms.Button();
             this.lblCredits = new System.Windows.Forms.Label();
             this.linkLabelGitHub = new System.Windows.Forms.LinkLabel();
-            this.groupBoxSetDate.SuspendLayout();
+            this.btnAddAlarm = new System.Windows.Forms.Button();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblExpires = new System.Windows.Forms.Label();
+            this.lblMessage = new System.Windows.Forms.Label();
+            this.textBoxMessage = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblCurrentTime
@@ -64,123 +59,17 @@
             this.timerSecond.Interval = 1000;
             this.timerSecond.Tick += new System.EventHandler(this.timerSecond_Tick);
             // 
-            // btnAdd
-            // 
-            this.btnAdd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.btnAdd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Location = new System.Drawing.Point(6, 249);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(130, 45);
-            this.btnAdd.TabIndex = 4;
-            this.btnAdd.Text = "Add Alarm";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // lblTime
-            // 
-            this.lblTime.AutoSize = true;
-            this.lblTime.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTime.Location = new System.Drawing.Point(7, 102);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(63, 30);
-            this.lblTime.TabIndex = 0;
-            this.lblTime.Text = "Time:";
-            // 
-            // groupBoxSetDate
-            // 
-            this.groupBoxSetDate.Controls.Add(this.dateTimePickerDate);
-            this.groupBoxSetDate.Controls.Add(this.dateTimePickerTime);
-            this.groupBoxSetDate.Controls.Add(this.textBoxAlarmMessage);
-            this.groupBoxSetDate.Controls.Add(this.lblMessage);
-            this.groupBoxSetDate.Controls.Add(this.btnReset);
-            this.groupBoxSetDate.Controls.Add(this.btnAdd);
-            this.groupBoxSetDate.Controls.Add(this.lblDate);
-            this.groupBoxSetDate.Controls.Add(this.lblTime);
-            this.groupBoxSetDate.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxSetDate.ForeColor = System.Drawing.Color.Navy;
-            this.groupBoxSetDate.Location = new System.Drawing.Point(13, 46);
-            this.groupBoxSetDate.Name = "groupBoxSetDate";
-            this.groupBoxSetDate.Size = new System.Drawing.Size(282, 306);
-            this.groupBoxSetDate.TabIndex = 6;
-            this.groupBoxSetDate.TabStop = false;
-            this.groupBoxSetDate.Text = "Set Date";
-            // 
-            // dateTimePickerDate
-            // 
-            this.dateTimePickerDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePickerDate.Location = new System.Drawing.Point(7, 70);
-            this.dateTimePickerDate.Name = "dateTimePickerDate";
-            this.dateTimePickerDate.ShowUpDown = true;
-            this.dateTimePickerDate.Size = new System.Drawing.Size(255, 29);
-            this.dateTimePickerDate.TabIndex = 1;
-            // 
-            // dateTimePickerTime
-            // 
-            this.dateTimePickerTime.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePickerTime.CustomFormat = "hh:mm:ss tt";
-            this.dateTimePickerTime.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePickerTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerTime.Location = new System.Drawing.Point(76, 105);
-            this.dateTimePickerTime.Name = "dateTimePickerTime";
-            this.dateTimePickerTime.ShowUpDown = true;
-            this.dateTimePickerTime.Size = new System.Drawing.Size(124, 33);
-            this.dateTimePickerTime.TabIndex = 2;
-            // 
-            // textBoxAlarmMessage
-            // 
-            this.textBoxAlarmMessage.AcceptsReturn = true;
-            this.textBoxAlarmMessage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAlarmMessage.Location = new System.Drawing.Point(6, 174);
-            this.textBoxAlarmMessage.Multiline = true;
-            this.textBoxAlarmMessage.Name = "textBoxAlarmMessage";
-            this.textBoxAlarmMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxAlarmMessage.Size = new System.Drawing.Size(269, 69);
-            this.textBoxAlarmMessage.TabIndex = 3;
-            // 
-            // lblMessage
-            // 
-            this.lblMessage.AutoSize = true;
-            this.lblMessage.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblMessage.Location = new System.Drawing.Point(7, 141);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(161, 30);
-            this.lblMessage.TabIndex = 0;
-            this.lblMessage.Text = "Alarm Message:";
-            // 
-            // btnReset
-            // 
-            this.btnReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.btnReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.Location = new System.Drawing.Point(145, 249);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(130, 45);
-            this.btnReset.TabIndex = 5;
-            this.btnReset.Text = "Reset Time";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // lblDate
-            // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDate.Location = new System.Drawing.Point(6, 37);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(62, 30);
-            this.lblDate.TabIndex = 0;
-            this.lblDate.Text = "Date:";
-            // 
             // listBoxAlarms
             // 
             this.listBoxAlarms.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listBoxAlarms.ForeColor = System.Drawing.Color.Navy;
             this.listBoxAlarms.FormattingEnabled = true;
             this.listBoxAlarms.ItemHeight = 21;
-            this.listBoxAlarms.Location = new System.Drawing.Point(316, 58);
+            this.listBoxAlarms.Location = new System.Drawing.Point(13, 60);
             this.listBoxAlarms.Name = "listBoxAlarms";
             this.listBoxAlarms.Size = new System.Drawing.Size(204, 235);
             this.listBoxAlarms.TabIndex = 6;
+            this.listBoxAlarms.SelectedIndexChanged += new System.EventHandler(this.listBoxAlarms_SelectedIndexChanged);
             // 
             // btnDeleteAlarm
             // 
@@ -189,7 +78,7 @@
             this.btnDeleteAlarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteAlarm.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnDeleteAlarm.ForeColor = System.Drawing.Color.Navy;
-            this.btnDeleteAlarm.Location = new System.Drawing.Point(330, 299);
+            this.btnDeleteAlarm.Location = new System.Drawing.Point(192, 301);
             this.btnDeleteAlarm.Name = "btnDeleteAlarm";
             this.btnDeleteAlarm.Size = new System.Drawing.Size(174, 45);
             this.btnDeleteAlarm.TabIndex = 7;
@@ -201,7 +90,7 @@
             // 
             this.lblCredits.AutoSize = true;
             this.lblCredits.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblCredits.Location = new System.Drawing.Point(12, 366);
+            this.lblCredits.Location = new System.Drawing.Point(13, 349);
             this.lblCredits.Name = "lblCredits";
             this.lblCredits.Size = new System.Drawing.Size(192, 21);
             this.lblCredits.TabIndex = 0;
@@ -210,7 +99,7 @@
             // linkLabelGitHub
             // 
             this.linkLabelGitHub.AutoSize = true;
-            this.linkLabelGitHub.Location = new System.Drawing.Point(210, 371);
+            this.linkLabelGitHub.Location = new System.Drawing.Point(211, 355);
             this.linkLabelGitHub.Name = "linkLabelGitHub";
             this.linkLabelGitHub.Size = new System.Drawing.Size(176, 15);
             this.linkLabelGitHub.TabIndex = 8;
@@ -218,22 +107,83 @@
             this.linkLabelGitHub.Text = "http://github.com/JoyfulReaper";
             this.linkLabelGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGitHub_LinkClicked);
             // 
+            // btnAddAlarm
+            // 
+            this.btnAddAlarm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.btnAddAlarm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btnAddAlarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddAlarm.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAddAlarm.ForeColor = System.Drawing.Color.Navy;
+            this.btnAddAlarm.Location = new System.Drawing.Point(12, 301);
+            this.btnAddAlarm.Name = "btnAddAlarm";
+            this.btnAddAlarm.Size = new System.Drawing.Size(174, 45);
+            this.btnAddAlarm.TabIndex = 7;
+            this.btnAddAlarm.Text = "Add Alarm";
+            this.btnAddAlarm.UseVisualStyleBackColor = true;
+            this.btnAddAlarm.Click += new System.EventHandler(this.btnAddAlarm_Click);
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblName.ForeColor = System.Drawing.Color.Navy;
+            this.lblName.Location = new System.Drawing.Point(223, 59);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(59, 21);
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "{name}";
+            // 
+            // lblExpires
+            // 
+            this.lblExpires.AutoSize = true;
+            this.lblExpires.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblExpires.ForeColor = System.Drawing.Color.Navy;
+            this.lblExpires.Location = new System.Drawing.Point(223, 80);
+            this.lblExpires.Name = "lblExpires";
+            this.lblExpires.Size = new System.Drawing.Size(69, 21);
+            this.lblExpires.TabIndex = 0;
+            this.lblExpires.Text = "{expires}";
+            // 
+            // lblMessage
+            // 
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblMessage.ForeColor = System.Drawing.Color.Navy;
+            this.lblMessage.Location = new System.Drawing.Point(223, 101);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(74, 21);
+            this.lblMessage.TabIndex = 0;
+            this.lblMessage.Text = "Message:";
+            // 
+            // textBoxMessage
+            // 
+            this.textBoxMessage.AcceptsReturn = true;
+            this.textBoxMessage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxMessage.Location = new System.Drawing.Point(223, 121);
+            this.textBoxMessage.Multiline = true;
+            this.textBoxMessage.Name = "textBoxMessage";
+            this.textBoxMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxMessage.Size = new System.Drawing.Size(231, 105);
+            this.textBoxMessage.TabIndex = 3;
+            // 
             // FormAlarmClock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(550, 396);
+            this.ClientSize = new System.Drawing.Size(650, 378);
+            this.Controls.Add(this.textBoxMessage);
             this.Controls.Add(this.linkLabelGitHub);
+            this.Controls.Add(this.btnAddAlarm);
             this.Controls.Add(this.btnDeleteAlarm);
             this.Controls.Add(this.listBoxAlarms);
-            this.Controls.Add(this.groupBoxSetDate);
             this.Controls.Add(this.lblCredits);
+            this.Controls.Add(this.lblMessage);
+            this.Controls.Add(this.lblExpires);
+            this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblCurrentTime);
             this.Name = "FormAlarmClock";
             this.Text = "Alarm Clock";
-            this.groupBoxSetDate.ResumeLayout(false);
-            this.groupBoxSetDate.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,19 +193,15 @@
 
         private System.Windows.Forms.Label lblCurrentTime;
         private System.Windows.Forms.Timer timerSecond;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Label lblTime;
-        private System.Windows.Forms.GroupBox groupBoxSetDate;
         private System.Windows.Forms.ListBox listBoxAlarms;
         private System.Windows.Forms.Button btnDeleteAlarm;
-        private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Label lblMessage;
-        private System.Windows.Forms.TextBox textBoxAlarmMessage;
-        private System.Windows.Forms.DateTimePicker dateTimePickerTime;
-        private System.Windows.Forms.DateTimePicker dateTimePickerDate;
-        private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label lblCredits;
         private System.Windows.Forms.LinkLabel linkLabelGitHub;
+        private System.Windows.Forms.Button btnAddAlarm;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblExpires;
+        private System.Windows.Forms.Label lblMessage;
+        private System.Windows.Forms.TextBox textBoxMessage;
     }
 }
 
