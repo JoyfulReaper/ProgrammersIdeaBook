@@ -11,6 +11,9 @@ namespace AlarmClock.Forms
     // TODO Stay Open check box
     // Close the form if not checked
 
+    // TODO only allow one of this form open at a time
+    // Maybe singleton pattern or something
+
     public partial class AddAlarmForm : Form
     {
         IAlarmModelRequester caller;
@@ -54,6 +57,7 @@ namespace AlarmClock.Forms
             caller.AlarmAdded(alarm);
 
             textBoxAlarmMessage.Text = "";
+            textBoxName.Text = $"Alarm: {DateTime.Now.ToString("MM/dd/yy hh:mm")}";
         }
 
         private void btnReset_Click(object sender, EventArgs e)

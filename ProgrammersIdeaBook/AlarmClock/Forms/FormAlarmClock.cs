@@ -53,7 +53,7 @@ namespace AlarmClock
             foreach (var alarm in expired)
             {
                 MessageBox.Show($"An Alarm has occured!" +
-                    $"\nTimestamp:{alarm.AlarmDateTime}\n" +
+                    $"\n\nTimestamp:{alarm.AlarmDateTime}\n\n" +
                     $"Message: {alarm.Message}","Alarm",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
