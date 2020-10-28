@@ -65,9 +65,9 @@
             this.listBoxAlarms.ForeColor = System.Drawing.Color.Navy;
             this.listBoxAlarms.FormattingEnabled = true;
             this.listBoxAlarms.ItemHeight = 21;
-            this.listBoxAlarms.Location = new System.Drawing.Point(13, 60);
+            this.listBoxAlarms.Location = new System.Drawing.Point(13, 102);
             this.listBoxAlarms.Name = "listBoxAlarms";
-            this.listBoxAlarms.Size = new System.Drawing.Size(204, 235);
+            this.listBoxAlarms.Size = new System.Drawing.Size(204, 193);
             this.listBoxAlarms.TabIndex = 6;
             this.listBoxAlarms.SelectedIndexChanged += new System.EventHandler(this.listBoxAlarms_SelectedIndexChanged);
             // 
@@ -78,11 +78,11 @@
             this.btnDeleteAlarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteAlarm.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnDeleteAlarm.ForeColor = System.Drawing.Color.Navy;
-            this.btnDeleteAlarm.Location = new System.Drawing.Point(192, 301);
+            this.btnDeleteAlarm.Location = new System.Drawing.Point(13, 301);
             this.btnDeleteAlarm.Name = "btnDeleteAlarm";
-            this.btnDeleteAlarm.Size = new System.Drawing.Size(174, 45);
+            this.btnDeleteAlarm.Size = new System.Drawing.Size(204, 45);
             this.btnDeleteAlarm.TabIndex = 7;
-            this.btnDeleteAlarm.Text = "Delete Alarm";
+            this.btnDeleteAlarm.Text = "Delete Selected";
             this.btnDeleteAlarm.UseVisualStyleBackColor = true;
             this.btnDeleteAlarm.Click += new System.EventHandler(this.btnDeleteAlarm_Click);
             // 
@@ -114,11 +114,11 @@
             this.btnAddAlarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddAlarm.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAddAlarm.ForeColor = System.Drawing.Color.Navy;
-            this.btnAddAlarm.Location = new System.Drawing.Point(12, 301);
+            this.btnAddAlarm.Location = new System.Drawing.Point(13, 51);
             this.btnAddAlarm.Name = "btnAddAlarm";
-            this.btnAddAlarm.Size = new System.Drawing.Size(174, 45);
+            this.btnAddAlarm.Size = new System.Drawing.Size(204, 45);
             this.btnAddAlarm.TabIndex = 7;
-            this.btnAddAlarm.Text = "Add Alarm";
+            this.btnAddAlarm.Text = "Create New Alarm";
             this.btnAddAlarm.UseVisualStyleBackColor = true;
             this.btnAddAlarm.Click += new System.EventHandler(this.btnAddAlarm_Click);
             // 
@@ -127,7 +127,7 @@
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblName.ForeColor = System.Drawing.Color.Navy;
-            this.lblName.Location = new System.Drawing.Point(223, 59);
+            this.lblName.Location = new System.Drawing.Point(239, 102);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(59, 21);
             this.lblName.TabIndex = 0;
@@ -138,7 +138,7 @@
             this.lblExpires.AutoSize = true;
             this.lblExpires.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblExpires.ForeColor = System.Drawing.Color.Navy;
-            this.lblExpires.Location = new System.Drawing.Point(223, 80);
+            this.lblExpires.Location = new System.Drawing.Point(239, 123);
             this.lblExpires.Name = "lblExpires";
             this.lblExpires.Size = new System.Drawing.Size(69, 21);
             this.lblExpires.TabIndex = 0;
@@ -149,7 +149,7 @@
             this.lblMessage.AutoSize = true;
             this.lblMessage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblMessage.ForeColor = System.Drawing.Color.Navy;
-            this.lblMessage.Location = new System.Drawing.Point(223, 101);
+            this.lblMessage.Location = new System.Drawing.Point(239, 144);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(74, 21);
             this.lblMessage.TabIndex = 0;
@@ -159,7 +159,7 @@
             // 
             this.textBoxMessage.AcceptsReturn = true;
             this.textBoxMessage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxMessage.Location = new System.Drawing.Point(223, 121);
+            this.textBoxMessage.Location = new System.Drawing.Point(239, 168);
             this.textBoxMessage.Multiline = true;
             this.textBoxMessage.Name = "textBoxMessage";
             this.textBoxMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -171,7 +171,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(650, 378);
+            this.ClientSize = new System.Drawing.Size(499, 378);
             this.Controls.Add(this.textBoxMessage);
             this.Controls.Add(this.linkLabelGitHub);
             this.Controls.Add(this.btnAddAlarm);
