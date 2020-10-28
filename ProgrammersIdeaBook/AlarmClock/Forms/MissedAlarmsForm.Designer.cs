@@ -38,6 +38,7 @@
             this.lblName = new System.Windows.Forms.Label();
             this.lblOverdue = new System.Windows.Forms.Label();
             this.timerUpdate = new System.Windows.Forms.Timer(this.components);
+            this.btnDismiss = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblMissedHeader
@@ -80,7 +81,7 @@
             this.textBoxMessage.Multiline = true;
             this.textBoxMessage.Name = "textBoxMessage";
             this.textBoxMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxMessage.Size = new System.Drawing.Size(231, 105);
+            this.textBoxMessage.Size = new System.Drawing.Size(231, 79);
             this.textBoxMessage.TabIndex = 3;
             // 
             // lblMessage
@@ -133,12 +134,28 @@
             this.timerUpdate.Interval = 1000;
             this.timerUpdate.Tick += new System.EventHandler(this.timerUpdate_Tick);
             // 
+            // btnDismiss
+            // 
+            this.btnDismiss.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.btnDismiss.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btnDismiss.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDismiss.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDismiss.ForeColor = System.Drawing.Color.Navy;
+            this.btnDismiss.Location = new System.Drawing.Point(220, 255);
+            this.btnDismiss.Name = "btnDismiss";
+            this.btnDismiss.Size = new System.Drawing.Size(130, 45);
+            this.btnDismiss.TabIndex = 4;
+            this.btnDismiss.Text = "Dismiss";
+            this.btnDismiss.UseVisualStyleBackColor = true;
+            this.btnDismiss.Click += new System.EventHandler(this.btnDismiss_Click);
+            // 
             // MissedAlarmsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(571, 308);
+            this.Controls.Add(this.btnDismiss);
             this.Controls.Add(this.lblOverdue);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblExpires);
@@ -165,5 +182,6 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblOverdue;
         private System.Windows.Forms.Timer timerUpdate;
+        private System.Windows.Forms.Button btnDismiss;
     }
 }

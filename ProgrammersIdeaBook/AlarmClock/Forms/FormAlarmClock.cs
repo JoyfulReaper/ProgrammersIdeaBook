@@ -16,6 +16,8 @@ namespace AlarmClock
             
             DisplayExpiredAlarms(alarms);
 
+            lblCredits.Text = $"Alarm Clock {GlobalConfig.version} by Kyle Givler";
+
             timerSecond_Tick(this, EventArgs.Empty);
 
             UpdateForm();
@@ -53,7 +55,8 @@ namespace AlarmClock
             foreach (var alarm in expired)
             {
                 MessageBox.Show($"An Alarm has occured!" +
-                    $"\n\nTimestamp:{alarm.AlarmDateTime}\n\n" +
+                    $"\n\nName: {alarm.Name}\n" +
+                    $"Timestamp:{alarm.AlarmDateTime}\n\n" +
                     $"Message: {alarm.Message}","Alarm",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

@@ -44,5 +44,10 @@ namespace AlarmClock
         {
             UpdateLables();
         }
+
+        private void btnDismiss_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

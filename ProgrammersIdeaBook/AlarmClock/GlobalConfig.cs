@@ -13,8 +13,10 @@ namespace AlarmClock
     {
         SQLite
     }
+
     public static class GlobalConfig
     {
+        public const string version = "0.0.2";
         public const string SQLitePath = ".\\";
         public const string SQLiteFile = "Alarms.db";
         public static IDataConnection Connection { get; private set; }

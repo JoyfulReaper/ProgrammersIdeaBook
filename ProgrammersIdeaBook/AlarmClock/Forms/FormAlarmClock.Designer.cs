@@ -99,7 +99,7 @@
             // linkLabelGitHub
             // 
             this.linkLabelGitHub.AutoSize = true;
-            this.linkLabelGitHub.Location = new System.Drawing.Point(211, 355);
+            this.linkLabelGitHub.Location = new System.Drawing.Point(294, 354);
             this.linkLabelGitHub.Name = "linkLabelGitHub";
             this.linkLabelGitHub.Size = new System.Drawing.Size(176, 15);
             this.linkLabelGitHub.TabIndex = 8;
