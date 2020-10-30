@@ -29,7 +29,7 @@ namespace AlarmClock
             if (missedAlarms.Count > 0)
             {
                 MissedAlarmsForm frm = new MissedAlarmsForm(missedAlarms);
-                frm.Show(this);
+                frm.ShowDialog(this);
             }
         }
 
@@ -54,11 +54,14 @@ namespace AlarmClock
 
             foreach (var alarm in expired)
             {
-                MessageBox.Show($"An Alarm has occured!" +
-                    $"\n\nName: {alarm.Name}\n" +
-                    $"Timestamp:{alarm.AlarmDateTime}\n\n" +
-                    $"Message: {alarm.Message}","Alarm",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show($"An Alarm has occured!" +
+                //    $"\n\nName: {alarm.Name}\n" +
+                //    $"Timestamp:{alarm.AlarmDateTime}\n\n" +
+                //    $"Message: {alarm.Message}","Alarm",
+                //    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                AlarmFiredForm frm = new AlarmFiredForm(alarm);
+                frm.Show(this);
             }
         }
 
@@ -87,7 +90,7 @@ namespace AlarmClock
         private void btnAddAlarm_Click(object sender, EventArgs e)
         {
             AddAlarmForm frm = new AddAlarmForm(this);
-            frm.Show(this);
+            frm.ShowDialog(this);
         }
 
         private void listBoxAlarms_SelectedIndexChanged(object sender, EventArgs e)
