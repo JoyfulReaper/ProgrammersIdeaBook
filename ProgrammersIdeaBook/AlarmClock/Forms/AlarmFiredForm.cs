@@ -21,6 +21,11 @@ namespace AlarmClock
             textBoxMessage.Text = $"{alarm.Message}";
             lblAlarmTime.Text = $"Set for: {alarm.AlarmDateTime}";
 
+            //TODO do something better!
+            var mediaPlayer = new MediaPlayer.MediaPlayer();
+            mediaPlayer.FileName = @".\default.mp3";
+            mediaPlayer.Play();
+
             UpdateLabels();
         }
 
