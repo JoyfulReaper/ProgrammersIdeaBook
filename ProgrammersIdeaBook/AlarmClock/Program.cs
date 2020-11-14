@@ -1,6 +1,10 @@
 using System;
 using System.Windows.Forms;
 
+// TODO Allow alarms to be repeatable
+// TODO Find a better way to play sound / Play sound until dismissed
+// TODO Add MS SQL implementation
+
 namespace AlarmClock
 {
     static class Program
