@@ -36,7 +36,9 @@ namespace Fractions
         [STAThread]
         static void Main()
         {
-            FractionModel m = FractionHelper.ConvertDecimalToFraction(0.5m);
+            FractionModel test1 = new FractionModel(1, 3);
+            FractionModel test2 = new FractionModel(1, 6);
+            MessageBox.Show(FractionHelper.Add(test1, test2).ToString());
 
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();

@@ -63,9 +63,9 @@ namespace Fractions
         /// </summary>
         /// <param name="model">The fraction model to find the GCD of</param>
         /// <returns>The greatest common divisor</returns>
-        public static ulong FindGreatestCommonDivisor(FractionModel model)
+        public static int FindGreatestCommonFactor(FractionModel model)
         {
-            return FindGreatestCommonDivisor((ulong)model.Denominator, (ulong)model.Numerator);
+            return FindGreatestCommonFactor(model.Denominator, model.Numerator);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Fractions
         /// <param name="a">First number</param>
         /// <param name="b">Second number</param>
         /// <returns>The greatest Common Divisor</returns>
-        public static ulong FindGreatestCommonDivisor(ulong a, ulong b)
+        public static int FindGreatestCommonFactor(int a, int b)
         {
             //Euclid's algorithm
             while (a != 0 && b != 0)
@@ -86,6 +86,11 @@ namespace Fractions
             }
 
             return a | b;
+        }
+
+        public static int FindLeastCommonMultiple(int a, int b)
+        {
+            return (a / FindGreatestCommonFactor(a, b) * b);
         }
 
         /// <summary>
@@ -100,7 +105,7 @@ namespace Fractions
 
             FractionModel fraction = new FractionModel((int)(d * multiplier), multiplier);
 
-            ReduceFraction(fraction);
+            fraction.Simplify();
 
             return fraction;
         }
@@ -109,11 +114,42 @@ namespace Fractions
         /// Reduce a fraction
         /// </summary>
         /// <param name="m">The fraction to reduce</param>
-        public static void ReduceFraction(FractionModel m)
+        public static void Simplify(this FractionModel m)
         {
-            ulong gcd = FindGreatestCommonDivisor(m);
-            m.Denominator /= (int)gcd;
-            m.Numerator /= (int)gcd;
+            int gcd = FindGreatestCommonFactor(m);
+            m.Numerator /= gcd;
+            m.Denominator /= gcd;
+
+            //return new FractionModel(m.Numerator / gcd, m.Denominator / gcd);
+        }
+
+        public static FractionModel GetReciprocal(FractionModel model)
+        {
+            return new FractionModel(model.Denominator, model.Numerator);
+        }
+
+        public static FractionModel Multiply(FractionModel a, FractionModel b)
+        {
+            var res = new FractionModel(a.Numerator * b.Numerator, a.Denominator * b.Denominator);
+            res.Simplify();
+            return res;
+        }
+
+        public static FractionModel Divide(FractionModel a, FractionModel b)
+        {
+            var res = Multiply(a, GetReciprocal(b));
+            res.Simplify();
+            return res;
+        }
+
+        public static FractionModel Add(FractionModel a, FractionModel b)
+        {
+            int lcm = FindLeastCommonMultiple(a.Denominator, b.Denominator);
+            int num = a.Numerator * (lcm / a.Denominator) + b.Numerator * (lcm / b.Denominator);
+            FractionModel res = new FractionModel(num, lcm);
+            res.Simplify();
+
+            return res;
         }
     }
 }
