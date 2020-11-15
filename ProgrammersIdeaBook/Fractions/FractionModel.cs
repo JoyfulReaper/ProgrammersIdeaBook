@@ -40,12 +40,15 @@ namespace Fractions
         /// </summary>
         public int Denominator { get; set; }
 
+        /// <summary>
+        /// Display the Fraction in a friendly format
+        /// Just wraps ToString()
+        /// </summary>
         public string Display 
         {
             get => ToString();
         }
   
-
         /// <summary>
         /// Construct a new Fraction Model
         /// </summary>
@@ -56,6 +59,12 @@ namespace Fractions
             if (denominator == 0)
             {
                 throw new ArgumentOutOfRangeException("denominator cannot be zero.");
+            }
+
+            if(denominator < 0)
+            {
+                denominator = Math.Abs(denominator);
+                numerator = numerator * -1;
             }
 
             Numerator = numerator;
@@ -93,7 +102,7 @@ namespace Fractions
 
             if(num > dem)
             {
-                whole = num % dem;
+                whole = num / dem;
             }
 
             StringBuilder sb = new StringBuilder();

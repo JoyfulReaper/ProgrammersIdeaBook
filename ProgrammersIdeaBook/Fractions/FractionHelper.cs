@@ -90,6 +90,12 @@ namespace Fractions
             return a | b;
         }
 
+        /// <summary>
+        /// Find the least common multiple of two intgers
+        /// </summary>
+        /// <param name="a">An intger</param>
+        /// <param name="b">An intger</param>
+        /// <returns>The least common multiple</returns>
         public static int FindLeastCommonMultiple(int a, int b)
         {
             return (a / FindGreatestCommonFactor(a, b) * b);
@@ -125,11 +131,22 @@ namespace Fractions
             //return new FractionModel(m.Numerator / gcd, m.Denominator / gcd);
         }
 
+        /// <summary>
+        /// Get the Reciprocal of a fraction
+        /// </summary>
+        /// <param name="model">The fraction to get the Reciprocal of</param>
+        /// <returns>The reciprocal of the fraction</returns>
         public static FractionModel GetReciprocal(FractionModel model)
         {
             return new FractionModel(model.Denominator, model.Numerator);
         }
 
+        /// <summary>
+        /// Multiply two fractions
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns>The product of a and b</returns>
         public static FractionModel Multiply(FractionModel a, FractionModel b)
         {
             var res = new FractionModel(a.Numerator * b.Numerator, a.Denominator * b.Denominator);
@@ -137,6 +154,12 @@ namespace Fractions
             return res;
         }
 
+        /// <summary>
+        /// Divides two fractions
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns>The quotient of a and b</returns>
         public static FractionModel Divide(FractionModel a, FractionModel b)
         {
             var res = Multiply(a, GetReciprocal(b));
@@ -151,6 +174,12 @@ namespace Fractions
             return res;
         }
 
+        /// <summary>
+        /// Adds two fractions
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns>The sum of a and b</returns>
         public static FractionModel Add(FractionModel a, FractionModel b)
         {
             int lcm = FindLeastCommonMultiple(a.Denominator, b.Denominator);
@@ -161,6 +190,12 @@ namespace Fractions
             return res;
         }
 
+        /// <summary>
+        /// Subtracts two fractions
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns>The difference of a and f=b</returns>
         public static FractionModel Subtract(FractionModel a, FractionModel b)
         {
             int lcm = FindLeastCommonMultiple(a.Denominator, b.Denominator);
@@ -171,22 +206,50 @@ namespace Fractions
             return res;
         }
 
+        /// <summary>
+        /// Parse to a fraction
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static FractionModel ParseFraction(string value)
         {
-            var tokens = value.Split('/');
+            int whole = 0;
+            string[] tokens;
+
+            if (value.Contains(' '))
+            {
+                tokens = value.Split(' ');
+
+                whole = int.Parse(tokens[0]);
+                value = tokens[1];
+            }
+
+            tokens = value.Split('/');
             int num;
             int den;
+
             if (tokens.Length == 1 && int.TryParse(tokens[0], out num))
             {
                 return new FractionModel(num, 1);
             }
             else if (tokens.Length == 2 && int.TryParse(tokens[0], out num) && int.TryParse(tokens[1], out den))
             {
+                if(whole > 0)
+                {
+                    num += whole * den;
+                }
+
                 return new FractionModel(num, den);
             }
             throw new ArgumentException("Invalid fraction format");
         }
 
+        /// <summary>
+        /// Try to parse a fraction
+        /// </summary>
+        /// <param name="value">The value to parse</param>
+        /// <param name="fraction">The result of parsing value, or 0 on failure</param>
+        /// <returns>True on success, false on failure</returns>
         public static bool TryParseFraction(string value, out FractionModel fraction)
         {
             fraction = new FractionModel(0,1);

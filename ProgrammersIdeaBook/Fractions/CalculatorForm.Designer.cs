@@ -165,7 +165,7 @@ namespace Fractions
             // 
             // buttonCalculate
             // 
-            this.buttonCalculate.Location = new System.Drawing.Point(343, 180);
+            this.buttonCalculate.Location = new System.Drawing.Point(240, 193);
             this.buttonCalculate.Name = "buttonCalculate";
             this.buttonCalculate.Size = new System.Drawing.Size(96, 31);
             this.buttonCalculate.TabIndex = 7;

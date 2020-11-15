@@ -30,9 +30,7 @@ namespace Fractions
 {
     static class Program
     {
-        //TODO Deal with negative fractions - Display them better?
-        //TODO Deal with mixed fractions
-        //TODO Deal with improper fractions
+        // TODO Add to list from a decimal
 
         /// <summary>
         ///  The main entry point for the application.
@@ -40,10 +38,6 @@ namespace Fractions
         [STAThread]
         static void Main()
         {
-            //FractionModel test1 = new FractionModel(0, 2);
-            //FractionModel test2 = new FractionModel(0, 7);
-            //MessageBox.Show(FractionHelper.Divide(test1, test2).ToString());
-
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
