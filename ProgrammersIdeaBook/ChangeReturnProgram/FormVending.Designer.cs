@@ -39,6 +39,13 @@ namespace ChangeReturnProgram
             this.buttonNickel = new System.Windows.Forms.Button();
             this.buttonPenny = new System.Windows.Forms.Button();
             this.lblCredit = new System.Windows.Forms.Label();
+            this.buttonProduct3 = new System.Windows.Forms.Button();
+            this.buttonProduct4 = new System.Windows.Forms.Button();
+            this.lblChange = new System.Windows.Forms.Label();
+            this.lblQuaters = new System.Windows.Forms.Label();
+            this.lblDimes = new System.Windows.Forms.Label();
+            this.lblNickels = new System.Windows.Forms.Label();
+            this.lblPennies = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblHeader
@@ -64,6 +71,7 @@ namespace ChangeReturnProgram
             this.buttonProduct2.Size = new System.Drawing.Size(293, 88);
             this.buttonProduct2.TabIndex = 1;
             this.buttonProduct2.UseVisualStyleBackColor = true;
+            this.buttonProduct2.Click += new System.EventHandler(this.buttonProduct2_Click);
             this.buttonProduct2.MouseEnter += new System.EventHandler(this.buttonProduct_MouseEnter);
             this.buttonProduct2.MouseLeave += new System.EventHandler(this.buttonProduct_MouseLeave);
             // 
@@ -80,6 +88,7 @@ namespace ChangeReturnProgram
             this.buttonProduct1.Size = new System.Drawing.Size(293, 88);
             this.buttonProduct1.TabIndex = 1;
             this.buttonProduct1.UseVisualStyleBackColor = true;
+            this.buttonProduct1.Click += new System.EventHandler(this.buttonProduct1_Click);
             this.buttonProduct1.MouseEnter += new System.EventHandler(this.buttonProduct_MouseEnter);
             this.buttonProduct1.MouseLeave += new System.EventHandler(this.buttonProduct_MouseLeave);
             // 
@@ -148,18 +157,113 @@ namespace ChangeReturnProgram
             this.lblCredit.TabIndex = 3;
             this.lblCredit.Text = "Credit: ";
             // 
+            // buttonProduct3
+            // 
+            this.buttonProduct3.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonProduct3.FlatAppearance.BorderSize = 0;
+            this.buttonProduct3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonProduct3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonProduct3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonProduct3.Image = ((System.Drawing.Image)(resources.GetObject("buttonProduct3.Image")));
+            this.buttonProduct3.Location = new System.Drawing.Point(12, 260);
+            this.buttonProduct3.Name = "buttonProduct3";
+            this.buttonProduct3.Size = new System.Drawing.Size(293, 88);
+            this.buttonProduct3.TabIndex = 1;
+            this.buttonProduct3.UseVisualStyleBackColor = true;
+            this.buttonProduct3.Click += new System.EventHandler(this.buttonProduct3_Click);
+            this.buttonProduct3.MouseEnter += new System.EventHandler(this.buttonProduct_MouseEnter);
+            this.buttonProduct3.MouseLeave += new System.EventHandler(this.buttonProduct_MouseLeave);
+            // 
+            // buttonProduct4
+            // 
+            this.buttonProduct4.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonProduct4.FlatAppearance.BorderSize = 0;
+            this.buttonProduct4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonProduct4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonProduct4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonProduct4.Image = ((System.Drawing.Image)(resources.GetObject("buttonProduct4.Image")));
+            this.buttonProduct4.Location = new System.Drawing.Point(12, 354);
+            this.buttonProduct4.Name = "buttonProduct4";
+            this.buttonProduct4.Size = new System.Drawing.Size(293, 88);
+            this.buttonProduct4.TabIndex = 1;
+            this.buttonProduct4.UseVisualStyleBackColor = true;
+            this.buttonProduct4.Click += new System.EventHandler(this.buttonProduct4_Click);
+            this.buttonProduct4.MouseEnter += new System.EventHandler(this.buttonProduct_MouseEnter);
+            this.buttonProduct4.MouseLeave += new System.EventHandler(this.buttonProduct_MouseLeave);
+            // 
+            // lblChange
+            // 
+            this.lblChange.AutoSize = true;
+            this.lblChange.Location = new System.Drawing.Point(28, 454);
+            this.lblChange.Name = "lblChange";
+            this.lblChange.Size = new System.Drawing.Size(89, 30);
+            this.lblChange.TabIndex = 4;
+            this.lblChange.Text = "Change:";
+            this.lblChange.Visible = false;
+            // 
+            // lblQuaters
+            // 
+            this.lblQuaters.AutoSize = true;
+            this.lblQuaters.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblQuaters.Location = new System.Drawing.Point(28, 484);
+            this.lblQuaters.Name = "lblQuaters";
+            this.lblQuaters.Size = new System.Drawing.Size(87, 25);
+            this.lblQuaters.TabIndex = 5;
+            this.lblQuaters.Text = "Quaters: ";
+            this.lblQuaters.Visible = false;
+            // 
+            // lblDimes
+            // 
+            this.lblDimes.AutoSize = true;
+            this.lblDimes.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblDimes.Location = new System.Drawing.Point(206, 484);
+            this.lblDimes.Name = "lblDimes";
+            this.lblDimes.Size = new System.Drawing.Size(68, 25);
+            this.lblDimes.TabIndex = 5;
+            this.lblDimes.Text = "Dimes:";
+            this.lblDimes.Visible = false;
+            // 
+            // lblNickels
+            // 
+            this.lblNickels.AutoSize = true;
+            this.lblNickels.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblNickels.Location = new System.Drawing.Point(28, 509);
+            this.lblNickels.Name = "lblNickels";
+            this.lblNickels.Size = new System.Drawing.Size(81, 25);
+            this.lblNickels.TabIndex = 5;
+            this.lblNickels.Text = "Nickels: ";
+            this.lblNickels.Visible = false;
+            // 
+            // lblPennies
+            // 
+            this.lblPennies.AutoSize = true;
+            this.lblPennies.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPennies.Location = new System.Drawing.Point(206, 509);
+            this.lblPennies.Name = "lblPennies";
+            this.lblPennies.Size = new System.Drawing.Size(81, 25);
+            this.lblPennies.TabIndex = 5;
+            this.lblPennies.Text = "Pennies:";
+            this.lblPennies.Visible = false;
+            // 
             // FormVending
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(503, 525);
+            this.ClientSize = new System.Drawing.Size(503, 562);
+            this.Controls.Add(this.lblDimes);
+            this.Controls.Add(this.lblNickels);
+            this.Controls.Add(this.lblPennies);
+            this.Controls.Add(this.lblQuaters);
+            this.Controls.Add(this.lblChange);
             this.Controls.Add(this.lblCredit);
             this.Controls.Add(this.buttonNickel);
             this.Controls.Add(this.buttonPenny);
             this.Controls.Add(this.buttonDime);
             this.Controls.Add(this.buttonQuarter);
             this.Controls.Add(this.buttonDollar);
+            this.Controls.Add(this.buttonProduct3);
+            this.Controls.Add(this.buttonProduct4);
             this.Controls.Add(this.buttonProduct1);
             this.Controls.Add(this.buttonProduct2);
             this.Controls.Add(this.lblHeader);
@@ -185,6 +289,13 @@ namespace ChangeReturnProgram
         private System.Windows.Forms.Button buttonPenny;
         private System.Windows.Forms.Label labelCredit;
         private System.Windows.Forms.Label lblCredit;
+        private System.Windows.Forms.Button buttonProduct3;
+        private System.Windows.Forms.Button buttonProduct4;
+        private System.Windows.Forms.Label lblChange;
+        private System.Windows.Forms.Label lblQuaters;
+        private System.Windows.Forms.Label lblDimes;
+        private System.Windows.Forms.Label lblNickels;
+        private System.Windows.Forms.Label lblPennies;
     }
 }
 
