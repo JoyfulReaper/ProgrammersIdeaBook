@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Media;
 using System.Windows.Forms;
@@ -169,6 +170,11 @@ namespace ChangeReturnProgram
         private void buttonProduct4_Click(object sender, EventArgs e)
         {
             BuyProduct(3);
+        }
+
+        private void linkLabelGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://github.com/JoyfulReaper") { UseShellExecute = true });
         }
     }
 }

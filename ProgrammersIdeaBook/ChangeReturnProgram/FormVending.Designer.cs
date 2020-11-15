@@ -46,6 +46,7 @@ namespace ChangeReturnProgram
             this.lblDimes = new System.Windows.Forms.Label();
             this.lblNickels = new System.Windows.Forms.Label();
             this.lblPennies = new System.Windows.Forms.Label();
+            this.linkLabelGitHub = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // lblHeader
@@ -194,7 +195,7 @@ namespace ChangeReturnProgram
             // lblChange
             // 
             this.lblChange.AutoSize = true;
-            this.lblChange.Location = new System.Drawing.Point(28, 454);
+            this.lblChange.Location = new System.Drawing.Point(12, 442);
             this.lblChange.Name = "lblChange";
             this.lblChange.Size = new System.Drawing.Size(89, 30);
             this.lblChange.TabIndex = 4;
@@ -205,7 +206,7 @@ namespace ChangeReturnProgram
             // 
             this.lblQuaters.AutoSize = true;
             this.lblQuaters.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblQuaters.Location = new System.Drawing.Point(28, 484);
+            this.lblQuaters.Location = new System.Drawing.Point(12, 472);
             this.lblQuaters.Name = "lblQuaters";
             this.lblQuaters.Size = new System.Drawing.Size(87, 25);
             this.lblQuaters.TabIndex = 5;
@@ -216,7 +217,7 @@ namespace ChangeReturnProgram
             // 
             this.lblDimes.AutoSize = true;
             this.lblDimes.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDimes.Location = new System.Drawing.Point(206, 484);
+            this.lblDimes.Location = new System.Drawing.Point(190, 472);
             this.lblDimes.Name = "lblDimes";
             this.lblDimes.Size = new System.Drawing.Size(68, 25);
             this.lblDimes.TabIndex = 5;
@@ -227,7 +228,7 @@ namespace ChangeReturnProgram
             // 
             this.lblNickels.AutoSize = true;
             this.lblNickels.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblNickels.Location = new System.Drawing.Point(28, 509);
+            this.lblNickels.Location = new System.Drawing.Point(12, 497);
             this.lblNickels.Name = "lblNickels";
             this.lblNickels.Size = new System.Drawing.Size(81, 25);
             this.lblNickels.TabIndex = 5;
@@ -238,12 +239,24 @@ namespace ChangeReturnProgram
             // 
             this.lblPennies.AutoSize = true;
             this.lblPennies.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPennies.Location = new System.Drawing.Point(206, 509);
+            this.lblPennies.Location = new System.Drawing.Point(190, 497);
             this.lblPennies.Name = "lblPennies";
             this.lblPennies.Size = new System.Drawing.Size(81, 25);
             this.lblPennies.TabIndex = 5;
             this.lblPennies.Text = "Pennies:";
             this.lblPennies.Visible = false;
+            // 
+            // linkLabelGitHub
+            // 
+            this.linkLabelGitHub.AutoSize = true;
+            this.linkLabelGitHub.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.linkLabelGitHub.Location = new System.Drawing.Point(12, 532);
+            this.linkLabelGitHub.Name = "linkLabelGitHub";
+            this.linkLabelGitHub.Size = new System.Drawing.Size(234, 21);
+            this.linkLabelGitHub.TabIndex = 6;
+            this.linkLabelGitHub.TabStop = true;
+            this.linkLabelGitHub.Text = "https://github.com/JoyfulReaper";
+            this.linkLabelGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGitHub_LinkClicked);
             // 
             // FormVending
             // 
@@ -251,6 +264,7 @@ namespace ChangeReturnProgram
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(503, 562);
+            this.Controls.Add(this.linkLabelGitHub);
             this.Controls.Add(this.lblDimes);
             this.Controls.Add(this.lblNickels);
             this.Controls.Add(this.lblPennies);
@@ -296,6 +310,7 @@ namespace ChangeReturnProgram
         private System.Windows.Forms.Label lblDimes;
         private System.Windows.Forms.Label lblNickels;
         private System.Windows.Forms.Label lblPennies;
+        private System.Windows.Forms.LinkLabel linkLabelGitHub;
     }
 }
 
