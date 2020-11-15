@@ -30,15 +30,19 @@ namespace Fractions
 {
     static class Program
     {
+        //TODO Deal with negative fractions
+        //TODO Deal with mixed fractions
+        //TODO Deal with improper fractions
+
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            FractionModel test1 = new FractionModel(1, 3);
-            FractionModel test2 = new FractionModel(1, 6);
-            MessageBox.Show(FractionHelper.Add(test1, test2).ToString());
+            //FractionModel test1 = new FractionModel(0, 2);
+            //FractionModel test2 = new FractionModel(0, 7);
+            //MessageBox.Show(FractionHelper.Divide(test1, test2).ToString());
 
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();

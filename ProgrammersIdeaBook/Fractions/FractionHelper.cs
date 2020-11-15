@@ -151,5 +151,15 @@ namespace Fractions
 
             return res;
         }
+
+        public static FractionModel Subtract(FractionModel a, FractionModel b)
+        {
+            int lcm = FindLeastCommonMultiple(a.Denominator, b.Denominator);
+            int num = a.Numerator * (lcm / a.Denominator) - b.Numerator * (lcm / b.Denominator);
+            FractionModel res = new FractionModel(num, lcm);
+            res.Simplify();
+
+            return res;
+        }
     }
 }

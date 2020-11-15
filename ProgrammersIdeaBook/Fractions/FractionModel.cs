@@ -39,6 +39,12 @@ namespace Fractions
         /// </summary>
         public int Denominator { get; set; }
 
+        public string Display 
+        {
+            get => ToString();
+        }
+  
+
         /// <summary>
         /// Construct a new Fraction Model
         /// </summary>
@@ -76,5 +82,31 @@ namespace Fractions
             }
             throw new ArgumentException("Invalid fraction format");
         }
+
+        public static explicit operator FractionModel(decimal value)
+        {
+            return FractionHelper.ConvertDecimalToFraction(value);
+        }
+
+        public static FractionModel operator + (FractionModel left, FractionModel right)
+        {
+            return FractionHelper.Add(left, right);
+        }
+
+        public static FractionModel operator - (FractionModel left, FractionModel right)
+        {
+            return FractionHelper.Subtract(left, right);
+        }
+
+        public static FractionModel operator * (FractionModel left, FractionModel right)
+        {
+            return FractionHelper.Multiply(left, right);
+        }
+
+        public static FractionModel operator / (FractionModel left, FractionModel right)
+        {
+            return FractionHelper.Divide(left, right);
+        }
+
     }
 }
