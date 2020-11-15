@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Media;
 using System.Windows.Forms;
 
 namespace ChangeReturnProgram
@@ -43,36 +45,48 @@ namespace ChangeReturnProgram
         private void buttonDollar_Click(object sender, EventArgs e)
         {
             credit += 1.00m;
+            PlayWavSound(Properties.Resources.coin);
             UpdateCredit();
         }
 
         private void buttonQuarter_Click(object sender, EventArgs e)
         {
             credit += 0.25m;
+            PlayWavSound(Properties.Resources.coin);
             UpdateCredit();
         }
 
         private void buttonDime_Click(object sender, EventArgs e)
         {
             credit += 0.10m;
+            PlayWavSound(Properties.Resources.coin);
             UpdateCredit();
         }
 
         private void buttonNickel_Click(object sender, EventArgs e)
         {
             credit += 0.05m;
+            PlayWavSound(Properties.Resources.coin);
             UpdateCredit();
         }
 
         private void buttonPenny_Click(object sender, EventArgs e)
         {
             credit += 0.01m;
+            PlayWavSound(Properties.Resources.coin);
             UpdateCredit();
         }
 
         private void UpdateCredit()
         {
             lblCredit.Text = $"Credit {credit:C2}";
+        }
+
+        private void PlayWavSound(UnmanagedMemoryStream res)
+        {
+            Stream stream = res;
+            SoundPlayer soundplayer = new SoundPlayer(stream);
+            soundplayer.Play();
         }
     }
 }
