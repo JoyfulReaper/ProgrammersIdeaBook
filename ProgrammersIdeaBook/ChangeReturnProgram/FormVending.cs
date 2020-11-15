@@ -7,6 +7,7 @@ namespace ChangeReturnProgram
     public partial class FormVending : Form
     {
         private List<Product> products = new List<Product>();
+        private decimal credit;
 
         public FormVending()
         {
@@ -37,6 +38,41 @@ namespace ChangeReturnProgram
         {
             Button x = (Button)sender;
             x.Image = Properties.Resources.button;
+        }
+
+        private void buttonDollar_Click(object sender, EventArgs e)
+        {
+            credit += 1.00m;
+            UpdateCredit();
+        }
+
+        private void buttonQuarter_Click(object sender, EventArgs e)
+        {
+            credit += 0.25m;
+            UpdateCredit();
+        }
+
+        private void buttonDime_Click(object sender, EventArgs e)
+        {
+            credit += 0.10m;
+            UpdateCredit();
+        }
+
+        private void buttonNickel_Click(object sender, EventArgs e)
+        {
+            credit += 0.05m;
+            UpdateCredit();
+        }
+
+        private void buttonPenny_Click(object sender, EventArgs e)
+        {
+            credit += 0.01m;
+            UpdateCredit();
+        }
+
+        private void UpdateCredit()
+        {
+            lblCredit.Text = $"Credit {credit:C2}";
         }
     }
 }
