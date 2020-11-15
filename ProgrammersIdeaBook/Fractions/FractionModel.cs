@@ -24,6 +24,7 @@ SOFTWARE.
 */
 
 using System;
+using System.Text;
 
 namespace Fractions
 {
@@ -63,10 +64,56 @@ namespace Fractions
 
         public override string ToString()
         {
-            return $"{Numerator}/{Denominator}";
+            if (Numerator == 0)
+            {
+                return "0";
+            }
+
+            if(Numerator == Denominator)
+            {
+                return "1";
+            }
+
+            if(Denominator == 1)
+            {
+                return Numerator.ToString();
+            }
+
+            bool negative = false;
+            int num = Numerator;
+            int dem = Denominator;
+            int whole = 0;
+
+            if(dem < 0 || num < 0)
+            {
+                negative = true;
+                num = Math.Abs(num);
+                dem = Math.Abs(dem);
+            }
+
+            if(num > dem)
+            {
+                whole = num % dem;
+            }
+
+            StringBuilder sb = new StringBuilder();
+
+            if(negative)
+            {
+                sb.Append("-");
+            }
+
+            if(whole > 0)
+            {
+                sb.Append($"{ whole } ");
+                num -= dem * whole;
+            }
+
+            sb.Append($"{num}/{dem}");
+
+            return sb.ToString();
         }
 
-        // https://stackoverflow.com/questions/5360196/how-can-you-add-two-fractions By Jon
         public static implicit operator FractionModel(string value)
         {
             return FractionHelper.ParseFraction(value);

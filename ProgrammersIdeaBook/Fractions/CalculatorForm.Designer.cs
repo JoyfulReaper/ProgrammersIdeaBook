@@ -177,7 +177,7 @@ namespace Fractions
             // 
             this.lblResults.AutoSize = true;
             this.lblResults.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblResults.Location = new System.Drawing.Point(230, 252);
+            this.lblResults.Location = new System.Drawing.Point(230, 227);
             this.lblResults.Name = "lblResults";
             this.lblResults.Size = new System.Drawing.Size(111, 32);
             this.lblResults.TabIndex = 100;
@@ -268,7 +268,7 @@ namespace Fractions
             // 
             // buttonAddResult
             // 
-            this.buttonAddResult.Location = new System.Drawing.Point(246, 290);
+            this.buttonAddResult.Location = new System.Drawing.Point(246, 265);
             this.buttonAddResult.Name = "buttonAddResult";
             this.buttonAddResult.Size = new System.Drawing.Size(75, 23);
             this.buttonAddResult.TabIndex = 2;

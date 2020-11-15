@@ -76,6 +76,8 @@ namespace Fractions
         /// <returns>The greatest Common Divisor</returns>
         public static int FindGreatestCommonFactor(int a, int b)
         {
+            a = Math.Abs(a);
+            b = Math.Abs(b);
             //Euclid's algorithm
             while (a != 0 && b != 0)
             {
@@ -139,6 +141,13 @@ namespace Fractions
         {
             var res = Multiply(a, GetReciprocal(b));
             res.Simplify();
+
+            if(res.Denominator < 0 && res.Numerator < 0)
+            {
+                res.Numerator = Math.Abs(res.Numerator);
+                res.Denominator = Math.Abs(res.Denominator);
+            }
+
             return res;
         }
 
