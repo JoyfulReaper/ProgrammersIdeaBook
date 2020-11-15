@@ -69,18 +69,17 @@ namespace Fractions
         // https://stackoverflow.com/questions/5360196/how-can-you-add-two-fractions By Jon
         public static implicit operator FractionModel(string value)
         {
-            var tokens = value.Split('/');
-            int num;
-            int den;
-            if (tokens.Length == 1 && int.TryParse(tokens[0], out num))
-            {
-                return new FractionModel(num, 1);
-            }
-            else if (tokens.Length == 2 && int.TryParse(tokens[0], out num) && int.TryParse(tokens[1], out den))
-            {
-                return new FractionModel(num, den);
-            }
-            throw new ArgumentException("Invalid fraction format");
+            return FractionHelper.ParseFraction(value);
+        }
+
+        public static FractionModel Parse(string value)
+        {
+            return FractionHelper.ParseFraction(value);
+        }
+
+        public static bool TryParse(string value, out FractionModel result)
+        {
+            return FractionHelper.TryParseFraction(value, out result);
         }
 
         public static explicit operator FractionModel(decimal value)

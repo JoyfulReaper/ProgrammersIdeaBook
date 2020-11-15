@@ -30,7 +30,7 @@ namespace Fractions
 {
     static class Program
     {
-        //TODO Deal with negative fractions
+        //TODO Deal with negative fractions - Display them better?
         //TODO Deal with mixed fractions
         //TODO Deal with improper fractions
 

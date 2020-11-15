@@ -161,5 +161,37 @@ namespace Fractions
 
             return res;
         }
+
+        public static FractionModel ParseFraction(string value)
+        {
+            var tokens = value.Split('/');
+            int num;
+            int den;
+            if (tokens.Length == 1 && int.TryParse(tokens[0], out num))
+            {
+                return new FractionModel(num, 1);
+            }
+            else if (tokens.Length == 2 && int.TryParse(tokens[0], out num) && int.TryParse(tokens[1], out den))
+            {
+                return new FractionModel(num, den);
+            }
+            throw new ArgumentException("Invalid fraction format");
+        }
+
+        public static bool TryParseFraction(string value, out FractionModel fraction)
+        {
+            fraction = new FractionModel(0,1);
+
+            try
+            {
+                fraction = ParseFraction(value);
+            }
+            catch (ArgumentException)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }
