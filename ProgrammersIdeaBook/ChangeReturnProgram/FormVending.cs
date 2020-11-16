@@ -36,7 +36,7 @@ namespace ChangeReturnProgram
 {
     public partial class FormVending : Form
     {
-        private List<Product> products = new List<Product>();
+        private readonly List<Product> products = new List<Product>();
         private decimal credit;
 
         public FormVending()
@@ -56,10 +56,10 @@ namespace ChangeReturnProgram
 
         private void CreateProducts()
         {
-            products.Add(new Product("Lemon Soda", 1.51m));
+            products.Add(new Product("Lemon Soda", 1.75m));
             products.Add(new Product("Tomato Juice", 2.75m));
-            products.Add(new Product("Yummy snack", 3.00m));
-            products.Add(new Product("Healthy snack", 5.00m));
+            products.Add(new Product("Yummy snack", 2.99m));
+            products.Add(new Product("Healthy snack", 5.15m));
         }
 
         private void buttonProduct_MouseEnter(object sender, EventArgs e)
@@ -115,7 +115,7 @@ namespace ChangeReturnProgram
             lblCredit.Text = $"Credit {credit:C2}";
         }
 
-        private void PlayWavSound(UnmanagedMemoryStream res)
+        private static void PlayWavSound(UnmanagedMemoryStream res)
         {
             Stream stream = res;
             SoundPlayer soundplayer = new SoundPlayer(stream);
@@ -131,7 +131,7 @@ namespace ChangeReturnProgram
         {
             decimal price = products[itemNumber].Price;
 
-            if (credit > price)
+            if (credit >= price)
             {
                 credit -= price;
                 PlayWavSound(Properties.Resources.vend2);
@@ -146,10 +146,10 @@ namespace ChangeReturnProgram
         private void GiveChange(decimal unusedCredit)
         {
             int remaining = (int)(unusedCredit * 100); // Cents remaining
-            int quarters = 0;
-            int dimes = 0;
-            int nickels = 0;
-            int pennies = 0;
+            int quarters;
+            int dimes;
+            int nickels;
+            int pennies;
 
             quarters = remaining / 25;
             remaining -= quarters * 25;

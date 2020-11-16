@@ -301,7 +301,6 @@ namespace ChangeReturnProgram
         private System.Windows.Forms.Button buttonDime;
         private System.Windows.Forms.Button buttonNickel;
         private System.Windows.Forms.Button buttonPenny;
-        private System.Windows.Forms.Label labelCredit;
         private System.Windows.Forms.Label lblCredit;
         private System.Windows.Forms.Button buttonProduct3;
         private System.Windows.Forms.Button buttonProduct4;

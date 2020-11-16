@@ -32,7 +32,7 @@ namespace Fractions
 {
     public partial class CalculatorForm : Form
     {
-        private BindingList<FractionModel> fractions = new BindingList<FractionModel>();
+        private readonly BindingList<FractionModel> fractions = new BindingList<FractionModel>();
         private FractionModel mostRecentResult;
 
         public CalculatorForm()
@@ -66,9 +66,8 @@ namespace Fractions
                 MessageBox.Show("Please use only one method of creating a fraction at a time!");
                 return;
             }
-            FractionModel res;
 
-            if (FractionModel.TryParse(textBoxFraction.Text, out res))
+            if (FractionModel.TryParse(textBoxFraction.Text, out FractionModel res))
             {
                 fractions.Add(res);
             }

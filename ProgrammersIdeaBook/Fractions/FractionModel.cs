@@ -58,13 +58,13 @@ namespace Fractions
         {
             if (denominator == 0)
             {
-                throw new ArgumentOutOfRangeException("denominator cannot be zero.");
+                throw new ArgumentOutOfRangeException(nameof(denominator), "denominator cannot be zero.");
             }
 
             if(denominator < 0)
             {
                 denominator = Math.Abs(denominator);
-                numerator = numerator * -1;
+                numerator *= -1;
             }
 
             Numerator = numerator;
@@ -109,7 +109,7 @@ namespace Fractions
 
             if(negative)
             {
-                sb.Append("-");
+                sb.Append('-');
             }
 
             if(whole > 0)

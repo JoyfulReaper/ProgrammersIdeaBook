@@ -31,7 +31,7 @@ namespace TaxCalculator
 {
     public partial class FormTaxCalculator : Form
     {
-        private BindingList<ItemModel> items = new BindingList<ItemModel>();
+        private readonly BindingList<ItemModel> items = new BindingList<ItemModel>();
 
         public FormTaxCalculator()
         {
@@ -68,7 +68,7 @@ namespace TaxCalculator
                 return false;
             }
 
-            if(!decimal.TryParse(textBoxPrice.Text, out decimal res))
+            if (!decimal.TryParse(textBoxPrice.Text, out _))
             {
                 MessageBox.Show("Price must be a valid number!");
                 return false;

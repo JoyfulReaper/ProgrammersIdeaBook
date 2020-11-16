@@ -31,6 +31,7 @@ namespace Fractions
     static class Program
     {
         // TODO Add to list from a decimal
+        // TODO Support Complex Fractions
 
         /// <summary>
         ///  The main entry point for the application.
