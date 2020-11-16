@@ -37,17 +37,39 @@ namespace ChangeReturnProgram
     public partial class FormVending : Form
     {
         private readonly List<Product> products = new List<Product>();
+        private readonly Dictionary<Button, decimal> creditButtons = new Dictionary<Button, decimal>();
+        private readonly Dictionary<Button, int> ProductButtons = new Dictionary<Button, int>();
         private decimal credit;
 
         public FormVending()
         {
             InitializeComponent();
-            CreateProducts();
-            UpdateButtons();
+
+            CreateProducts(); // Just add some demo products
+
+            AssociateProductsToButtons(); // Put name and price text on the buttons
+
+            CreateButtonDictionaries(); // Add the buttons to a Dictionary so we can use one even for all of them
         }
 
-        private void UpdateButtons()
+        private void CreateButtonDictionaries()
         {
+            // Add the buttons to a dictionary
+            creditButtons.Add(buttonDollar, 1.00m);
+            creditButtons.Add(buttonQuarter, 0.25m);
+            creditButtons.Add(buttonDime, 0.10m);
+            creditButtons.Add(buttonNickel, 0.05m);
+            creditButtons.Add(buttonPenny, 0.01m);
+
+            ProductButtons.Add(buttonProduct1, 0);
+            ProductButtons.Add(buttonProduct2, 1);
+            ProductButtons.Add(buttonProduct3, 2);
+            ProductButtons.Add(buttonProduct4, 3);
+        }
+
+        private void AssociateProductsToButtons()
+        {
+            //Put the product info on the buttons
             buttonProduct1.Text = $"{products[0].Name}\n{products[0].Price}";
             buttonProduct2.Text = $"{products[1].Name}\n{products[1].Price}";
             buttonProduct3.Text = $"{products[2].Name}\n{products[2].Price}";
@@ -56,65 +78,46 @@ namespace ChangeReturnProgram
 
         private void CreateProducts()
         {
+            // Create some demo products
+            //TODO create product editor, maybe store the info in a DB
             products.Add(new Product("Lemon Soda", 1.75m));
-            products.Add(new Product("Tomato Juice", 2.75m));
+            products.Add(new Product("Tomato Juice", 2.50m));
             products.Add(new Product("Yummy snack", 2.99m));
             products.Add(new Product("Healthy snack", 5.15m));
         }
 
         private void buttonProduct_MouseEnter(object sender, EventArgs e)
         {
-             Button x = (Button)sender;
+            // Change the image when mouse is over the button
+            Button x = (Button)sender;
             x.Image = Properties.Resources.button2;
         }
 
         private void buttonProduct_MouseLeave(object sender, EventArgs e)
         {
+            // Change back to normal when mouse no longer over button
             Button x = (Button)sender;
             x.Image = Properties.Resources.button;
         }
 
-        private void buttonDollar_Click(object sender, EventArgs e)
+        // A button to credit an amount has been clicked
+        // Lets add the credit!
+        private void buttonCredit_Click(object sender, EventArgs e)
         {
-            credit += 1.00m;
+            decimal creditAmount = creditButtons[(Button)sender];
+            credit += creditAmount;
             PlayWavSound(Properties.Resources.coin);
             UpdateCredit();
         }
 
-        private void buttonQuarter_Click(object sender, EventArgs e)
-        {
-            credit += 0.25m;
-            PlayWavSound(Properties.Resources.coin);
-            UpdateCredit();
-        }
-
-        private void buttonDime_Click(object sender, EventArgs e)
-        {
-            credit += 0.10m;
-            PlayWavSound(Properties.Resources.coin);
-            UpdateCredit();
-        }
-
-        private void buttonNickel_Click(object sender, EventArgs e)
-        {
-            credit += 0.05m;
-            PlayWavSound(Properties.Resources.coin);
-            UpdateCredit();
-        }
-
-        private void buttonPenny_Click(object sender, EventArgs e)
-        {
-            credit += 0.01m;
-            PlayWavSound(Properties.Resources.coin);
-            UpdateCredit();
-        }
-
+        //Update label displaying the credit amount
         private void UpdateCredit()
         {
             ToggleChangeVisible(false);
             lblCredit.Text = $"Credit {credit:C2}";
         }
 
+        // Play a sound
         private static void PlayWavSound(UnmanagedMemoryStream res)
         {
             Stream stream = res;
@@ -122,9 +125,11 @@ namespace ChangeReturnProgram
             soundplayer.Play();
         }
 
-        private void buttonProduct1_Click(object sender, EventArgs e)
+        // A product button was pressed!
+        private void buttonProduct_Click(object sender, EventArgs e)
         {
-            BuyProduct(0);
+            int productToBuy = ProductButtons[(Button)sender];
+            BuyProduct(productToBuy);
         }
 
         private void BuyProduct(int itemNumber)
@@ -173,6 +178,7 @@ namespace ChangeReturnProgram
             lblPennies.Text = "Pennies: " + pennies.ToString();
         }
 
+        // Should we show the change labels?
         private void ToggleChangeVisible(bool visible)
         {
             lblChange.Visible = visible;
@@ -182,21 +188,7 @@ namespace ChangeReturnProgram
             lblPennies.Visible = visible;
         }
 
-        private void buttonProduct2_Click(object sender, EventArgs e)
-        {
-            BuyProduct(1);
-        }
-
-        private void buttonProduct3_Click(object sender, EventArgs e)
-        {
-            BuyProduct(2);
-        }
-
-        private void buttonProduct4_Click(object sender, EventArgs e)
-        {
-            BuyProduct(3);
-        }
-
+        // Go to my GitHub!! Awesome!
         private void linkLabelGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(new ProcessStartInfo("https://github.com/JoyfulReaper") { UseShellExecute = true });

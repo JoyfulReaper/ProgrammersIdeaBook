@@ -72,7 +72,7 @@ namespace ChangeReturnProgram
             this.buttonProduct2.Size = new System.Drawing.Size(293, 88);
             this.buttonProduct2.TabIndex = 1;
             this.buttonProduct2.UseVisualStyleBackColor = true;
-            this.buttonProduct2.Click += new System.EventHandler(this.buttonProduct2_Click);
+            this.buttonProduct2.Click += new System.EventHandler(this.buttonProduct_Click);
             this.buttonProduct2.MouseEnter += new System.EventHandler(this.buttonProduct_MouseEnter);
             this.buttonProduct2.MouseLeave += new System.EventHandler(this.buttonProduct_MouseLeave);
             // 
@@ -89,7 +89,7 @@ namespace ChangeReturnProgram
             this.buttonProduct1.Size = new System.Drawing.Size(293, 88);
             this.buttonProduct1.TabIndex = 1;
             this.buttonProduct1.UseVisualStyleBackColor = true;
-            this.buttonProduct1.Click += new System.EventHandler(this.buttonProduct1_Click);
+            this.buttonProduct1.Click += new System.EventHandler(this.buttonProduct_Click);
             this.buttonProduct1.MouseEnter += new System.EventHandler(this.buttonProduct_MouseEnter);
             this.buttonProduct1.MouseLeave += new System.EventHandler(this.buttonProduct_MouseLeave);
             // 
@@ -102,7 +102,7 @@ namespace ChangeReturnProgram
             this.buttonDollar.TabIndex = 2;
             this.buttonDollar.Text = "Insert Dollar";
             this.buttonDollar.UseVisualStyleBackColor = true;
-            this.buttonDollar.Click += new System.EventHandler(this.buttonDollar_Click);
+            this.buttonDollar.Click += new System.EventHandler(this.buttonCredit_Click);
             // 
             // buttonQuarter
             // 
@@ -113,7 +113,7 @@ namespace ChangeReturnProgram
             this.buttonQuarter.TabIndex = 2;
             this.buttonQuarter.Text = "Insert Quarter";
             this.buttonQuarter.UseVisualStyleBackColor = true;
-            this.buttonQuarter.Click += new System.EventHandler(this.buttonQuarter_Click);
+            this.buttonQuarter.Click += new System.EventHandler(this.buttonCredit_Click);
             // 
             // buttonDime
             // 
@@ -124,7 +124,7 @@ namespace ChangeReturnProgram
             this.buttonDime.TabIndex = 2;
             this.buttonDime.Text = "Insert Dime";
             this.buttonDime.UseVisualStyleBackColor = true;
-            this.buttonDime.Click += new System.EventHandler(this.buttonDime_Click);
+            this.buttonDime.Click += new System.EventHandler(this.buttonCredit_Click);
             // 
             // buttonNickel
             // 
@@ -135,7 +135,7 @@ namespace ChangeReturnProgram
             this.buttonNickel.TabIndex = 2;
             this.buttonNickel.Text = "Insert Nickel";
             this.buttonNickel.UseVisualStyleBackColor = true;
-            this.buttonNickel.Click += new System.EventHandler(this.buttonNickel_Click);
+            this.buttonNickel.Click += new System.EventHandler(this.buttonCredit_Click);
             // 
             // buttonPenny
             // 
@@ -146,7 +146,7 @@ namespace ChangeReturnProgram
             this.buttonPenny.TabIndex = 2;
             this.buttonPenny.Text = "Insert Penny";
             this.buttonPenny.UseVisualStyleBackColor = true;
-            this.buttonPenny.Click += new System.EventHandler(this.buttonPenny_Click);
+            this.buttonPenny.Click += new System.EventHandler(this.buttonCredit_Click);
             // 
             // lblCredit
             // 
@@ -171,7 +171,7 @@ namespace ChangeReturnProgram
             this.buttonProduct3.Size = new System.Drawing.Size(293, 88);
             this.buttonProduct3.TabIndex = 1;
             this.buttonProduct3.UseVisualStyleBackColor = true;
-            this.buttonProduct3.Click += new System.EventHandler(this.buttonProduct3_Click);
+            this.buttonProduct3.Click += new System.EventHandler(this.buttonProduct_Click);
             this.buttonProduct3.MouseEnter += new System.EventHandler(this.buttonProduct_MouseEnter);
             this.buttonProduct3.MouseLeave += new System.EventHandler(this.buttonProduct_MouseLeave);
             // 
@@ -188,7 +188,7 @@ namespace ChangeReturnProgram
             this.buttonProduct4.Size = new System.Drawing.Size(293, 88);
             this.buttonProduct4.TabIndex = 1;
             this.buttonProduct4.UseVisualStyleBackColor = true;
-            this.buttonProduct4.Click += new System.EventHandler(this.buttonProduct4_Click);
+            this.buttonProduct4.Click += new System.EventHandler(this.buttonProduct_Click);
             this.buttonProduct4.MouseEnter += new System.EventHandler(this.buttonProduct_MouseEnter);
             this.buttonProduct4.MouseLeave += new System.EventHandler(this.buttonProduct_MouseLeave);
             // 
