@@ -59,7 +59,7 @@ namespace AlarmClock
                 TimeSpan overdue = DateTime.Now - selected.AlarmDateTime;
 
                 lblName.Text = $"Name: {selected.Name}";
-                lblOverdue.Text = $"Overdue: {overdue.Days} Days {overdue.Hours} Hours {overdue.Minutes} Minutes {overdue.Seconds} Seconds"; // TODO make this look better
+                lblOverdue.Text = $"Overdue: {overdue.Days} Days {overdue.Hours} Hours {overdue.Minutes} Minutes {overdue.Seconds} Seconds";
                 lblExpires.Text = $"Set for: {selected.AlarmDateTime}";
                 textBoxMessage.Text = selected.Message;
             }
