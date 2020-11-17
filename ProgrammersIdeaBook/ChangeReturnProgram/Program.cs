@@ -28,6 +28,7 @@ using System.Windows.Forms;
 
 namespace ChangeReturnProgram
 {
+    //TODO have each item have a certain stock level
     static class Program
     {
         /// <summary>

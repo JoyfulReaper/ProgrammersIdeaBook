@@ -62,7 +62,7 @@ namespace ChangeReturnProgram
             this.buttonSubmit.Location = new System.Drawing.Point(149, 188);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(124, 42);
-            this.buttonSubmit.TabIndex = 4;
+            this.buttonSubmit.TabIndex = 8;
             this.buttonSubmit.Text = "Submit";
             this.buttonSubmit.UseVisualStyleBackColor = true;
             this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
@@ -105,21 +105,21 @@ namespace ChangeReturnProgram
             this.productName1.Location = new System.Drawing.Point(126, 14);
             this.productName1.Name = "productName1";
             this.productName1.Size = new System.Drawing.Size(126, 23);
-            this.productName1.TabIndex = 6;
+            this.productName1.TabIndex = 0;
             // 
             // productName2
             // 
             this.productName2.Location = new System.Drawing.Point(126, 52);
             this.productName2.Name = "productName2";
             this.productName2.Size = new System.Drawing.Size(126, 23);
-            this.productName2.TabIndex = 6;
+            this.productName2.TabIndex = 2;
             // 
             // productName3
             // 
             this.productName3.Location = new System.Drawing.Point(126, 90);
             this.productName3.Name = "productName3";
             this.productName3.Size = new System.Drawing.Size(126, 23);
-            this.productName3.TabIndex = 6;
+            this.productName3.TabIndex = 4;
             // 
             // productName4
             // 
@@ -140,24 +140,25 @@ namespace ChangeReturnProgram
             this.productPrice3.Location = new System.Drawing.Point(279, 90);
             this.productPrice3.Name = "productPrice3";
             this.productPrice3.Size = new System.Drawing.Size(74, 23);
-            this.productPrice3.TabIndex = 8;
+            this.productPrice3.TabIndex = 5;
             // 
             // productPrice2
             // 
             this.productPrice2.Location = new System.Drawing.Point(279, 52);
             this.productPrice2.Name = "productPrice2";
             this.productPrice2.Size = new System.Drawing.Size(74, 23);
-            this.productPrice2.TabIndex = 9;
+            this.productPrice2.TabIndex = 3;
             // 
             // productPrice1
             // 
             this.productPrice1.Location = new System.Drawing.Point(279, 14);
             this.productPrice1.Name = "productPrice1";
             this.productPrice1.Size = new System.Drawing.Size(74, 23);
-            this.productPrice1.TabIndex = 10;
+            this.productPrice1.TabIndex = 1;
             // 
             // FormProducts
             // 
+            this.AcceptButton = this.buttonSubmit;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
