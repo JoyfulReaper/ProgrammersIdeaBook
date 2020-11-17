@@ -38,6 +38,7 @@ namespace ChangeReturnProgram
         /// <returns>A list of CurrencyUnits with their Quantities set in order to give totalChange with the fewest possible "coins"</returns>
         public static List<CurrencyUnit> CalculateChange(decimal totalChange, List<CurrencyUnit> currencyUnits)
         {
+            var change = new List<CurrencyUnit>();
             foreach (var currencyUnit in currencyUnits)
             {
                 int count;
@@ -45,6 +46,7 @@ namespace ChangeReturnProgram
                 count = (int)(totalChange / currencyUnit.Value);
                 totalChange %= currencyUnit.Value;
 
+                change.Add(new CurrencyUnit(currencyUnit.Value, currencyUnit.Name, currencyUnit.PluralName, count));
                 currencyUnit.Quantity = count;
             }
 
@@ -53,7 +55,7 @@ namespace ChangeReturnProgram
                 throw new ArgumentException("Unable to successfully make change!", nameof(totalChange));
             }
 
-            return currencyUnits;
+            return change;
         }
 
         /// <summary>

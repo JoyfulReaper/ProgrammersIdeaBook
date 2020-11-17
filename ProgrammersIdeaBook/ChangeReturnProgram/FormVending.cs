@@ -35,7 +35,7 @@ namespace ChangeReturnProgram
 {
     public partial class FormVending : Form, IProductListRequester
     {
-        private readonly Dictionary<Button, decimal> creditButtons = new Dictionary<Button, decimal>();
+        private readonly Dictionary<Button, CurrencyUnit> creditButtons = new Dictionary<Button, CurrencyUnit>();
         private readonly Dictionary<Button, Product> productButtons = new Dictionary<Button, Product>();
 
         private readonly List<CurrencyUnit> coins = CurrencyHelper.GetUSDCommonCoins(); // TODO Associate credit buttons with CurrencyUnits
@@ -55,11 +55,11 @@ namespace ChangeReturnProgram
         private void CreateCreditButtonDictionary()
         {
             // Add the buttons to a dictionary
-            creditButtons.Add(buttonDollar, 1.00m);
-            creditButtons.Add(buttonQuarter, 0.25m);
-            creditButtons.Add(buttonDime, 0.10m);
-            creditButtons.Add(buttonNickel, 0.05m);
-            creditButtons.Add(buttonPenny, 0.01m);
+            creditButtons.Add(buttonDollar, CurrencyHelper.GetUSDCommonBills().Where(x => x.Name == "one dollar bill").First());
+            creditButtons.Add(buttonQuarter, coins.Where(x => x.Name == "quarter").First());
+            creditButtons.Add(buttonDime, coins.Where(x => x.Name == "dime").First());
+            creditButtons.Add(buttonNickel, coins.Where(x => x.Name == "nickel").First());
+            creditButtons.Add(buttonPenny, coins.Where(x => x.Name == "penny").First());
         }
 
         private void AssociateProductsToButtons(List<Product> products)
@@ -116,9 +116,13 @@ namespace ChangeReturnProgram
         // Lets add the credit!
         private void buttonCredit_Click(object sender, EventArgs e)
         {
-            decimal creditAmount = creditButtons[(Button)sender];
+            decimal creditAmount = creditButtons[(Button)sender].Value;
+            creditButtons[(Button)sender].Quantity++;
+
             credit += creditAmount;
+
             PlayWavSound(Properties.Resources.coin);
+
             UpdateCredit();
         }
 
