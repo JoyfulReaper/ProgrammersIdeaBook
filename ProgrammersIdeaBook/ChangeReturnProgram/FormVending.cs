@@ -176,10 +176,10 @@ namespace ChangeReturnProgram
         {
             var change = CurrencyHelper.CalculateChange(unusedCredit, coins);
 
-            int quarters = change[coins.Where(x => x.Name == "quarter").First()];
-            int dimes = change[coins.Where(x => x.Name == "dime").First()];
-            int nickels = change[coins.Where(x => x.Name == "nickel").First()];
-            int pennies = change[coins.Where(x => x.Name == "penny").First()];
+            int quarters = change.Where(x => x.Name == "quarter").First().Quantity;
+            int dimes = change.Where(x => x.Name == "dime").First().Quantity;
+            int nickels = change.Where(x => x.Name == "nickel").First().Quantity;
+            int pennies = change.Where(x => x.Name == "penny").First().Quantity;
 
             credit = 0;
             UpdateCredit();

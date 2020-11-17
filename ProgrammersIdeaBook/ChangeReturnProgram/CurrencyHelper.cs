@@ -23,28 +23,43 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+using System;
 using System.Collections.Generic;
 
 namespace ChangeReturnProgram
 {
     public static class CurrencyHelper
     {
-        public static Dictionary<CurrencyUnit, int> CalculateChange(decimal totalChange, List<CurrencyUnit> currencyUnits)
+        /// <summary>
+        /// Calculate change from a purchase
+        /// </summary>
+        /// <param name="totalChange">The total amount of change to return</param>
+        /// <param name="currencyUnits">The CurrencyUnits available to give change in</param>
+        /// <returns>A list of CurrencyUnits with their Quantities set in order to give totalChange with the fewest possible "coins"</returns>
+        public static List<CurrencyUnit> CalculateChange(decimal totalChange, List<CurrencyUnit> currencyUnits)
         {
-            Dictionary<CurrencyUnit, int> change = new Dictionary<CurrencyUnit, int>();
-
             foreach (var currencyUnit in currencyUnits)
             {
                 int count;
 
                 count = (int)(totalChange / currencyUnit.Value);
-                change.Add(currencyUnit, count);
                 totalChange %= currencyUnit.Value;
+
+                currencyUnit.Quantity = count;
             }
 
-            return change;
+            if (totalChange != 0)
+            {
+                throw new ArgumentException("Unable to successfully make change!", nameof(totalChange));
+            }
+
+            return currencyUnits;
         }
 
+        /// <summary>
+        /// Get a List of common US Coins
+        /// </summary>
+        /// <returns>List of common US Coins</returns>
         public static List<CurrencyUnit> GetUSDCommonCoins()
         {
             List<CurrencyUnit> coins = new List<CurrencyUnit>();
@@ -57,6 +72,10 @@ namespace ChangeReturnProgram
             return coins;
         }
 
+        /// <summary>
+        /// Get a list of common US paper currency
+        /// </summary>
+        /// <returns>list of common US paper currency</returns>
         public static List<CurrencyUnit> GetUSDCommonBills()
         {
             List<CurrencyUnit> bills = new List<CurrencyUnit>();

@@ -27,17 +27,31 @@ namespace ChangeReturnProgram
 {
     public class CurrencyUnit
     {
+        /// <summary>
+        /// Name of the Currency
+        /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// Value of the Currency
+        /// </summary>
         public decimal Value { get; set; }
+        /// <summary>
+        /// Plural name of the Currency
+        /// </summary>
         public string PluralName { get; set; }
+        /// <summary>
+        /// Quantity of this Currency being represented
+        /// </summary>
+        public int Quantity { get; set; }
 
-        public CurrencyUnit(decimal value, string name, string pluralName="")
+        public CurrencyUnit(decimal value, string name, string pluralName="", int quantity = 0)
         {
             Name = name;
             Value = value;
             PluralName = pluralName;
+            Quantity = quantity;
 
-            if(PluralName == "")
+            if (string.IsNullOrEmpty(pluralName))
             {
                 PluralName = $"{Name}s";
             }
