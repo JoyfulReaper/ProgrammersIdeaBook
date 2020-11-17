@@ -47,6 +47,7 @@ namespace ChangeReturnProgram
             this.lblNickels = new System.Windows.Forms.Label();
             this.lblPennies = new System.Windows.Forms.Label();
             this.linkLabelGitHub = new System.Windows.Forms.LinkLabel();
+            this.buttonChangeProducts = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblHeader
@@ -258,6 +259,18 @@ namespace ChangeReturnProgram
             this.linkLabelGitHub.Text = "https://github.com/JoyfulReaper";
             this.linkLabelGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGitHub_LinkClicked);
             // 
+            // buttonChangeProducts
+            // 
+            this.buttonChangeProducts.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonChangeProducts.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.buttonChangeProducts.Location = new System.Drawing.Point(367, 508);
+            this.buttonChangeProducts.Name = "buttonChangeProducts";
+            this.buttonChangeProducts.Size = new System.Drawing.Size(124, 42);
+            this.buttonChangeProducts.TabIndex = 2;
+            this.buttonChangeProducts.Text = "Change Products";
+            this.buttonChangeProducts.UseVisualStyleBackColor = true;
+            this.buttonChangeProducts.Click += new System.EventHandler(this.buttonChangeProducts_Click);
+            // 
             // FormVending
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
@@ -275,6 +288,7 @@ namespace ChangeReturnProgram
             this.Controls.Add(this.buttonPenny);
             this.Controls.Add(this.buttonDime);
             this.Controls.Add(this.buttonQuarter);
+            this.Controls.Add(this.buttonChangeProducts);
             this.Controls.Add(this.buttonDollar);
             this.Controls.Add(this.buttonProduct3);
             this.Controls.Add(this.buttonProduct4);
@@ -310,6 +324,7 @@ namespace ChangeReturnProgram
         private System.Windows.Forms.Label lblNickels;
         private System.Windows.Forms.Label lblPennies;
         private System.Windows.Forms.LinkLabel linkLabelGitHub;
+        private System.Windows.Forms.Button buttonChangeProducts;
     }
 }
 

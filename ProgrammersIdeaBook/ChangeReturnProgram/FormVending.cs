@@ -31,30 +31,28 @@ using System.Linq;
 using System.Media;
 using System.Windows.Forms;
 
-// TODO Do something about the duplicated code in the button events. 
-
 namespace ChangeReturnProgram
 {
-    public partial class FormVending : Form
+    public partial class FormVending : Form, IProductListRequester
     {
-        private readonly List<Product> products = new List<Product>();
         private readonly Dictionary<Button, decimal> creditButtons = new Dictionary<Button, decimal>();
-        private readonly Dictionary<Button, int> ProductButtons = new Dictionary<Button, int>();
-        private readonly List<CurrencyUnit> coins = CurrencyHelper.GetUSDCommonCoins();
+        private readonly Dictionary<Button, Product> productButtons = new Dictionary<Button, Product>();
+
+        private readonly List<CurrencyUnit> coins = CurrencyHelper.GetUSDCommonCoins(); // TODO Associate credit buttons with CurrencyUnits
+
         private decimal credit;
 
         public FormVending()
         {
             InitializeComponent();
 
-            CreateProducts(); // Just add some demo products
+            CreateCreditButtonDictionary(); // Add crediting buttons to a dictionary with the value of the credit
 
-            AssociateProductsToButtons(); // Put name and price text on the buttons
-
-            CreateButtonDictionaries(); // Add the buttons to a Dictionary so we can use one even for all of them
+            AssociateProductsToButtons(GetDemoProducts()); // Put name and price text on the buttons
+            // TODO Save the products to a database or something!
         }
 
-        private void CreateButtonDictionaries()
+        private void CreateCreditButtonDictionary()
         {
             // Add the buttons to a dictionary
             creditButtons.Add(buttonDollar, 1.00m);
@@ -62,30 +60,42 @@ namespace ChangeReturnProgram
             creditButtons.Add(buttonDime, 0.10m);
             creditButtons.Add(buttonNickel, 0.05m);
             creditButtons.Add(buttonPenny, 0.01m);
-
-            ProductButtons.Add(buttonProduct1, 0);
-            ProductButtons.Add(buttonProduct2, 1);
-            ProductButtons.Add(buttonProduct3, 2);
-            ProductButtons.Add(buttonProduct4, 3);
         }
 
-        private void AssociateProductsToButtons()
+        private void AssociateProductsToButtons(List<Product> products)
         {
-            //Put the product info on the buttons
-            buttonProduct1.Text = $"{products[0].Name}\n{products[0].Price}";
-            buttonProduct2.Text = $"{products[1].Name}\n{products[1].Price}";
-            buttonProduct3.Text = $"{products[2].Name}\n{products[2].Price}";
-            buttonProduct4.Text = $"{products[3].Name}\n{products[3].Price}";
+            // Associate products to buttons
+            if (productButtons.Count > 0)
+            {
+                productButtons.Clear();
+            }
+
+            productButtons.Add(buttonProduct1, products[0]);
+            productButtons.Add(buttonProduct2, products[1]);
+            productButtons.Add(buttonProduct3, products[2]);
+            productButtons.Add(buttonProduct4, products[3]);
+
+            UpdateButtonText();
         }
 
-        private void CreateProducts()
+        private List<Product> GetDemoProducts()
         {
-            // Create some demo products
-            //TODO create product editor, maybe store the info in a DB
+            List<Product> products = new List<Product>();
+
             products.Add(new Product("Lemon Soda", 1.75m));
             products.Add(new Product("Tomato Juice", 2.50m));
             products.Add(new Product("Yummy snack", 2.99m));
             products.Add(new Product("Healthy snack", 5.15m));
+
+            return products;
+        }
+
+        private void UpdateButtonText()
+        {
+            foreach(var kvp in productButtons)
+            {
+                kvp.Key.Text = $"{kvp.Value.Name}\n{kvp.Value.Price}";
+            }
         }
 
         private void buttonProduct_MouseEnter(object sender, EventArgs e)
@@ -112,6 +122,18 @@ namespace ChangeReturnProgram
             UpdateCredit();
         }
 
+        private void buttonChangeProducts_Click(object sender, EventArgs e)
+        {
+            List<Product> products = new List<Product>();
+            foreach (var b in productButtons)
+            {
+                products.Add(b.Value);
+            }
+
+            FormProducts frm = new FormProducts(this, products);
+            frm.Show(this);
+        }
+
         //Update label displaying the credit amount
         private void UpdateCredit()
         {
@@ -130,13 +152,13 @@ namespace ChangeReturnProgram
         // A product button was pressed!
         private void buttonProduct_Click(object sender, EventArgs e)
         {
-            int productToBuy = ProductButtons[(Button)sender];
-            BuyProduct(productToBuy);
+            Product p = productButtons[(Button)sender];
+            BuyProduct(p);
         }
 
-        private void BuyProduct(int itemNumber)
+        private void BuyProduct(Product product)
         {
-            decimal price = products[itemNumber].Price;
+            decimal price = product.Price;
 
             if (credit >= price)
             {
@@ -164,10 +186,11 @@ namespace ChangeReturnProgram
 
             ToggleChangeVisible(true);
 
-            lblQuaters.Text = "Quaters: " + quarters.ToString();
-            lblDimes.Text = "Dimes: " + dimes.ToString();
-            lblNickels.Text = "Nickels: " + nickels.ToString();
-            lblPennies.Text = "Pennies: " + pennies.ToString();
+            lblChange.Text = "Total Change: " + unusedCredit;
+            lblQuaters.Text = "Quaters: " + quarters;
+            lblDimes.Text = "Dimes: " + dimes;
+            lblNickels.Text = "Nickels: " + nickels;
+            lblPennies.Text = "Pennies: " + pennies;
         }
 
         // Should we show the change labels?
@@ -184,6 +207,11 @@ namespace ChangeReturnProgram
         private void linkLabelGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(new ProcessStartInfo("https://github.com/JoyfulReaper") { UseShellExecute = true });
+        }
+
+        public void ProductsUpdates(List<Product> products)
+        {
+            AssociateProductsToButtons(products);
         }
     }
 }
