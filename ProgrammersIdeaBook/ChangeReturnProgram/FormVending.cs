@@ -27,6 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Media;
 using System.Windows.Forms;
 
@@ -39,6 +40,7 @@ namespace ChangeReturnProgram
         private readonly List<Product> products = new List<Product>();
         private readonly Dictionary<Button, decimal> creditButtons = new Dictionary<Button, decimal>();
         private readonly Dictionary<Button, int> ProductButtons = new Dictionary<Button, int>();
+        private readonly List<CurrencyUnit> coins = CurrencyHelper.GetUSDCommonCoins();
         private decimal credit;
 
         public FormVending()
@@ -150,22 +152,12 @@ namespace ChangeReturnProgram
 
         private void GiveChange(decimal unusedCredit)
         {
-            int remaining = (int)(unusedCredit * 100); // Cents remaining
-            int quarters;
-            int dimes;
-            int nickels;
-            int pennies;
+            var change = CurrencyHelper.CalculateChange(unusedCredit, coins);
 
-            quarters = remaining / 25;
-            remaining -= quarters * 25;
-
-            dimes = remaining / 10;
-            remaining -= dimes * 10;
-
-            nickels = remaining / 5;
-            remaining -= nickels * 5;
-
-            pennies = remaining / 1;
+            int quarters = change[coins.Where(x => x.Name == "quarter").First()];
+            int dimes = change[coins.Where(x => x.Name == "dime").First()];
+            int nickels = change[coins.Where(x => x.Name == "nickel").First()];
+            int pennies = change[coins.Where(x => x.Name == "penny").First()];
 
             credit = 0;
             UpdateCredit();
