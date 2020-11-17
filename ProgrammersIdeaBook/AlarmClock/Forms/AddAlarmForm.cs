@@ -28,12 +28,6 @@ using System.Windows.Forms;
 
 namespace AlarmClock.Forms
 {
-    // TODO Stay Open check box
-    // Close the form if not checked
-
-    // TODO only allow one of this form open at a time
-    // Maybe singleton pattern or something
-
     public partial class AddAlarmForm : Form
     {
         IAlarmModelRequester caller;
@@ -52,8 +46,9 @@ namespace AlarmClock.Forms
         {
             dateTimePickerDate.MinDate = DateTime.Now;
             dateTimePickerDate.Value = DateTime.Now;
-
             dateTimePickerTime.Value = DateTime.Now;
+
+            textBoxName.Text = $"Alarm: {DateTime.Now.ToString("MM/dd/yy hh:mm")}";
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -62,8 +57,6 @@ namespace AlarmClock.Forms
 
             date = dateTimePickerDate.Value.Date;
             date = date.Add(dateTimePickerTime.Value.TimeOfDay);
-            //date = date.AddSeconds(-date.Second);
-            //date = date.AddMilliseconds(-date.Millisecond);
 
             if (date < DateTime.Now)
             {
@@ -78,6 +71,11 @@ namespace AlarmClock.Forms
 
             textBoxAlarmMessage.Text = "";
             textBoxName.Text = $"Alarm: {DateTime.Now.ToString("MM/dd/yy hh:mm")}";
+
+            if(!checkBoxStayOpen.Checked)
+            {
+                this.Close();
+            }
         }
 
         private void btnReset_Click(object sender, EventArgs e)

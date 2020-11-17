@@ -39,11 +39,13 @@
             this.lblName = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
+            this.checkBoxStayOpen = new System.Windows.Forms.CheckBox();
             this.groupBoxSetAlarm.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxSetAlarm
             // 
+            this.groupBoxSetAlarm.Controls.Add(this.checkBoxStayOpen);
             this.groupBoxSetAlarm.Controls.Add(this.textBoxName);
             this.groupBoxSetAlarm.Controls.Add(this.dateTimePickerDate);
             this.groupBoxSetAlarm.Controls.Add(this.dateTimePickerTime);
@@ -58,7 +60,7 @@
             this.groupBoxSetAlarm.ForeColor = System.Drawing.Color.Navy;
             this.groupBoxSetAlarm.Location = new System.Drawing.Point(9, 6);
             this.groupBoxSetAlarm.Name = "groupBoxSetAlarm";
-            this.groupBoxSetAlarm.Size = new System.Drawing.Size(292, 375);
+            this.groupBoxSetAlarm.Size = new System.Drawing.Size(292, 415);
             this.groupBoxSetAlarm.TabIndex = 6;
             this.groupBoxSetAlarm.TabStop = false;
             this.groupBoxSetAlarm.Text = "Set Alarm";
@@ -169,12 +171,24 @@
             this.lblTime.TabIndex = 0;
             this.lblTime.Text = "Time:";
             // 
+            // checkBoxStayOpen
+            // 
+            this.checkBoxStayOpen.AutoSize = true;
+            this.checkBoxStayOpen.Checked = true;
+            this.checkBoxStayOpen.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxStayOpen.Location = new System.Drawing.Point(25, 364);
+            this.checkBoxStayOpen.Name = "checkBoxStayOpen";
+            this.checkBoxStayOpen.Size = new System.Drawing.Size(242, 34);
+            this.checkBoxStayOpen.TabIndex = 7;
+            this.checkBoxStayOpen.Text = "Stay open after adding";
+            this.checkBoxStayOpen.UseVisualStyleBackColor = true;
+            // 
             // AddAlarmForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(309, 387);
+            this.ClientSize = new System.Drawing.Size(309, 433);
             this.Controls.Add(this.groupBoxSetAlarm);
             this.Name = "AddAlarmForm";
             this.Text = "Add Alarm";
@@ -197,5 +211,6 @@
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.CheckBox checkBoxStayOpen;
     }
 }
