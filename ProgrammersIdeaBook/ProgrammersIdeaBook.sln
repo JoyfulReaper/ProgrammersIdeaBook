@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fractions", "Fractions\Frac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChangeReturnProgram", "ChangeReturnProgram\ChangeReturnProgram.csproj", "{4B05E985-689D-43B5-9EA4-ED4435FF87E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxCalculator", "TaxCalculator\TaxCalculator.csproj", "{D70B3435-9628-4F9E-85B0-057B4343C746}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxCalculator", "TaxCalculator\TaxCalculator.csproj", "{D70B3435-9628-4F9E-85B0-057B4343C746}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreditCardValidator", "CreditCardValidator\CreditCardValidator.csproj", "{A83BD637-AA4E-4207-BE0F-56F1D1ED9F1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D70B3435-9628-4F9E-85B0-057B4343C746}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D70B3435-9628-4F9E-85B0-057B4343C746}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D70B3435-9628-4F9E-85B0-057B4343C746}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A83BD637-AA4E-4207-BE0F-56F1D1ED9F1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A83BD637-AA4E-4207-BE0F-56F1D1ED9F1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A83BD637-AA4E-4207-BE0F-56F1D1ED9F1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A83BD637-AA4E-4207-BE0F-56F1D1ED9F1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
