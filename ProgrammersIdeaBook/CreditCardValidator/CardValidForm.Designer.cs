@@ -33,11 +33,12 @@ namespace CreditCardValidator
             this.textBoxCardNumber = new System.Windows.Forms.TextBox();
             this.buttonComputeCheck = new System.Windows.Forms.Button();
             this.lblHeader = new System.Windows.Forms.Label();
+            this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // buttonValidate
             // 
-            this.buttonValidate.Location = new System.Drawing.Point(121, 141);
+            this.buttonValidate.Location = new System.Drawing.Point(140, 165);
             this.buttonValidate.Name = "buttonValidate";
             this.buttonValidate.Size = new System.Drawing.Size(75, 23);
             this.buttonValidate.TabIndex = 0;
@@ -47,14 +48,14 @@ namespace CreditCardValidator
             // 
             // textBoxCardNumber
             // 
-            this.textBoxCardNumber.Location = new System.Drawing.Point(48, 86);
+            this.textBoxCardNumber.Location = new System.Drawing.Point(75, 86);
             this.textBoxCardNumber.Name = "textBoxCardNumber";
             this.textBoxCardNumber.Size = new System.Drawing.Size(302, 23);
             this.textBoxCardNumber.TabIndex = 1;
             // 
             // buttonComputeCheck
             // 
-            this.buttonComputeCheck.Location = new System.Drawing.Point(202, 141);
+            this.buttonComputeCheck.Location = new System.Drawing.Point(238, 165);
             this.buttonComputeCheck.Name = "buttonComputeCheck";
             this.buttonComputeCheck.Size = new System.Drawing.Size(75, 23);
             this.buttonComputeCheck.TabIndex = 2;
@@ -65,18 +66,27 @@ namespace CreditCardValidator
             // lblHeader
             // 
             this.lblHeader.AutoSize = true;
-            this.lblHeader.Location = new System.Drawing.Point(27, 18);
+            this.lblHeader.Location = new System.Drawing.Point(54, 18);
             this.lblHeader.Name = "lblHeader";
             this.lblHeader.Size = new System.Drawing.Size(344, 45);
             this.lblHeader.TabIndex = 3;
             this.lblHeader.Text = "Enter a number and press Validate to use the Luhn Algorithm to \r\nvalidate the che" +
-    "ck digit.Press Computer to computer the check\r\n digit using the Luhn Algorithm.";
+    "ck digit. Press Computer to compute the check\r\n digit using the Luhn Algorithm.";
+            // 
+            // comboBoxType
+            // 
+            this.comboBoxType.FormattingEnabled = true;
+            this.comboBoxType.Location = new System.Drawing.Point(75, 115);
+            this.comboBoxType.Name = "comboBoxType";
+            this.comboBoxType.Size = new System.Drawing.Size(121, 23);
+            this.comboBoxType.TabIndex = 4;
             // 
             // frmLuhnChecker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(399, 196);
+            this.ClientSize = new System.Drawing.Size(453, 228);
+            this.Controls.Add(this.comboBoxType);
             this.Controls.Add(this.lblHeader);
             this.Controls.Add(this.buttonComputeCheck);
             this.Controls.Add(this.textBoxCardNumber);
@@ -94,6 +104,7 @@ namespace CreditCardValidator
         private System.Windows.Forms.TextBox textBoxCardNumber;
         private System.Windows.Forms.Button buttonComputeCheck;
         private System.Windows.Forms.Label lblHeader;
+        private System.Windows.Forms.ComboBox comboBoxType;
     }
 }
 
