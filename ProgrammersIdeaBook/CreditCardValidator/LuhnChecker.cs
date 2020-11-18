@@ -34,16 +34,10 @@
         public static int ComputeCheckDigit(string number)
         {
             int nDigits = number.Length;
-            int sum = int.Parse(number[nDigits - 1].ToString()) * 2;
-
-            if(sum > 9)
-            {
-                sum -= 9;
-            }
-
+            int sum = 0;
             int parity = nDigits % 2;
 
-            for (int i = 0; i < nDigits - 1; i++)
+            for (int i = 0; i < nDigits; i++)
             {
                 int digit = int.Parse(number[i].ToString());
 
