@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxCalculator", "TaxCalcula
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreditCardValidator", "CreditCardValidator\CreditCardValidator.csproj", "{A83BD637-AA4E-4207-BE0F-56F1D1ED9F1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FibonacciSequence", "FibonacciSequence.cs\FibonacciSequence.csproj", "{07D3E542-9E6C-4B3C-ABEB-4AE67914B08D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FibonacciSequence", "FibonacciSequence.cs\FibonacciSequence.csproj", "{07D3E542-9E6C-4B3C-ABEB-4AE67914B08D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeastAndGreatestCommonDenominator", "LeastAndGreatestCommonDenominator\LeastAndGreatestCommonDenominator.csproj", "{54F00F1B-E915-4C90-AEF3-D1F0CAB27299}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{07D3E542-9E6C-4B3C-ABEB-4AE67914B08D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07D3E542-9E6C-4B3C-ABEB-4AE67914B08D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07D3E542-9E6C-4B3C-ABEB-4AE67914B08D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54F00F1B-E915-4C90-AEF3-D1F0CAB27299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54F00F1B-E915-4C90-AEF3-D1F0CAB27299}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54F00F1B-E915-4C90-AEF3-D1F0CAB27299}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54F00F1B-E915-4C90-AEF3-D1F0CAB27299}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
