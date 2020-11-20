@@ -88,7 +88,7 @@ namespace LeastAndGreatestCommonDenominator
             this.textBoxFraction.Location = new System.Drawing.Point(6, 91);
             this.textBoxFraction.Name = "textBoxFraction";
             this.textBoxFraction.Size = new System.Drawing.Size(100, 23);
-            this.textBoxFraction.TabIndex = 6;
+            this.textBoxFraction.TabIndex = 2;
             // 
             // textBoxNumerator
             // 
@@ -127,7 +127,7 @@ namespace LeastAndGreatestCommonDenominator
             this.buttonAdd.Location = new System.Drawing.Point(205, 16);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
-            this.buttonAdd.TabIndex = 2;
+            this.buttonAdd.TabIndex = 3;
             this.buttonAdd.Text = "&Add";
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
@@ -137,7 +137,7 @@ namespace LeastAndGreatestCommonDenominator
             this.buttonClear.Location = new System.Drawing.Point(146, 85);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(75, 23);
-            this.buttonClear.TabIndex = 107;
+            this.buttonClear.TabIndex = 6;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
@@ -147,7 +147,7 @@ namespace LeastAndGreatestCommonDenominator
             this.buttonSimplify.Location = new System.Drawing.Point(146, 114);
             this.buttonSimplify.Name = "buttonSimplify";
             this.buttonSimplify.Size = new System.Drawing.Size(75, 23);
-            this.buttonSimplify.TabIndex = 108;
+            this.buttonSimplify.TabIndex = 7;
             this.buttonSimplify.Text = "Simplify";
             this.buttonSimplify.UseVisualStyleBackColor = true;
             this.buttonSimplify.Click += new System.EventHandler(this.buttonSimplify_Click);
@@ -167,7 +167,7 @@ namespace LeastAndGreatestCommonDenominator
             this.buttonDelete.Location = new System.Drawing.Point(146, 56);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 23);
-            this.buttonDelete.TabIndex = 106;
+            this.buttonDelete.TabIndex = 5;
             this.buttonDelete.Text = "Remove";
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
@@ -198,13 +198,14 @@ namespace LeastAndGreatestCommonDenominator
             this.buttonCalculate.Location = new System.Drawing.Point(239, 219);
             this.buttonCalculate.Name = "buttonCalculate";
             this.buttonCalculate.Size = new System.Drawing.Size(96, 31);
-            this.buttonCalculate.TabIndex = 111;
+            this.buttonCalculate.TabIndex = 4;
             this.buttonCalculate.Text = "&Calculate";
             this.buttonCalculate.UseVisualStyleBackColor = true;
             this.buttonCalculate.Click += new System.EventHandler(this.buttonCalculate_Click);
             // 
             // LCDGCD_Form
             // 
+            this.AcceptButton = this.buttonAdd;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(575, 278);

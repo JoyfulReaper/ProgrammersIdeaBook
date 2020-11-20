@@ -127,6 +127,11 @@ namespace Fractions
                 {
                     res /= fractions[i];
                 } 
+                else if (radioButtonLCDGCD.Checked)
+                {
+                    ShowLCDGCD();
+                    return;
+                }
             }
 
             mostRecentResult = res;
@@ -134,6 +139,22 @@ namespace Fractions
             lblResults.Visible = true;
             lblResults.Text = $"Result: { res }";
             buttonAddResult.Visible = true;
+        }
+
+        private void ShowLCDGCD()
+        {
+            //TODO There has got to be a better way to do this with link, or could just make the method take a list
+            int[] dems = new int[fractions.Count];
+
+            for (int i = 0; i < fractions.Count; i++)
+            {
+                dems[i] = fractions[i].Denominator;
+            }
+
+            int lcd = FractionHelper.FindLeastCommonMultiple(dems);
+            int gcd = FractionHelper.FindGreatestCommonFactor(dems);
+
+            MessageBox.Show($"Least Common Denominator: {lcd}\nGreatest Common Denominator: {gcd}");
         }
 
         private void buttonClear_Click(object sender, System.EventArgs e)

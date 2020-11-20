@@ -52,19 +52,21 @@ namespace Fractions
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonAddResult = new System.Windows.Forms.Button();
             this.linkLableGitHub = new System.Windows.Forms.LinkLabel();
+            this.radioButtonLCDGCD = new System.Windows.Forms.RadioButton();
             this.groupBoxOperation.SuspendLayout();
             this.groupBoxAddFractions.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxOperation
             // 
+            this.groupBoxOperation.Controls.Add(this.radioButtonLCDGCD);
             this.groupBoxOperation.Controls.Add(this.radioDivide);
             this.groupBoxOperation.Controls.Add(this.radioMultiple);
             this.groupBoxOperation.Controls.Add(this.radioSubtract);
             this.groupBoxOperation.Controls.Add(this.radioAdd);
             this.groupBoxOperation.Location = new System.Drawing.Point(12, 204);
             this.groupBoxOperation.Name = "groupBoxOperation";
-            this.groupBoxOperation.Size = new System.Drawing.Size(133, 121);
+            this.groupBoxOperation.Size = new System.Drawing.Size(240, 98);
             this.groupBoxOperation.TabIndex = 99;
             this.groupBoxOperation.TabStop = false;
             this.groupBoxOperation.Text = "Operation";
@@ -72,7 +74,7 @@ namespace Fractions
             // radioDivide
             // 
             this.radioDivide.AutoSize = true;
-            this.radioDivide.Location = new System.Drawing.Point(6, 98);
+            this.radioDivide.Location = new System.Drawing.Point(93, 48);
             this.radioDivide.Name = "radioDivide";
             this.radioDivide.Size = new System.Drawing.Size(58, 19);
             this.radioDivide.TabIndex = 6;
@@ -82,7 +84,7 @@ namespace Fractions
             // radioMultiple
             // 
             this.radioMultiple.AutoSize = true;
-            this.radioMultiple.Location = new System.Drawing.Point(6, 73);
+            this.radioMultiple.Location = new System.Drawing.Point(93, 23);
             this.radioMultiple.Name = "radioMultiple";
             this.radioMultiple.Size = new System.Drawing.Size(69, 19);
             this.radioMultiple.TabIndex = 5;
@@ -165,7 +167,7 @@ namespace Fractions
             // 
             // buttonCalculate
             // 
-            this.buttonCalculate.Location = new System.Drawing.Point(240, 193);
+            this.buttonCalculate.Location = new System.Drawing.Point(262, 204);
             this.buttonCalculate.Name = "buttonCalculate";
             this.buttonCalculate.Size = new System.Drawing.Size(96, 31);
             this.buttonCalculate.TabIndex = 7;
@@ -177,7 +179,7 @@ namespace Fractions
             // 
             this.lblResults.AutoSize = true;
             this.lblResults.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblResults.Location = new System.Drawing.Point(230, 227);
+            this.lblResults.Location = new System.Drawing.Point(252, 238);
             this.lblResults.Name = "lblResults";
             this.lblResults.Size = new System.Drawing.Size(111, 32);
             this.lblResults.TabIndex = 100;
@@ -268,7 +270,7 @@ namespace Fractions
             // 
             // buttonAddResult
             // 
-            this.buttonAddResult.Location = new System.Drawing.Point(246, 265);
+            this.buttonAddResult.Location = new System.Drawing.Point(268, 276);
             this.buttonAddResult.Name = "buttonAddResult";
             this.buttonAddResult.Size = new System.Drawing.Size(75, 23);
             this.buttonAddResult.TabIndex = 2;
@@ -287,6 +289,17 @@ namespace Fractions
             this.linkLableGitHub.TabStop = true;
             this.linkLableGitHub.Text = "https://github.com/JoyfulReaper";
             this.linkLableGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGithub_LinkClicked);
+            // 
+            // radioButtonLCDGCD
+            // 
+            this.radioButtonLCDGCD.AutoSize = true;
+            this.radioButtonLCDGCD.Location = new System.Drawing.Point(6, 73);
+            this.radioButtonLCDGCD.Name = "radioButtonLCDGCD";
+            this.radioButtonLCDGCD.Size = new System.Drawing.Size(227, 19);
+            this.radioButtonLCDGCD.TabIndex = 7;
+            this.radioButtonLCDGCD.TabStop = true;
+            this.radioButtonLCDGCD.Text = "Least/Greatest Common Denominator";
+            this.radioButtonLCDGCD.UseVisualStyleBackColor = true;
             // 
             // CalculatorForm
             // 
@@ -341,6 +354,7 @@ namespace Fractions
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonAddResult;
         private System.Windows.Forms.LinkLabel linkLableGitHub;
+        private System.Windows.Forms.RadioButton radioButtonLCDGCD;
     }
 }
 

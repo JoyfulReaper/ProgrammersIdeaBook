@@ -90,6 +90,35 @@ namespace Fractions
             return a | b;
         }
 
+        public static int FindGreatestCommonFactor(int[] terms)
+        {
+            int result = terms[0];
+
+            for (int i = 0; i < terms.Length; i++)
+            {
+                result = FindGreatestCommonFactor(terms[i], result);
+
+                if (result == 1)
+                {
+                    return 1;
+                }
+            }
+
+            return result;
+        }
+
+        public static int FindLeastCommonMultiple(int[] terms)
+        {
+            int result = terms[0];
+
+            for (int i = 0; i < terms.Length; i++)
+            {
+                result = FindLeastCommonMultiple(terms[i], result);
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// Find the least common multiple of two intgers
         /// </summary>
