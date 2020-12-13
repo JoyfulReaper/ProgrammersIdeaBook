@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeastAndGreatestCommonDenom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CDKeyGenerator", "CDKeyGenerator\CDKeyGenerator.csproj", "{8C8B610C-5E3F-4D95-8BF2-6954EA97BE4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckIfPalindrome", "CheckIfPalindrome\CheckIfPalindrome.csproj", "{18E67CC0-962F-459E-B403-522C4E9A2547}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheckIfPalindrome", "CheckIfPalindrome\CheckIfPalindrome.csproj", "{18E67CC0-962F-459E-B403-522C4E9A2547}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountVowels", "CountVowels\CountVowels.csproj", "{4DD8F0C9-4BDF-47B8-8333-F6BA3CFF3C39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{18E67CC0-962F-459E-B403-522C4E9A2547}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18E67CC0-962F-459E-B403-522C4E9A2547}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18E67CC0-962F-459E-B403-522C4E9A2547}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DD8F0C9-4BDF-47B8-8333-F6BA3CFF3C39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DD8F0C9-4BDF-47B8-8333-F6BA3CFF3C39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DD8F0C9-4BDF-47B8-8333-F6BA3CFF3C39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DD8F0C9-4BDF-47B8-8333-F6BA3CFF3C39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
