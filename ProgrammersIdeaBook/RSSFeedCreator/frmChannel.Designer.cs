@@ -49,7 +49,7 @@ namespace RSSFeedCreator
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTitle.Location = new System.Drawing.Point(12, 9);
+            this.lblTitle.Location = new System.Drawing.Point(202, 9);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(127, 25);
             this.lblTitle.TabIndex = 0;
@@ -84,6 +84,7 @@ namespace RSSFeedCreator
             // 
             // textTitle
             // 
+            this.textTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textTitle.Location = new System.Drawing.Point(100, 43);
             this.textTitle.Name = "textTitle";
             this.textTitle.Size = new System.Drawing.Size(369, 29);
@@ -91,6 +92,7 @@ namespace RSSFeedCreator
             // 
             // textLink
             // 
+            this.textLink.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textLink.Location = new System.Drawing.Point(100, 78);
             this.textLink.Name = "textLink";
             this.textLink.Size = new System.Drawing.Size(369, 29);
@@ -98,6 +100,7 @@ namespace RSSFeedCreator
             // 
             // textDesc
             // 
+            this.textDesc.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textDesc.Location = new System.Drawing.Point(81, 269);
             this.textDesc.Multiline = true;
             this.textDesc.Name = "textDesc";
@@ -116,6 +119,7 @@ namespace RSSFeedCreator
             // 
             // textCopyright
             // 
+            this.textCopyright.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textCopyright.Location = new System.Drawing.Point(100, 116);
             this.textCopyright.Name = "textCopyright";
             this.textCopyright.Size = new System.Drawing.Size(369, 29);
@@ -132,6 +136,7 @@ namespace RSSFeedCreator
             // 
             // textWebmaster
             // 
+            this.textWebmaster.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textWebmaster.Location = new System.Drawing.Point(102, 196);
             this.textWebmaster.Name = "textWebmaster";
             this.textWebmaster.Size = new System.Drawing.Size(369, 29);
@@ -148,6 +153,7 @@ namespace RSSFeedCreator
             // 
             // textEditor
             // 
+            this.textEditor.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textEditor.Location = new System.Drawing.Point(102, 158);
             this.textEditor.Name = "textEditor";
             this.textEditor.Size = new System.Drawing.Size(369, 29);

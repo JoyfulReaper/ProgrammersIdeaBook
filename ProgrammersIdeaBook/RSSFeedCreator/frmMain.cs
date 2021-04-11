@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RSSFeedCreator.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace RSSFeedCreator
 {
     public partial class frmMain : Form
     {
+        private readonly List<Channel> _channels = new List<Channel>();
+
         public frmMain()
         {
             InitializeComponent();
@@ -21,6 +24,11 @@ namespace RSSFeedCreator
         {
             frmChannel frmChannel = new frmChannel(this);
             frmChannel.ShowDialog(this);
+        }
+
+        public void AddChannel(Channel channel)
+        {
+            _channels.Add(channel);
         }
     }
 }

@@ -14,6 +14,7 @@ namespace RSSFeedCreator
     public partial class frmChannel : Form
     {
         private readonly frmMain _parent;
+        
 
         public frmChannel(frmMain parent)
         {
@@ -33,10 +34,15 @@ namespace RSSFeedCreator
                 Webmaster = textWebmaster.Text
             };
 
-            ValidateRequiredFields(channel);
+            if (!ValidateRequiredFields(channel))
+            {
+                return;
+            }
+
+            _parent.AddChannel(channel);
         }
 
-        private void ValidateRequiredFields(Channel channel)
+        private bool ValidateRequiredFields(Channel channel)
         {
             string message = String.Empty;
 
@@ -58,7 +64,10 @@ namespace RSSFeedCreator
             if (message != String.Empty)
             {
                 MessageBox.Show(message);
+                return false;
             }
+
+            return true;
         }
     }
 }
