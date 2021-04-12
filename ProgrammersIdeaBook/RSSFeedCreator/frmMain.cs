@@ -13,11 +13,14 @@ namespace RSSFeedCreator
 {
     public partial class frmMain : Form
     {
-        private readonly List<Channel> _channels = new List<Channel>();
+        private readonly BindingList<Channel> _channels = new BindingList<Channel>();
 
         public frmMain()
         {
             InitializeComponent();
+
+            comboChannel.DataSource = _channels;
+            comboChannel.DisplayMember = nameof(Channel.Title);
         }
 
         private void btnAddChannel_Click(object sender, EventArgs e)
@@ -29,6 +32,11 @@ namespace RSSFeedCreator
         public void AddChannel(Channel channel)
         {
             _channels.Add(channel);
+        }
+
+        private void btnGenerate_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

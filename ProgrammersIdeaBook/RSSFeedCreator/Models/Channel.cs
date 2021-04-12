@@ -23,6 +23,6 @@ namespace RSSFeedCreator.Models
         public string Cloud { get; set; }
         public int Ttl { get; set; }
         public string Image { get; set; }
-        public List<Item> MyProperty { get; set; } = new List<Item>();
+        public List<Item> Items { get; set; } = new List<Item>();
     }
 }
