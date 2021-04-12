@@ -40,6 +40,7 @@ namespace RSSFeedCreator
             }
 
             _parent.AddChannel(channel);
+            this.Close();
         }
 
         private bool ValidateRequiredFields(Channel channel)
@@ -68,6 +69,11 @@ namespace RSSFeedCreator
             }
 
             return true;
+        }
+
+        private void textEditor_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

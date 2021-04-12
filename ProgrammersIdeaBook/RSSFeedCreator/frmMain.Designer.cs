@@ -40,6 +40,8 @@ namespace RSSFeedCreator
             this.comboChannel = new System.Windows.Forms.ComboBox();
             this.btnAddChannel = new System.Windows.Forms.Button();
             this.btnGenerate = new System.Windows.Forms.Button();
+            this.listEntries = new System.Windows.Forms.ListBox();
+            this.btnAddItem = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -130,7 +132,7 @@ namespace RSSFeedCreator
             // 
             // btnGenerate
             // 
-            this.btnGenerate.Location = new System.Drawing.Point(252, 278);
+            this.btnGenerate.Location = new System.Drawing.Point(303, 278);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(97, 29);
             this.btnGenerate.TabIndex = 18;
@@ -138,12 +140,34 @@ namespace RSSFeedCreator
             this.btnGenerate.UseVisualStyleBackColor = true;
             this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
             // 
+            // listEntries
+            // 
+            this.listEntries.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listEntries.FormattingEnabled = true;
+            this.listEntries.ItemHeight = 21;
+            this.listEntries.Location = new System.Drawing.Point(468, 91);
+            this.listEntries.Name = "listEntries";
+            this.listEntries.Size = new System.Drawing.Size(120, 193);
+            this.listEntries.TabIndex = 19;
+            // 
+            // btnAddItem
+            // 
+            this.btnAddItem.Location = new System.Drawing.Point(200, 277);
+            this.btnAddItem.Name = "btnAddItem";
+            this.btnAddItem.Size = new System.Drawing.Size(97, 29);
+            this.btnAddItem.TabIndex = 20;
+            this.btnAddItem.Text = "Add";
+            this.btnAddItem.UseVisualStyleBackColor = true;
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(600, 318);
+            this.Controls.Add(this.btnAddItem);
+            this.Controls.Add(this.listEntries);
             this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.btnAddChannel);
             this.Controls.Add(this.comboChannel);
@@ -177,6 +201,8 @@ namespace RSSFeedCreator
         private System.Windows.Forms.ComboBox comboChannel;
         private System.Windows.Forms.Button btnAddChannel;
         private System.Windows.Forms.Button btnGenerate;
+        private System.Windows.Forms.ListBox listEntries;
+        private System.Windows.Forms.Button btnAddItem;
     }
 }
 

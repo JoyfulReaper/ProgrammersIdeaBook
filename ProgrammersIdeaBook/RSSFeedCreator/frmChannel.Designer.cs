@@ -88,7 +88,7 @@ namespace RSSFeedCreator
             this.textTitle.Location = new System.Drawing.Point(100, 43);
             this.textTitle.Name = "textTitle";
             this.textTitle.Size = new System.Drawing.Size(369, 29);
-            this.textTitle.TabIndex = 4;
+            this.textTitle.TabIndex = 0;
             // 
             // textLink
             // 
@@ -96,7 +96,7 @@ namespace RSSFeedCreator
             this.textLink.Location = new System.Drawing.Point(100, 78);
             this.textLink.Name = "textLink";
             this.textLink.Size = new System.Drawing.Size(369, 29);
-            this.textLink.TabIndex = 5;
+            this.textLink.TabIndex = 1;
             // 
             // textDesc
             // 
@@ -105,14 +105,14 @@ namespace RSSFeedCreator
             this.textDesc.Multiline = true;
             this.textDesc.Name = "textDesc";
             this.textDesc.Size = new System.Drawing.Size(369, 81);
-            this.textDesc.TabIndex = 6;
+            this.textDesc.TabIndex = 5;
             // 
             // btnAdd
             // 
             this.btnAdd.Location = new System.Drawing.Point(222, 356);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(99, 39);
-            this.btnAdd.TabIndex = 7;
+            this.btnAdd.TabIndex = 6;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -123,7 +123,7 @@ namespace RSSFeedCreator
             this.textCopyright.Location = new System.Drawing.Point(100, 116);
             this.textCopyright.Name = "textCopyright";
             this.textCopyright.Size = new System.Drawing.Size(369, 29);
-            this.textCopyright.TabIndex = 9;
+            this.textCopyright.TabIndex = 2;
             // 
             // lblCopyright
             // 
@@ -140,7 +140,7 @@ namespace RSSFeedCreator
             this.textWebmaster.Location = new System.Drawing.Point(102, 196);
             this.textWebmaster.Name = "textWebmaster";
             this.textWebmaster.Size = new System.Drawing.Size(369, 29);
-            this.textWebmaster.TabIndex = 13;
+            this.textWebmaster.TabIndex = 4;
             // 
             // lblWebmaster
             // 
@@ -157,7 +157,8 @@ namespace RSSFeedCreator
             this.textEditor.Location = new System.Drawing.Point(102, 158);
             this.textEditor.Name = "textEditor";
             this.textEditor.Size = new System.Drawing.Size(369, 29);
-            this.textEditor.TabIndex = 11;
+            this.textEditor.TabIndex = 3;
+            this.textEditor.TextChanged += new System.EventHandler(this.textEditor_TextChanged);
             // 
             // lblEditor
             // 

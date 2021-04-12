@@ -15,7 +15,6 @@ namespace RSSFeedCreator.Models
         public string Guid { get; set; } // Required Atom
         public string Category { get; set; }
         public string Comments { get; set; }
-        public int MyProperty { get; set; }
         public DateTimeOffset PubDate { get; set; } // Sat, 07 Sep 2002 00:00:01 GMT
         public string Source { get; set; }
         public string Enclosure { get; set; }
