@@ -49,11 +49,11 @@ namespace RSSFeedCreator
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTitle.Location = new System.Drawing.Point(202, 9);
+            this.lblTitle.Location = new System.Drawing.Point(177, 9);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(127, 25);
+            this.lblTitle.Size = new System.Drawing.Size(177, 25);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Add Channel:";
+            this.lblTitle.Text = "Configure Channel:";
             // 
             // lblChanTittle
             // 
@@ -113,7 +113,7 @@ namespace RSSFeedCreator
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(99, 39);
             this.btnAdd.TabIndex = 6;
-            this.btnAdd.Text = "Add";
+            this.btnAdd.Text = "Set";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 

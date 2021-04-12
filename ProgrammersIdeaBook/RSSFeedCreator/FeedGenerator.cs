@@ -1,6 +1,5 @@
 ﻿using RSSFeedCreator.Models;
 using System;
-using System.Collections.Generic;
 using System.Xml;
 
 //TODO: Commented out lines will need additional proccessing
@@ -9,7 +8,7 @@ namespace RSSFeedCreator
 {
     public class FeedGenerator
     {
-        public void GenerateXML(List<Channel> channels)
+        public void GenerateXML(Channel channel)
         {
             using (XmlWriter writer = XmlWriter.Create("rss.xml"))
             {
@@ -19,39 +18,36 @@ namespace RSSFeedCreator
                 writer.WriteAttributeString("xmlns", "atom", null, "http://www.w3.org/2005/Atom");
 
                 writer.WriteStartElement("channel");
-                foreach(Channel c in channels)
-                {
-                    writer.WriteElementString("title", c.Title);
-                    writer.WriteElementString("link", c.Link);
-                    writer.WriteElementString("description", c.Description);
-                    WriteAttributeStringIfPresent(writer, "copyright", c.Copyright);
-                    WriteAttributeStringIfPresent(writer, "language", c.Language);
-                    WriteAttributeStringIfPresent(writer, "webmaster", c.Webmaster);
-                    WriteAttributeStringIfPresent(writer, "mangingEditor", c.ManagingEditor);
-                    WriteAttributeStringIfPresent(writer, "webMaster", c.Webmaster);
-                    WriteAttributeStringIfPresent(writer, "category", c.Category);
-                    WriteAttributeStringIfPresent(writer, "generator", c.Generator);
-                    WriteAttributeStringIfPresent(writer, "docs", c.Docs);
-                    WriteAttributeStringIfPresent(writer, "cloud", c.Cloud);
-                    WriteTtlAttributeStringIfPositive(writer, c.Ttl);
-                    //WriteAttributeStringIfPresent(writer, "image", c.Image);
-                    WriteAttributeStringIfPresent(writer, "lastBuildDate", DateTime.Now.ToString("r"));
-                    //WriteAttributeStringIfPresent(writer, "pubDate", c.PubDate.ToString("r"));
 
-                    foreach (Item i in c.Items)
-                    {
-                        writer.WriteStartElement("item");
-                        writer.WriteElementString("title", i.Title);
-                        writer.WriteElementString("link", i.Link);
-                        writer.WriteElementString("description", i.Description);
-                        WriteAttributeStringIfPresent(writer, "author", i.Author);
-                        WriteAttributeStringIfPresent(writer, "category", i.Category);
-                        WriteAttributeStringIfPresent(writer, "comments", i.Comments);
-                        WriteAttributeStringIfPresent(writer, "source", i.Source);
-                        //WriteAttributeStringIfPresent(writer, "enclosure", i.Enclosure);
-                        writer.WriteElementString("guid", i.Link);
-                        writer.WriteEndElement();
-                    }
+                writer.WriteElementString("title", channel.Title);
+                writer.WriteElementString("link", channel.Link);
+                writer.WriteElementString("description", channel.Description);
+                WriteAttributeStringIfPresent(writer, "copyright", channel.Copyright);
+                WriteAttributeStringIfPresent(writer, "language", channel.Language);
+                WriteAttributeStringIfPresent(writer, "managingEditor", channel.ManagingEditor);
+                WriteAttributeStringIfPresent(writer, "webMaster", channel.Webmaster);
+                WriteAttributeStringIfPresent(writer, "category", channel.Category);
+                WriteAttributeStringIfPresent(writer, "generator", channel.Generator);
+                WriteAttributeStringIfPresent(writer, "docs", channel.Docs);
+                WriteAttributeStringIfPresent(writer, "cloud", channel.Cloud);
+                WriteTtlAttributeStringIfPositive(writer, channel.Ttl);
+                //WriteAttributeStringIfPresent(writer, "image", channel.Image);
+                WriteAttributeStringIfPresent(writer, "lastBuildDate", DateTime.Now.ToString("r"));
+                //WriteAttributeStringIfPresent(writer, "pubDate", c.PubDate.ToString("r"));
+
+                foreach (Item i in channel.Items)
+                {
+                    writer.WriteStartElement("item");
+                    writer.WriteElementString("title", i.Title);
+                    writer.WriteElementString("link", i.Link);
+                    writer.WriteElementString("description", i.Description);
+                    WriteAttributeStringIfPresent(writer, "author", i.Author);
+                    WriteAttributeStringIfPresent(writer, "category", i.Category);
+                    WriteAttributeStringIfPresent(writer, "comments", i.Comments);
+                    WriteAttributeStringIfPresent(writer, "source", i.Source);
+                    //WriteAttributeStringIfPresent(writer, "enclosure", i.Enclosure);
+                    writer.WriteElementString("guid", i.Link);
+                    writer.WriteEndElement();
                 }
 
                 writer.WriteEndElement();

@@ -37,11 +37,11 @@ namespace RSSFeedCreator
             this.lblLink = new System.Windows.Forms.Label();
             this.lblChanTittle = new System.Windows.Forms.Label();
             this.lblChannel = new System.Windows.Forms.Label();
-            this.comboChannel = new System.Windows.Forms.ComboBox();
             this.btnAddChannel = new System.Windows.Forms.Button();
             this.btnGenerate = new System.Windows.Forms.Button();
             this.listEntries = new System.Windows.Forms.ListBox();
             this.btnAddItem = new System.Windows.Forms.Button();
+            this.textChannel = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -112,21 +112,13 @@ namespace RSSFeedCreator
             this.lblChannel.TabIndex = 14;
             this.lblChannel.Text = "Channel:";
             // 
-            // comboChannel
-            // 
-            this.comboChannel.FormattingEnabled = true;
-            this.comboChannel.Location = new System.Drawing.Point(87, 57);
-            this.comboChannel.Name = "comboChannel";
-            this.comboChannel.Size = new System.Drawing.Size(369, 29);
-            this.comboChannel.TabIndex = 16;
-            // 
             // btnAddChannel
             // 
             this.btnAddChannel.Location = new System.Drawing.Point(477, 56);
             this.btnAddChannel.Name = "btnAddChannel";
             this.btnAddChannel.Size = new System.Drawing.Size(75, 29);
             this.btnAddChannel.TabIndex = 17;
-            this.btnAddChannel.Text = "Add";
+            this.btnAddChannel.Text = "Setup";
             this.btnAddChannel.UseVisualStyleBackColor = true;
             this.btnAddChannel.Click += new System.EventHandler(this.btnAddChannel_Click);
             // 
@@ -160,17 +152,25 @@ namespace RSSFeedCreator
             this.btnAddItem.UseVisualStyleBackColor = true;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
+            // textChannel
+            // 
+            this.textChannel.Enabled = false;
+            this.textChannel.Location = new System.Drawing.Point(87, 60);
+            this.textChannel.Name = "textChannel";
+            this.textChannel.Size = new System.Drawing.Size(369, 29);
+            this.textChannel.TabIndex = 21;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(600, 318);
+            this.Controls.Add(this.textChannel);
             this.Controls.Add(this.btnAddItem);
             this.Controls.Add(this.listEntries);
             this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.btnAddChannel);
-            this.Controls.Add(this.comboChannel);
             this.Controls.Add(this.lblChannel);
             this.Controls.Add(this.textDesc);
             this.Controls.Add(this.textLink);
@@ -198,11 +198,11 @@ namespace RSSFeedCreator
         private System.Windows.Forms.Label lblLink;
         private System.Windows.Forms.Label lblChanTittle;
         private System.Windows.Forms.Label lblChannel;
-        private System.Windows.Forms.ComboBox comboChannel;
         private System.Windows.Forms.Button btnAddChannel;
         private System.Windows.Forms.Button btnGenerate;
         private System.Windows.Forms.ListBox listEntries;
         private System.Windows.Forms.Button btnAddItem;
+        private System.Windows.Forms.TextBox textChannel;
     }
 }
 

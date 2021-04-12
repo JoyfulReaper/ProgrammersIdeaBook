@@ -1,12 +1,6 @@
-﻿using RSSFeedCreator.Models;
+﻿using RSSFeedCreator.Helpers;
+using RSSFeedCreator.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RSSFeedCreator
@@ -39,7 +33,7 @@ namespace RSSFeedCreator
                 return;
             }
 
-            _parent.AddChannel(channel);
+            _parent.SetChannel(channel);
             this.Close();
         }
 
@@ -60,6 +54,11 @@ namespace RSSFeedCreator
             if (String.IsNullOrWhiteSpace(channel.Link))
             {
                 message += "Link is required.\n";
+            }
+
+            if(!UrlValidator.ValidateUrl(channel.Link))
+            {
+                message += "Link Url is not valid!";
             }
 
             if (message != String.Empty)

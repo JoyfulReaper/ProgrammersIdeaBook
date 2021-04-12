@@ -1,27 +1,20 @@
-﻿using RSSFeedCreator.Models;
+﻿using RSSFeedCreator.Helpers;
+using RSSFeedCreator.Models;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RSSFeedCreator
 {
     public partial class frmMain : Form
     {
-        private readonly BindingList<Channel> _channels = new BindingList<Channel>();
+        private Channel _channel = null;
         private readonly BindingList<Item> _items = new BindingList<Item>();
 
         public frmMain()
         {
             InitializeComponent();
-
-            comboChannel.DataSource = _channels;
-            comboChannel.DisplayMember = nameof(Channel.Title);
 
             listEntries.DataSource = _items;
             listEntries.DisplayMember = nameof(Item.Title);
@@ -31,23 +24,29 @@ namespace RSSFeedCreator
         {
             frmChannel frmChannel = new frmChannel(this);
             frmChannel.ShowDialog(this);
+
+            if(_channel != null)
+            {
+                textChannel.Text = _channel.Title;
+            }
         }
 
-        public void AddChannel(Channel channel)
+        public void SetChannel(Channel channel)
         {
-            _channels.Add(channel);
+            _channel = channel;
         }
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             FeedGenerator generator = new FeedGenerator();
-            generator.GenerateXML(_channels.ToList());
+            generator.GenerateXML(_channel);
+            _items.Clear();
+
+            MessageBox.Show("Done!");
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-            Channel channel = (Channel)comboChannel.SelectedItem;
-
             Item item = new Item()
             {
                 Title = textTitle.Text,
@@ -61,7 +60,7 @@ namespace RSSFeedCreator
                 return;
             }
 
-            channel.Items.Add(item);
+            _channel.Items.Add(item);
             _items.Add(item);
 
             textTitle.Text = string.Empty;
@@ -81,6 +80,11 @@ namespace RSSFeedCreator
             if (String.IsNullOrWhiteSpace(item.Link))
             {
                 message += "Link is required.\n";
+            }
+
+            if (!UrlValidator.ValidateUrl(item.Link))
+            {
+                message += "Link Url is not valid!";
             }
 
             if (String.IsNullOrWhiteSpace(item.Description))
