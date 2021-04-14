@@ -63,7 +63,7 @@ namespace RSSFeedCreator
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             FeedGenerator generator = new FeedGenerator();
-            generator.GenerateXML(_channel);
+            generator.GenerateXML(new Rss { Channel = _channel });
             _items.Clear();
 
             MessageBox.Show("Done!");

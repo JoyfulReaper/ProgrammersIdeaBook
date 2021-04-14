@@ -50,7 +50,7 @@ namespace RSSFeedCreator
                 Link = textLink.Text,
                 Copyright = textCopyright.Text,
                 ManagingEditor = textEditor.Text,
-                Webmaster = textWebmaster.Text
+                WebMaster = textWebmaster.Text
             };
 
             if (!ValidateRequiredFields(channel))
