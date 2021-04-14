@@ -35,7 +35,11 @@ namespace RSSFeedCreator
     {
         public void GenerateXML(Rss rss)
         {
-            using (XmlWriter writer = XmlWriter.Create("rss.xml"))
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+            settings.IndentChars = "\t";
+
+            using (XmlWriter writer = XmlWriter.Create("rss.xml", settings))
             {
                 writer.WriteStartDocument();
                 writer.WriteStartElement("rss");
