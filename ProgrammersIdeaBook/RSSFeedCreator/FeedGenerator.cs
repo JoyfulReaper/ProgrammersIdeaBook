@@ -26,7 +26,6 @@ SOFTWARE.
 using RSSFeedCreator.Models;
 using System;
 using System.IO;
-using System.Xml;
 using System.Xml.Serialization;
 
 //TODO: Commented out lines will need additional proccessing
@@ -94,23 +93,6 @@ namespace RSSFeedCreator
             //    writer.WriteEndDocument();
             //    writer.Flush();
             //    writer.Close();
-        }
-        
-
-        private void WriteTtlAttributeStringIfPositive(XmlWriter writer, int value)
-        {
-            if (value > 0)
-            {
-                writer.WriteElementString("ttl", value.ToString());
-            }
-        }
-
-        private void WriteAttributeStringIfPresent(XmlWriter writer, string name, string value)
-        {
-            if (!String.IsNullOrWhiteSpace(value))
-            {
-                writer.WriteElementString(name, value);
-            }
         }
     }
 }
