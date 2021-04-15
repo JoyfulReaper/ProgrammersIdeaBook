@@ -150,5 +150,17 @@ namespace RSSFeedCreator
                 textChannel.Text = _rss.Channel.Title;
             }
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            var selectedItem = (Item)listEntries.SelectedItem;
+            if(selectedItem == null)
+            {
+                return;
+            }
+
+            _items.Remove(selectedItem);
+            _rss.Channel.Items.Remove(selectedItem);
+        }
     }
 }

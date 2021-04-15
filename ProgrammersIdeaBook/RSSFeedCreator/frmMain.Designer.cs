@@ -42,6 +42,7 @@ namespace RSSFeedCreator
             this.listEntries = new System.Windows.Forms.ListBox();
             this.btnAddItem = new System.Windows.Forms.Button();
             this.textChannel = new System.Windows.Forms.TextBox();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -124,7 +125,7 @@ namespace RSSFeedCreator
             // 
             // btnGenerate
             // 
-            this.btnGenerate.Location = new System.Drawing.Point(303, 278);
+            this.btnGenerate.Location = new System.Drawing.Point(305, 290);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(97, 29);
             this.btnGenerate.TabIndex = 18;
@@ -144,7 +145,7 @@ namespace RSSFeedCreator
             // 
             // btnAddItem
             // 
-            this.btnAddItem.Location = new System.Drawing.Point(200, 277);
+            this.btnAddItem.Location = new System.Drawing.Point(202, 290);
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Size = new System.Drawing.Size(97, 29);
             this.btnAddItem.TabIndex = 20;
@@ -160,12 +161,23 @@ namespace RSSFeedCreator
             this.textChannel.Size = new System.Drawing.Size(369, 29);
             this.textChannel.TabIndex = 21;
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(477, 290);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 29);
+            this.btnDelete.TabIndex = 22;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(600, 318);
+            this.ClientSize = new System.Drawing.Size(604, 328);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.textChannel);
             this.Controls.Add(this.btnAddItem);
             this.Controls.Add(this.listEntries);
@@ -204,6 +216,7 @@ namespace RSSFeedCreator
         private System.Windows.Forms.ListBox listEntries;
         private System.Windows.Forms.Button btnAddItem;
         private System.Windows.Forms.TextBox textChannel;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 
