@@ -57,5 +57,8 @@ namespace RSSFeedCreator.Models
 
 		[XmlElement(ElementName = "guid")]
 		public string Guid { get; set; }
+
+		[XmlElement(ElementName = "pubDate")]
+		public string PubDate { get; set; }
 	}
 }

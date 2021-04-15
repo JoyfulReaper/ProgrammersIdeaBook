@@ -2,33 +2,34 @@
 using System.Xml;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
+using RSSFeedCreator.Models;
+using System.IO;
 
 namespace RSSFeedCreator
 {
     // Ignore this for testing...
     public class RssReader
     {
-        public void ReadXml()
+        public Rss ReadXml()
         {
-            using (XmlReader reader = XmlReader.Create("rss.xml"))
+            FileStream fs;
+            XmlSerializer xs;
+            try
             {
-                reader.MoveToContent();
+                xs = new XmlSerializer(typeof(Rss));
+                fs = new FileStream(@"rss2.xml", FileMode.Open);
+            }
+            catch (Exception e)
+            {
+                // TODO: just for testing
+                return null;
+            }
 
-                while(reader.Read())
-                {
-                    switch (reader.NodeType)
-                    {
-                        case XmlNodeType.Element when reader.Name == "channel":
-                            Console.WriteLine(reader.Name);
-                            break;
-                        case XmlNodeType.Text:
-                            Console.WriteLine(reader.Value);
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }    
+            var test = (Rss)xs.Deserialize(fs);
+            fs.Close();
+
+            return test;
         }
     }
 }

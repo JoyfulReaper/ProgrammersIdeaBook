@@ -65,7 +65,7 @@ namespace RSSFeedCreator
             //feed.GenerateXML(new List<Channel> { channel });
 
             RssReader reader = new RssReader();
-            //reader.ReadXml();
+            reader.ReadXml();
 
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();

@@ -87,6 +87,6 @@ namespace RSSFeedCreator.Models
 		public string SkipDays { get; set; }
 
 		[XmlElement(ElementName = "pubDate")]
-		public DateTimeOffset PubDate { get; set; }
+		public string PubDate { get; set; }
 	}
 }
