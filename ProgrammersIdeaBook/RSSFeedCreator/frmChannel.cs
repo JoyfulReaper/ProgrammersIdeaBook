@@ -45,12 +45,12 @@ namespace RSSFeedCreator
         {
             Channel channel = new Channel()
             {
-                Title = textTitle.Text,
-                Description = textDesc.Text,
-                Link = textLink.Text,
-                Copyright = textCopyright.Text,
-                ManagingEditor = textEditor.Text,
-                WebMaster = textWebmaster.Text
+                Title = StringHelper.AssignNullIfEmpty(textTitle.Text),
+                Description = StringHelper.AssignNullIfEmpty(textDesc.Text),
+                Link = StringHelper.AssignNullIfEmpty(textLink.Text),
+                Copyright = StringHelper.AssignNullIfEmpty(textCopyright.Text),
+                ManagingEditor = StringHelper.AssignNullIfEmpty(textEditor.Text),
+                WebMaster = StringHelper.AssignNullIfEmpty(textWebmaster.Text)
             };
 
             if (!ValidateRequiredFields(channel))

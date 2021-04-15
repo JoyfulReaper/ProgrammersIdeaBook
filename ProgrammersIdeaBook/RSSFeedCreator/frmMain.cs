@@ -63,7 +63,7 @@ namespace RSSFeedCreator
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             FeedGenerator generator = new FeedGenerator();
-            generator.GenerateXML(new Rss { Channel = _channel });
+            generator.GenerateRSS(new Rss { Channel = _channel });
             _items.Clear();
 
             MessageBox.Show("Done!");
@@ -73,10 +73,10 @@ namespace RSSFeedCreator
         {
             Item item = new Item()
             {
-                Title = textTitle.Text,
-                Description = textDesc.Text,
-                Link = textLink.Text,
-                Guid = textLink.Text
+                Title = StringHelper.AssignNullIfEmpty(textTitle.Text),
+                Description = StringHelper.AssignNullIfEmpty(textDesc.Text),
+                Link = StringHelper.AssignNullIfEmpty(textLink.Text),
+                Guid = StringHelper.AssignNullIfEmpty(textLink.Text)
             };
 
             if(!ValidateRequiredFields(item))
