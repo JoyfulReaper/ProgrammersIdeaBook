@@ -34,8 +34,7 @@ namespace RSSFeedCreator
 {
     public partial class frmMain : Form
     {
-        private Channel _channel = null;
-        private Rss _rss;
+        private Rss _rss = new Rss { Channel = new Channel() };
         private readonly BindingList<Item> _items = new BindingList<Item>();
 
         public frmMain()
@@ -45,31 +44,34 @@ namespace RSSFeedCreator
 
         private void btnAddChannel_Click(object sender, EventArgs e)
         {
-            frmChannel frmChannel = new frmChannel(this);
+            frmChannel frmChannel = new frmChannel(this, _rss.Channel);
             frmChannel.ShowDialog(this);
 
-            if(_channel != null)
+            if(_rss.Channel != null)
             {
-                textChannel.Text = _channel.Title;
+                textChannel.Text = _rss.Channel.Title;
             }
         }
 
         public void SetChannel(Channel channel)
         {
-            _channel = channel;
+            _rss.Channel = channel;
         }
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            FeedGenerator generator = new FeedGenerator();
-            generator.GenerateRSS(new Rss { Channel = _channel });
-            _items.Clear();
+            XmlHelper.SerializeXml(_rss);
 
             MessageBox.Show("Done!");
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
+            if (!ValidateRequiredFields())
+            {
+                return;
+            }
+
             Item item = new Item()
             {
                 Title = StringHelper.AssignNullIfEmpty(textTitle.Text),
@@ -78,12 +80,7 @@ namespace RSSFeedCreator
                 Guid = StringHelper.AssignNullIfEmpty(textLink.Text)
             };
 
-            if(!ValidateRequiredFields(item))
-            {
-                return;
-            }
-
-            _channel.Items.Add(item);
+            _rss.Channel.Items.Add(item);
             _items.Add(item);
 
             textTitle.Text = string.Empty;
@@ -91,26 +88,26 @@ namespace RSSFeedCreator
             textDesc.Text = string.Empty;
         }
 
-        private bool ValidateRequiredFields(Item item)
+        private bool ValidateRequiredFields()
         {
             string message = string.Empty;
 
-            if (String.IsNullOrWhiteSpace(item.Title))
+            if (String.IsNullOrWhiteSpace(textTitle.Text))
             {
                 message += "Title is required.\n";
             }
 
-            if (String.IsNullOrWhiteSpace(item.Link))
+            if (String.IsNullOrWhiteSpace(textLink.Text))
             {
                 message += "Link is required.\n";
             }
 
-            if (!UrlValidator.ValidateUrl(item.Link))
+            if (!UrlValidator.ValidateUrl(textLink.Text))
             {
                 message += "Link Url is not valid!";
             }
 
-            if (String.IsNullOrWhiteSpace(item.Description))
+            if (String.IsNullOrWhiteSpace(textDesc.Text))
             {
                 message += "Description is required.\n";
             }
@@ -129,22 +126,28 @@ namespace RSSFeedCreator
             listEntries.DataSource = _items;
             listEntries.DisplayMember = nameof(Item.Title);
 
+            LoadDataFromRss();
+        }
+
+        private void LoadDataFromRss()
+        {
             try
             {
-                _rss = XmlDeserializer.DeserializeXml<Rss>("rss2.xml");
+                _rss = XmlHelper.DeserializeXml<Rss>("rss2.xml");
             }
             catch (FileNotFoundException)
             {
                 _rss = null;
             }
 
-            if(_rss != null)
+            if (_rss != null)
             {
-                _channel = _rss.Channel;
-                foreach(var item in _channel.Items)
+                foreach (var item in _rss.Channel.Items)
                 {
                     _items.Add(item);
                 }
+
+                textChannel.Text = _rss.Channel.Title;
             }
         }
     }
