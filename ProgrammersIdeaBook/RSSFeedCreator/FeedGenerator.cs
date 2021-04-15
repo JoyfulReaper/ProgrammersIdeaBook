@@ -25,7 +25,9 @@ SOFTWARE.
 
 using RSSFeedCreator.Models;
 using System;
+using System.IO;
 using System.Xml;
+using System.Xml.Serialization;
 
 //TODO: Commented out lines will need additional proccessing
 
@@ -33,60 +35,67 @@ namespace RSSFeedCreator
 {
     public class FeedGenerator
     {
-        public void GenerateXML(Rss rss)
+        public void GenerateRSS(Rss rss)
         {
-            XmlWriterSettings settings = new XmlWriterSettings();
-            settings.Indent = true;
-            settings.IndentChars = "\t";
+            rss.Channel.LastBuildDate = DateTimeOffset.Now.ToString("r");
 
-            using (XmlWriter writer = XmlWriter.Create("rss.xml", settings))
-            {
-                writer.WriteStartDocument();
-                writer.WriteStartElement("rss");
-                writer.WriteAttributeString("version", "2.0");
-                writer.WriteAttributeString("xmlns", "atom", null, "http://www.w3.org/2005/Atom");
+            XmlSerializer xs = new XmlSerializer(typeof(Rss));
 
-                writer.WriteStartElement("channel");
-                writer.WriteElementString("title", rss.Channel.Title);
-                writer.WriteElementString("link", rss.Channel.Link);
-                writer.WriteElementString("description", rss.Channel.Description);
-                WriteAttributeStringIfPresent(writer, "copyright", rss.Channel.Copyright);
-                WriteAttributeStringIfPresent(writer, "language", rss.Channel.Language);
-                WriteAttributeStringIfPresent(writer, "managingEditor", rss.Channel.ManagingEditor);
-                WriteAttributeStringIfPresent(writer, "webMaster", rss.Channel.WebMaster);
-                WriteAttributeStringIfPresent(writer, "category", rss.Channel.Category);
-                WriteAttributeStringIfPresent(writer, "generator", rss.Channel.Generator);
-                WriteAttributeStringIfPresent(writer, "docs", rss.Channel.Docs);
-                WriteAttributeStringIfPresent(writer, "cloud", rss.Channel.Cloud);
-                WriteAttributeStringIfPresent(writer, "ttl", rss.Channel.Ttl);
-                //WriteAttributeStringIfPresent(writer, "image", channel.Image);
-                WriteAttributeStringIfPresent(writer, "lastBuildDate", DateTime.Now.ToString("r"));
-                WriteAttributeStringIfPresent(writer, "skipDays", rss.Channel.SkipDays);
-                WriteAttributeStringIfPresent(writer, "skipHours", rss.Channel.SkipHours);
-                //WriteAttributeStringIfPresent(writer, "pubDate", c.PubDate.ToString("r"));
+            using (Stream s = File.Create(@"rss2.xml"))
+                xs.Serialize(s, rss);
 
-                foreach (Item i in rss.Channel.Items)
-                {
-                    writer.WriteStartElement("item");
-                    writer.WriteElementString("title", i.Title);
-                    writer.WriteElementString("link", i.Link);
-                    writer.WriteElementString("description", i.Description);
-                    WriteAttributeStringIfPresent(writer, "author", i.Author);
-                    WriteAttributeStringIfPresent(writer, "category", i.Category);
-                    WriteAttributeStringIfPresent(writer, "comments", i.Comments);
-                    WriteAttributeStringIfPresent(writer, "source", i.Source);
-                    //WriteAttributeStringIfPresent(writer, "enclosure", i.Enclosure);
-                    writer.WriteElementString("guid", i.Link);
-                    writer.WriteEndElement();
-                }
+            //XmlWriterSettings settings = new XmlWriterSettings();
+            //settings.Indent = true;
+            //settings.IndentChars = "\t";
 
-                writer.WriteEndElement();
-                writer.WriteEndElement();
-                writer.WriteEndDocument();
-                writer.Flush();
-                writer.Close();
-            }
+            //using (XmlWriter writer = XmlWriter.Create("rss.xml", settings))
+            //{
+            //    writer.WriteStartDocument();
+            //    writer.WriteStartElement("rss");
+            //    writer.WriteAttributeString("version", "2.0");
+            //    writer.WriteAttributeString("xmlns", "atom", null, "http://www.w3.org/2005/Atom");
+
+            //    writer.WriteStartElement("channel");
+            //    writer.WriteElementString("title", rss.Channel.Title);
+            //    writer.WriteElementString("link", rss.Channel.Link);
+            //    writer.WriteElementString("description", rss.Channel.Description);
+            //    WriteAttributeStringIfPresent(writer, "copyright", rss.Channel.Copyright);
+            //    WriteAttributeStringIfPresent(writer, "language", rss.Channel.Language);
+            //    WriteAttributeStringIfPresent(writer, "managingEditor", rss.Channel.ManagingEditor);
+            //    WriteAttributeStringIfPresent(writer, "webMaster", rss.Channel.WebMaster);
+            //    WriteAttributeStringIfPresent(writer, "category", rss.Channel.Category);
+            //    WriteAttributeStringIfPresent(writer, "generator", rss.Channel.Generator);
+            //    WriteAttributeStringIfPresent(writer, "docs", rss.Channel.Docs);
+            //    WriteAttributeStringIfPresent(writer, "cloud", rss.Channel.Cloud);
+            //    WriteAttributeStringIfPresent(writer, "ttl", rss.Channel.Ttl);
+            //    //WriteAttributeStringIfPresent(writer, "image", channel.Image);
+            //    WriteAttributeStringIfPresent(writer, "lastBuildDate", DateTime.Now.ToString("r"));
+            //    WriteAttributeStringIfPresent(writer, "skipDays", rss.Channel.SkipDays);
+            //    WriteAttributeStringIfPresent(writer, "skipHours", rss.Channel.SkipHours);
+            //    //WriteAttributeStringIfPresent(writer, "pubDate", c.PubDate.ToString("r"));
+
+            //    foreach (Item i in rss.Channel.Items)
+            //    {
+            //        writer.WriteStartElement("item");
+            //        writer.WriteElementString("title", i.Title);
+            //        writer.WriteElementString("link", i.Link);
+            //        writer.WriteElementString("description", i.Description);
+            //        WriteAttributeStringIfPresent(writer, "author", i.Author);
+            //        WriteAttributeStringIfPresent(writer, "category", i.Category);
+            //        WriteAttributeStringIfPresent(writer, "comments", i.Comments);
+            //        WriteAttributeStringIfPresent(writer, "source", i.Source);
+            //        //WriteAttributeStringIfPresent(writer, "enclosure", i.Enclosure);
+            //        writer.WriteElementString("guid", i.Link);
+            //        writer.WriteEndElement();
+            //    }
+
+            //    writer.WriteEndElement();
+            //    writer.WriteEndElement();
+            //    writer.WriteEndDocument();
+            //    writer.Flush();
+            //    writer.Close();
         }
+        
 
         private void WriteTtlAttributeStringIfPositive(XmlWriter writer, int value)
         {
