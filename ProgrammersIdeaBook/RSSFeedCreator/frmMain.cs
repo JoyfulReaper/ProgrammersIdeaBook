@@ -27,6 +27,7 @@ using RSSFeedCreator.Helpers;
 using RSSFeedCreator.Models;
 using System;
 using System.ComponentModel;
+using System.IO;
 using System.Windows.Forms;
 
 namespace RSSFeedCreator
@@ -34,14 +35,12 @@ namespace RSSFeedCreator
     public partial class frmMain : Form
     {
         private Channel _channel = null;
+        private Rss _rss;
         private readonly BindingList<Item> _items = new BindingList<Item>();
 
         public frmMain()
         {
             InitializeComponent();
-
-            listEntries.DataSource = _items;
-            listEntries.DisplayMember = nameof(Item.Title);
         }
 
         private void btnAddChannel_Click(object sender, EventArgs e)
@@ -123,6 +122,30 @@ namespace RSSFeedCreator
             }
 
             return true;
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            listEntries.DataSource = _items;
+            listEntries.DisplayMember = nameof(Item.Title);
+
+            try
+            {
+                _rss = XmlDeserializer.DeserializeXml<Rss>("rss2.xml");
+            }
+            catch (FileNotFoundException)
+            {
+                _rss = null;
+            }
+
+            if(_rss != null)
+            {
+                _channel = _rss.Channel;
+                foreach(var item in _channel.Items)
+                {
+                    _items.Add(item);
+                }
+            }
         }
     }
 }

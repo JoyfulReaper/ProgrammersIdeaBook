@@ -183,6 +183,7 @@ namespace RSSFeedCreator
             this.ForeColor = System.Drawing.Color.DodgerBlue;
             this.Name = "frmMain";
             this.Text = "RSS Feed Creator";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
