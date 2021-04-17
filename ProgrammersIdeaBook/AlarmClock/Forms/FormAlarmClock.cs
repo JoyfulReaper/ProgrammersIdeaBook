@@ -38,7 +38,9 @@ namespace AlarmClock
         public FormAlarmClock()
         {
             InitializeComponent();
-            
+
+            ClearLabels();
+
             DisplayExpiredAlarms(alarms);
 
             lblCredits.Text = $"Alarm Clock {GlobalConfig.version} by Kyle Givler";
@@ -46,6 +48,12 @@ namespace AlarmClock
             timerSecond_Tick(this, EventArgs.Empty);
 
             UpdateForm();
+        }
+
+        private void ClearLabels()
+        {
+            lblName.Text = String.Empty;
+            lblExpires.Text = String.Empty;
         }
 
         private void DisplayExpiredAlarms(List<AlarmModel> alarms)
