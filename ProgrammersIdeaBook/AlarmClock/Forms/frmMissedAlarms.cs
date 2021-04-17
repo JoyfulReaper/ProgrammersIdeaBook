@@ -29,10 +29,10 @@ using System.Windows.Forms;
 
 namespace AlarmClock
 {
-    public partial class MissedAlarmsForm : Form
+    public partial class frmMissedAlarms : Form
     {
         List<AlarmModel> expiredAlarms;
-        public MissedAlarmsForm(List<AlarmModel> expiredAlarms)
+        public frmMissedAlarms(List<AlarmModel> expiredAlarms)
         {
             InitializeComponent();
             this.expiredAlarms = expiredAlarms;

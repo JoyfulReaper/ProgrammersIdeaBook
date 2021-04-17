@@ -35,9 +35,16 @@ namespace AlarmClock.DataAccess
 {
     public class SQLiteConnector : IDataConnection
     {
+        private readonly IConfig _config;
+
+        public SQLiteConnector(IConfig config)
+        {
+            _config = config;
+        }
+
         public void DeleteAlarm(AlarmModel alarm)
         {
-            using (IDbConnection connection = new SQLiteConnection(GlobalConfig.ConnectionString()))
+            using (IDbConnection connection = new SQLiteConnection(_config.ConnectionString()))
             {
                 var p = new DynamicParameters();
                 p.Add("@Id", alarm.Id);
@@ -47,7 +54,7 @@ namespace AlarmClock.DataAccess
 
         public List<AlarmModel> GetAllAlarms()
         {
-            using (IDbConnection connection = new SQLiteConnection(GlobalConfig.ConnectionString()))
+            using (IDbConnection connection = new SQLiteConnection(_config.ConnectionString()))
             {
                 var output = connection.Query<AlarmModel>("SELECT * FROM Alarms;");
                 return output.ToList();
@@ -56,7 +63,7 @@ namespace AlarmClock.DataAccess
 
         public void SaveAlarm(AlarmModel alarm)
         {
-            using (IDbConnection connection = new SQLiteConnection(GlobalConfig.ConnectionString()))
+            using (IDbConnection connection = new SQLiteConnection(_config.ConnectionString()))
             {
                 var p = new DynamicParameters();
                 p.Add("@AlarmDateTime", alarm.AlarmDateTime.ToString(CultureInfo.InvariantCulture));

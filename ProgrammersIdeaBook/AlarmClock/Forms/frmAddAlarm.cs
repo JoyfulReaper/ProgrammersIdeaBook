@@ -28,13 +28,16 @@ using System.Windows.Forms;
 
 namespace AlarmClock.Forms
 {
-    public partial class AddAlarmForm : Form
+    public partial class frmAddAlarm : Form
     {
-        IAlarmModelRequester caller;
-        public AddAlarmForm(IAlarmModelRequester caller)
-        {
-            this.caller = caller;
+        IAlarmModelRequester _caller;
+        private readonly IConfig _config;
 
+        public frmAddAlarm(IAlarmModelRequester caller,
+            IConfig config)
+        {
+            this._caller = caller;
+            _config = config;
             InitializeComponent();
 
             textBoxName.Text = $"Alarm: {DateTime.Now.ToString("MM/dd/yy hh:mm")}";
@@ -66,8 +69,8 @@ namespace AlarmClock.Forms
 
             AlarmModel alarm = new AlarmModel { AlarmDateTime = date, Name = textBoxName.Text, Message = textBoxAlarmMessage.Text };
 
-            GlobalConfig.Connection.SaveAlarm(alarm);
-            caller.AlarmAdded(alarm);
+            _config.Connection.SaveAlarm(alarm);
+            _caller.AlarmAdded(alarm);
 
             textBoxAlarmMessage.Text = "";
             textBoxName.Text = $"Alarm: {DateTime.Now.ToString("MM/dd/yy hh:mm")}";

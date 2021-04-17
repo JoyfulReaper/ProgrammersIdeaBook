@@ -23,7 +23,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-using AlarmClock.Forms;
+using AlarmClock.Factories;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -31,22 +31,30 @@ using System.Windows.Forms;
 
 namespace AlarmClock
 {
-    public partial class FormAlarmClock : Form, IAlarmModelRequester
+    public partial class frmAlarmClock : Form, IAlarmModelRequester
     {
-        private List<AlarmModel> alarms = GlobalConfig.Connection.GetAllAlarms();
+        private List<AlarmModel> _alarms;
+        private readonly IConfig _config;
+        private readonly frmAddAlarmFactory _frmAddAlarmFactory;
+        private readonly frmMissedAlarmsFactory _frmMissedAlarmsFactory;
 
-        public FormAlarmClock()
+        public frmAlarmClock(IConfig config,
+            frmAddAlarmFactory frmAddAlarmFactory,
+            frmMissedAlarmsFactory frmMissedAlarmsFactory)
         {
+            _config = config;
+            _frmAddAlarmFactory = frmAddAlarmFactory;
+            _frmMissedAlarmsFactory = frmMissedAlarmsFactory;
             InitializeComponent();
-
             ClearLabels();
 
-            DisplayExpiredAlarms(alarms);
+             _alarms = _config.Connection.GetAllAlarms();
 
-            lblCredits.Text = $"Alarm Clock {GlobalConfig.version} by Kyle Givler";
+            DisplayExpiredAlarms(_alarms);
+
+            lblCredits.Text = $"Alarm Clock {Config.version} by Kyle Givler";
 
             timerSecond_Tick(this, EventArgs.Empty);
-
             UpdateForm();
         }
 
@@ -58,20 +66,22 @@ namespace AlarmClock
 
         private void DisplayExpiredAlarms(List<AlarmModel> alarms)
         {
-            var missedAlarms = AlarmHelpers.GetExipredAlarmsAndDeleteFromDatabase(alarms);
+            var missedAlarms = AlarmHelpers.GetExipredAlarmsAndDeleteFromDatabase(alarms, _config);
             if (missedAlarms.Count > 0)
             {
-                MissedAlarmsForm frm = new MissedAlarmsForm(missedAlarms);
+                //frmMissedAlarms frm = new frmMissedAlarms(missedAlarms);
+                _frmMissedAlarmsFactory.Initialize(alarms);
+                Form frm = _frmMissedAlarmsFactory.CreateForm();
                 frm.ShowDialog(this);
             }
         }
 
         private void UpdateForm()
         {
-            alarms.Sort((x, y) => DateTime.Compare(x.AlarmDateTime, y.AlarmDateTime));
+            _alarms.Sort((x, y) => DateTime.Compare(x.AlarmDateTime, y.AlarmDateTime));
 
             listBoxAlarms.DataSource = null;
-            listBoxAlarms.DataSource = alarms;
+            listBoxAlarms.DataSource = _alarms;
             listBoxAlarms.DisplayMember = nameof(AlarmModel.Name);
         }
 
@@ -79,7 +89,7 @@ namespace AlarmClock
         {
             lblCurrentTime.Text = $"Current date and time: {DateTime.Now}";
 
-            var expired = AlarmHelpers.GetExipredAlarmsAndDeleteFromDatabase(alarms);
+            var expired = AlarmHelpers.GetExipredAlarmsAndDeleteFromDatabase(_alarms, _config);
             if (expired.Count > 0)
             {
                 UpdateForm();
@@ -93,7 +103,7 @@ namespace AlarmClock
                 //    $"Message: {alarm.Message}","Alarm",
                 //    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                AlarmFiredForm frm = new AlarmFiredForm(alarm);
+                frmAlarmFired frm = new frmAlarmFired(alarm);
                 frm.Show(this);
             }
         }
@@ -103,8 +113,8 @@ namespace AlarmClock
             AlarmModel selectedAlarm = (AlarmModel)listBoxAlarms.SelectedItem;
             if (selectedAlarm != null)
             {
-                alarms.Remove(selectedAlarm);
-                GlobalConfig.Connection.DeleteAlarm(selectedAlarm);
+                _alarms.Remove(selectedAlarm);
+                _config.Connection.DeleteAlarm(selectedAlarm);
                 UpdateForm();
             }
         }
@@ -116,13 +126,16 @@ namespace AlarmClock
 
         public void AlarmAdded(AlarmModel alarm)
         {
-            alarms.Add(alarm);
+            _alarms.Add(alarm);
             UpdateForm();
         }
 
         private void btnAddAlarm_Click(object sender, EventArgs e)
         {
-            AddAlarmForm frm = new AddAlarmForm(this);
+            //frmAddAlarm frm = new frmAddAlarm(this);
+            _frmAddAlarmFactory.Initialize(this);
+            Form frm = _frmAddAlarmFactory.CreateForm();
+
             frm.ShowDialog(this);
         }
 

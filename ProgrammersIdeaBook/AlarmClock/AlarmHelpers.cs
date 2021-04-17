@@ -32,12 +32,12 @@ namespace AlarmClock
 {
     public static class AlarmHelpers
     {
-        public static List<AlarmModel> GetExipredAlarmsAndDeleteFromDatabase(List<AlarmModel> alarms)
+        public static List<AlarmModel> GetExipredAlarmsAndDeleteFromDatabase(List<AlarmModel> alarms, IConfig config)
         {
             var expired = alarms.Where(x => x.AlarmDateTime < DateTime.Now).ToList();
             foreach (AlarmModel alarm in expired)
             {
-                GlobalConfig.Connection.DeleteAlarm(alarm);
+                config.Connection.DeleteAlarm(alarm);
                 alarms.Remove(alarm);
             }
 

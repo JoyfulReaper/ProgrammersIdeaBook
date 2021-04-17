@@ -29,12 +29,12 @@ using System.Windows.Forms;
 
 namespace AlarmClock
 {
-    public partial class AlarmFiredForm : Form
+    public partial class frmAlarmFired : Form
     {
         private bool switchColor = true;
         private AlarmModel alarm;
 
-        public AlarmFiredForm(AlarmModel alarm)
+        public frmAlarmFired(AlarmModel alarm)
         {
             InitializeComponent();
 

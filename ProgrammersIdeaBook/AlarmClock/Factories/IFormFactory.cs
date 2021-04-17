@@ -1,7 +1,7 @@
 ﻿/*
 MIT License
 
-Copyright(c) 2020 Kyle Givler
+Copyright(c) 2021 Kyle Givler
 https://github.com/JoyfulReaper
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,28 +23,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-using System.Collections.Generic;
 
-namespace AlarmClock.DataAccess
+using System.Windows.Forms;
+
+namespace AlarmClock.Factories
 {
-    public interface IDataConnection
+    public interface IFormFactory
     {
-        /// <summary>
-        /// Receive a list of all alarms that have been set
-        /// </summary>
-        /// <returns>All alarms</returns>
-        List<AlarmModel> GetAllAlarms();
-
-        /// <summary>
-        /// Delete an alarm
-        /// </summary>
-        /// <param name="alarm">The alarm to delete</param>
-        void DeleteAlarm(AlarmModel alarm);
-
-        /// <summary>
-        /// Save an alarm
-        /// </summary>
-        /// <param name="alarm">The alarm to save</param>
-        void SaveAlarm(AlarmModel alarm);
+        Form CreateForm();
     }
 }

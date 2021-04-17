@@ -23,28 +23,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-using System.Collections.Generic;
+using AlarmClock.DataAccess;
 
-namespace AlarmClock.DataAccess
+namespace AlarmClock
 {
-    public interface IDataConnection
+    public interface IConfig
     {
-        /// <summary>
-        /// Receive a list of all alarms that have been set
-        /// </summary>
-        /// <returns>All alarms</returns>
-        List<AlarmModel> GetAllAlarms();
-
-        /// <summary>
-        /// Delete an alarm
-        /// </summary>
-        /// <param name="alarm">The alarm to delete</param>
-        void DeleteAlarm(AlarmModel alarm);
-
-        /// <summary>
-        /// Save an alarm
-        /// </summary>
-        /// <param name="alarm">The alarm to save</param>
-        void SaveAlarm(AlarmModel alarm);
+        IDataConnection Connection { get; }
+        DatabaseType DatabaseType { get; }
+        string ConnectionString();
+        void InitializeConnection(DatabaseType db);
     }
 }
