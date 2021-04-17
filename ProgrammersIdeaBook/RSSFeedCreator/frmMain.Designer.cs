@@ -43,6 +43,8 @@ namespace RSSFeedCreator
             this.btnAddItem = new System.Windows.Forms.Button();
             this.textChannel = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUp = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -135,13 +137,14 @@ namespace RSSFeedCreator
             // 
             // listEntries
             // 
-            this.listEntries.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listEntries.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listEntries.FormattingEnabled = true;
-            this.listEntries.ItemHeight = 21;
+            this.listEntries.ItemHeight = 17;
             this.listEntries.Location = new System.Drawing.Point(468, 91);
             this.listEntries.Name = "listEntries";
-            this.listEntries.Size = new System.Drawing.Size(120, 193);
+            this.listEntries.Size = new System.Drawing.Size(172, 191);
             this.listEntries.TabIndex = 19;
+            this.listEntries.DoubleClick += new System.EventHandler(this.listEntries_DoubleClick);
             // 
             // btnAddItem
             // 
@@ -163,7 +166,7 @@ namespace RSSFeedCreator
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(477, 290);
+            this.btnDelete.Location = new System.Drawing.Point(516, 290);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 29);
             this.btnDelete.TabIndex = 22;
@@ -171,12 +174,34 @@ namespace RSSFeedCreator
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // btnUp
+            // 
+            this.btnUp.Location = new System.Drawing.Point(646, 92);
+            this.btnUp.Name = "btnUp";
+            this.btnUp.Size = new System.Drawing.Size(40, 29);
+            this.btnUp.TabIndex = 23;
+            this.btnUp.Text = "^";
+            this.btnUp.UseVisualStyleBackColor = true;
+            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(646, 122);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(40, 29);
+            this.button1.TabIndex = 24;
+            this.button1.Text = "v";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(604, 328);
+            this.ClientSize = new System.Drawing.Size(696, 328);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnUp);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.textChannel);
             this.Controls.Add(this.btnAddItem);
@@ -217,6 +242,8 @@ namespace RSSFeedCreator
         private System.Windows.Forms.Button btnAddItem;
         private System.Windows.Forms.TextBox textChannel;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnUp;
+        private System.Windows.Forms.Button button1;
     }
 }
 

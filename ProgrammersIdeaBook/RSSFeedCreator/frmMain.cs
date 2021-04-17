@@ -35,6 +35,7 @@ namespace RSSFeedCreator
     public partial class frmMain : Form
     {
         private Rss _rss = new Rss { Channel = new Channel() };
+        private bool _editMode = false;
         private readonly BindingList<Item> _items = new BindingList<Item>();
 
         public frmMain()
@@ -60,6 +61,13 @@ namespace RSSFeedCreator
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
+            _rss.Channel.Items.Clear();
+
+            foreach(Item item in _items)
+            {
+                _rss.Channel.Items.Add(item);
+            }
+
             XmlHelper.SerializeXml(_rss);
 
             MessageBox.Show("Done!");
@@ -67,22 +75,67 @@ namespace RSSFeedCreator
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
+            int index = 0;
+
             if (!ValidateRequiredFields())
             {
                 return;
             }
 
-            Item item = new Item()
+            if(_editMode)
             {
-                Title = StringHelper.AssignNullIfEmpty(textTitle.Text),
-                Description = StringHelper.AssignNullIfEmpty(textDesc.Text),
-                Link = StringHelper.AssignNullIfEmpty(textLink.Text),
-                Guid = StringHelper.AssignNullIfEmpty(textLink.Text)
-            };
+                index = listEntries.SelectedIndex;
+            }
 
-            _rss.Channel.Items.Add(item);
-            _items.Add(item);
+            AddItem(index);
+        }
 
+        private void AddItem(int index)
+        {
+            Item item;
+
+            if (_editMode)
+            {
+                btnAddItem.Text = "Add";
+                _editMode = false;
+            }
+
+            item = new Item();
+            SetupItem(item);
+
+            _items.Insert(index, item);
+
+            ClearTextBoxes();
+        }
+
+        private void EditItem(Item item)
+        {
+            _items.Remove(item);
+
+            _editMode = true;
+            btnAddItem.Text = "Update";
+            PopulateTextBoxes(item);
+        }
+
+        private void PopulateTextBoxes(Item item)
+        {
+            textTitle.Text = item.Title;
+            textDesc.Text = item.Description;
+            textLink.Text = item.Link;
+        }
+
+        private Item SetupItem(Item item)
+        {
+            item.Title = StringHelper.AssignNullIfEmpty(textTitle.Text);
+            item.Description = StringHelper.AssignNullIfEmpty(textDesc.Text);
+            item.Link = StringHelper.AssignNullIfEmpty(textLink.Text);
+            item.Guid = StringHelper.AssignNullIfEmpty(textLink.Text);
+
+            return item;
+        }
+
+        private void ClearTextBoxes()
+        {
             textTitle.Text = string.Empty;
             textLink.Text = string.Empty;
             textDesc.Text = string.Empty;
@@ -160,7 +213,50 @@ namespace RSSFeedCreator
             }
 
             _items.Remove(selectedItem);
-            _rss.Channel.Items.Remove(selectedItem);
+        }
+
+        private void listEntries_DoubleClick(object sender, EventArgs e)
+        {
+            var selectedItem = (Item)listEntries.SelectedItem;
+            if (selectedItem == null)
+            {
+                return;
+            }
+
+            EditItem(selectedItem);
+        }
+
+        private void btnUp_Click(object sender, EventArgs e)
+        {
+            MoveItem(-1);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MoveItem(1);
+        }
+
+        private void MoveItem(int direction)
+        {
+            Item selected = (Item)listEntries.SelectedItem;
+
+            if (selected == null || listEntries.SelectedIndex < 0)
+            {
+                return;
+            }
+
+            int newIndex = listEntries.SelectedIndex + direction;
+
+            if (newIndex < 0 || newIndex >= listEntries.Items.Count)
+            {
+                return;
+            }
+
+            _items.Remove(selected);
+            _items.Insert(newIndex, selected);
+
+            listEntries.ClearSelected();
+            listEntries.SelectedIndex = newIndex;
         }
     }
 }
