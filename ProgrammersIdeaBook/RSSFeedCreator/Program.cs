@@ -23,6 +23,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+// TODO: Add ability to export to RSS 1.0 and Atom
+// TODO: Add the ability to publish the RSS somewhere
+// TODO: Correctly support tags like: cloud, image, source, enclosure, probably others
+// Docs: https://cyber.harvard.edu/rss/rss.html
+
 using RSSFeedCreator.Models;
 using System;
 using System.Windows.Forms;
