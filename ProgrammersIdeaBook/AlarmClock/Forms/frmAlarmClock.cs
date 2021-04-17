@@ -70,7 +70,7 @@ namespace AlarmClock
             if (missedAlarms.Count > 0)
             {
                 //frmMissedAlarms frm = new frmMissedAlarms(missedAlarms);
-                _frmMissedAlarmsFactory.Initialize(alarms);
+                _frmMissedAlarmsFactory.Initialize(missedAlarms);
                 Form frm = _frmMissedAlarmsFactory.CreateForm();
                 frm.ShowDialog(this);
             }
