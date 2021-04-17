@@ -23,29 +23,30 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-using AlarmClock.Models;
-using System.Collections.Generic;
+using System;
 
-namespace AlarmClock.DataAccess
+namespace AlarmClock.Models
 {
-    public interface IDataConnection
+    public class AlarmModel
     {
         /// <summary>
-        /// Receive a list of all alarms that have been set
+        /// Unique identifier for this alarm
         /// </summary>
-        /// <returns>All alarms</returns>
-        List<AlarmModel> GetAllAlarms();
+        public int Id { get; set; }
 
         /// <summary>
-        /// Delete an alarm
+        /// The name of this alarm
         /// </summary>
-        /// <param name="alarm">The alarm to delete</param>
-        void DeleteAlarm(AlarmModel alarm);
+        public string Name { get; set; }
 
         /// <summary>
-        /// Save an alarm
+        /// The DateTime to trigger the alarm
         /// </summary>
-        /// <param name="alarm">The alarm to save</param>
-        void SaveAlarm(AlarmModel alarm);
+        public DateTime AlarmDateTime { get; set; }
+
+        /// <summary>
+        /// The message to display when the alarm time is reached
+        /// </summary>
+        public string Message { get; set; }
     }
 }

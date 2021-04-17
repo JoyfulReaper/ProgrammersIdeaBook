@@ -1,7 +1,7 @@
 ﻿/*
 MIT License
 
-Copyright(c) 2020 Kyle Givler
+Copyright(c) 2021 Kyle Givler
 https://github.com/JoyfulReaper
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,25 +23,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace AlarmClock
+using System.Windows.Forms;
+
+namespace AlarmClock.Factories
 {
-    public static class AlarmHelpers
+    public interface IFormFactory
     {
-        public static List<AlarmModel> GetExipredAlarmsAndDeleteFromDatabase(List<AlarmModel> alarms)
-        {
-            var expired = alarms.Where(x => x.AlarmDateTime < DateTime.Now).ToList();
-            foreach (AlarmModel alarm in expired)
-            {
-                GlobalConfig.Connection.DeleteAlarm(alarm);
-                alarms.Remove(alarm);
-            }
-
-            return expired;
-        }
+        Form CreateForm();
     }
 }

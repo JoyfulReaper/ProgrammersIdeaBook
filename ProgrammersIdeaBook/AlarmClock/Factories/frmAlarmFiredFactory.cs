@@ -1,7 +1,7 @@
 ﻿/*
 MIT License
 
-Copyright(c) 2020 Kyle Givler
+Copyright(c) 2021 Kyle Givler
 https://github.com/JoyfulReaper
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,28 +24,28 @@ SOFTWARE.
 */
 
 using AlarmClock.Models;
-using System.Collections.Generic;
+using System;
+using System.Windows.Forms;
 
-namespace AlarmClock.DataAccess
+namespace AlarmClock.Factories
 {
-    public interface IDataConnection
+    public class frmAlarmFiredFactory : IFormFactory
     {
-        /// <summary>
-        /// Receive a list of all alarms that have been set
-        /// </summary>
-        /// <returns>All alarms</returns>
-        List<AlarmModel> GetAllAlarms();
+        private AlarmModel _alarm;
 
-        /// <summary>
-        /// Delete an alarm
-        /// </summary>
-        /// <param name="alarm">The alarm to delete</param>
-        void DeleteAlarm(AlarmModel alarm);
+        public void Initialize(AlarmModel alarm)
+        {
+            _alarm = alarm;
+        }
 
-        /// <summary>
-        /// Save an alarm
-        /// </summary>
-        /// <param name="alarm">The alarm to save</param>
-        void SaveAlarm(AlarmModel alarm);
+        public Form CreateForm()
+        {
+            if(_alarm == null)
+            {
+                throw new InvalidOperationException("Factory has not been Initialized.");
+            }
+
+            return new frmAlarmFired(_alarm);
+        }
     }
 }

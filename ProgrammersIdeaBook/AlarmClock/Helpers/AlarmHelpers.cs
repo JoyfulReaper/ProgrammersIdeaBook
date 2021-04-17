@@ -24,28 +24,24 @@ SOFTWARE.
 */
 
 using AlarmClock.Models;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace AlarmClock.DataAccess
+namespace AlarmClock.Helpers
 {
-    public interface IDataConnection
+    public static class AlarmHelpers
     {
-        /// <summary>
-        /// Receive a list of all alarms that have been set
-        /// </summary>
-        /// <returns>All alarms</returns>
-        List<AlarmModel> GetAllAlarms();
+        public static List<AlarmModel> GetExipredAlarmsAndDeleteFromDatabase(List<AlarmModel> alarms, IConfig config)
+        {
+            var expired = alarms.Where(x => x.AlarmDateTime < DateTime.Now).ToList();
+            foreach (AlarmModel alarm in expired)
+            {
+                config.Connection.DeleteAlarm(alarm);
+                alarms.Remove(alarm);
+            }
 
-        /// <summary>
-        /// Delete an alarm
-        /// </summary>
-        /// <param name="alarm">The alarm to delete</param>
-        void DeleteAlarm(AlarmModel alarm);
-
-        /// <summary>
-        /// Save an alarm
-        /// </summary>
-        /// <param name="alarm">The alarm to save</param>
-        void SaveAlarm(AlarmModel alarm);
+            return expired;
+        }
     }
 }

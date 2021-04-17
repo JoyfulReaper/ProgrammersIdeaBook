@@ -24,43 +24,37 @@ SOFTWARE.
 */
 
 using AlarmClock.DataAccess;
-using Dapper;
-using System.Data;
-using System.Data.SQLite;
-using System.IO;
+using AlarmClock.Factories;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace AlarmClock
 {
-    public enum DatabaseType
+    internal class Bootstrap
     {
-        SQLite
-    }
-
-    public static class GlobalConfig
-    {
-        public const string version = "0.0.3";
-        public const string SQLitePath = ".\\";
-        public const string SQLiteFile = "Alarms.db";
-        public static IDataConnection Connection { get; private set; }
-
-        public static void InitializeConnection(DatabaseType db)
+        public static IServiceProvider Initialize()
         {
-            if(db == DatabaseType.SQLite)
+            var container = new ServiceCollection();
+
+            IConfig config = new Config();
+
+            if (config.DatabaseType == DatabaseType.SQLite)
             {
-                Connection = new SQLiteConnector();
-                if (!File.Exists($"{ SQLitePath}{ SQLiteFile}"))
-                {
-                    using (IDbConnection connection = new SQLiteConnection(GlobalConfig.ConnectionString()))
-                    {
-                        connection.Execute(SQLiteConnector.CreateDataBase());
-                    }
-                }
+                container.AddSingleton<IDataConnection, SQLiteConnector>();
             }
-        }
+            else
+            {
+                throw new Exception("Database type not suppoerted");
+            }
 
-        public static string ConnectionString()
-        {
-            return $"DataSource={SQLitePath}{SQLiteFile};Version=3";
+            container
+                .AddSingleton(_ => config)
+                .AddSingleton<frmAddAlarmFactory>()
+                .AddSingleton<frmAlarmClock>()
+                .AddSingleton<frmMissedAlarmsFactory>()
+                .AddSingleton<frmAlarmFiredFactory>();
+
+            return container.BuildServiceProvider();
         }
     }
 }

@@ -23,16 +23,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+using AlarmClock.Models;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace AlarmClock
 {
-    public partial class MissedAlarmsForm : Form
+    public partial class frmMissedAlarms : Form
     {
         List<AlarmModel> expiredAlarms;
-        public MissedAlarmsForm(List<AlarmModel> expiredAlarms)
+        public frmMissedAlarms(List<AlarmModel> expiredAlarms)
         {
             InitializeComponent();
             this.expiredAlarms = expiredAlarms;

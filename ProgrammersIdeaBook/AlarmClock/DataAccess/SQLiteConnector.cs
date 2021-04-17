@@ -23,6 +23,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+using AlarmClock.Models;
 using Dapper;
 using System;
 using System.Collections.Generic;
@@ -35,9 +36,16 @@ namespace AlarmClock.DataAccess
 {
     public class SQLiteConnector : IDataConnection
     {
+        private readonly IConfig _config;
+
+        public SQLiteConnector(IConfig config)
+        {
+            _config = config;
+        }
+
         public void DeleteAlarm(AlarmModel alarm)
         {
-            using (IDbConnection connection = new SQLiteConnection(GlobalConfig.ConnectionString()))
+            using (IDbConnection connection = new SQLiteConnection(_config.ConnectionString()))
             {
                 var p = new DynamicParameters();
                 p.Add("@Id", alarm.Id);
@@ -47,7 +55,7 @@ namespace AlarmClock.DataAccess
 
         public List<AlarmModel> GetAllAlarms()
         {
-            using (IDbConnection connection = new SQLiteConnection(GlobalConfig.ConnectionString()))
+            using (IDbConnection connection = new SQLiteConnection(_config.ConnectionString()))
             {
                 var output = connection.Query<AlarmModel>("SELECT * FROM Alarms;");
                 return output.ToList();
@@ -56,7 +64,7 @@ namespace AlarmClock.DataAccess
 
         public void SaveAlarm(AlarmModel alarm)
         {
-            using (IDbConnection connection = new SQLiteConnection(GlobalConfig.ConnectionString()))
+            using (IDbConnection connection = new SQLiteConnection(_config.ConnectionString()))
             {
                 var p = new DynamicParameters();
                 p.Add("@AlarmDateTime", alarm.AlarmDateTime.ToString(CultureInfo.InvariantCulture));

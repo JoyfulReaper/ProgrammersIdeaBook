@@ -1,6 +1,6 @@
 ﻿namespace AlarmClock.Forms
 {
-    partial class AddAlarmForm
+    partial class frmAddAlarm
     {
         /// <summary>
         /// Required designer variable.
