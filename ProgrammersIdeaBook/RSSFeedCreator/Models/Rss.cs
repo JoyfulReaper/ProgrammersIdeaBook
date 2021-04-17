@@ -34,10 +34,10 @@ namespace RSSFeedCreator.Models
 		[XmlElement(ElementName = "channel")]
 		public Channel Channel { get; set; }
 
+		[XmlAttribute(AttributeName = "version")]
+		public string Version { get; set; } = "2.0";
+
 		[XmlAttribute(AttributeName = "atom", Namespace = "http://www.w3.org/2000/xmlns/")]
 		public string Atom { get; set; } = "http://www.w3.org/2005/Atom";
-
-		[XmlAttribute(AttributeName = "version")]
-		public string Version { get; } = "2.0";
 	}
 }
