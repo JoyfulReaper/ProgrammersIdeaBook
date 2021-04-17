@@ -62,7 +62,6 @@ namespace RSSFeedCreator
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             _rss.Channel.Items.Clear();
-
             foreach(Item item in _items)
             {
                 _rss.Channel.Items.Add(item);
@@ -70,7 +69,22 @@ namespace RSSFeedCreator
 
             XmlHelper.SerializeXml(_rss);
 
+            if (_items.Count >= 10)
+            {
+                var generate = MessageBox.Show("It is not reccomended to have more than about 10 items in an RSS feed. Continue?",
+                    "Warning",
+                    MessageBoxButtons.YesNo);
+
+                if (generate == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
             MessageBox.Show("Done!");
+            _items.Clear();
+
+            LoadDataFromRss();
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
