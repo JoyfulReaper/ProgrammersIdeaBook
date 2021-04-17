@@ -24,11 +24,8 @@ SOFTWARE.
 */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Forms;
 
-namespace AlarmClock
+namespace AlarmClock.Models
 {
     public class AlarmModel
     {

@@ -24,6 +24,8 @@ SOFTWARE.
 */
 
 using AlarmClock.Factories;
+using AlarmClock.Helpers;
+using AlarmClock.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -37,14 +39,18 @@ namespace AlarmClock
         private readonly IConfig _config;
         private readonly frmAddAlarmFactory _frmAddAlarmFactory;
         private readonly frmMissedAlarmsFactory _frmMissedAlarmsFactory;
+        private readonly frmAlarmFiredFactory _frmAlarmFiredFactory;
 
         public frmAlarmClock(IConfig config,
             frmAddAlarmFactory frmAddAlarmFactory,
-            frmMissedAlarmsFactory frmMissedAlarmsFactory)
+            frmMissedAlarmsFactory frmMissedAlarmsFactory,
+            frmAlarmFiredFactory frmAlarmFiredFactory)
         {
             _config = config;
             _frmAddAlarmFactory = frmAddAlarmFactory;
             _frmMissedAlarmsFactory = frmMissedAlarmsFactory;
+            _frmAlarmFiredFactory = frmAlarmFiredFactory;
+
             InitializeComponent();
             ClearLabels();
 
@@ -103,7 +109,10 @@ namespace AlarmClock
                 //    $"Message: {alarm.Message}","Alarm",
                 //    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                frmAlarmFired frm = new frmAlarmFired(alarm);
+                //frmAlarmFired frm = new frmAlarmFired(alarm);
+
+                _frmAlarmFiredFactory.Initialize(alarm);
+                Form frm = _frmAlarmFiredFactory.CreateForm();
                 frm.Show(this);
             }
         }

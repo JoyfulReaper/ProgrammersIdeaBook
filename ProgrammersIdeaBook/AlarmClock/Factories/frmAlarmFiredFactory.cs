@@ -23,11 +23,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+using AlarmClock.Models;
+using System;
 using System.Windows.Forms;
 
 namespace AlarmClock.Factories
 {
-    class frmAlarmFiredFactory : IFormFactory
+    public class frmAlarmFiredFactory : IFormFactory
     {
         private AlarmModel _alarm;
 
@@ -38,6 +40,11 @@ namespace AlarmClock.Factories
 
         public Form CreateForm()
         {
+            if(_alarm == null)
+            {
+                throw new InvalidOperationException("Factory has not been Initialized.");
+            }
+
             return new frmAlarmFired(_alarm);
         }
     }
