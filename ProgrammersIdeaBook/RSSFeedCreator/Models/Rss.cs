@@ -1,4 +1,4 @@
-/*
+﻿/*
 MIT License
 
 Copyright(c) 2021 Kyle Givler
@@ -23,29 +23,21 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-// TODO: Add ability to export to RSS 1.0 and Atom
-// TODO: Add the ability to publish the RSS somewhere
-// TODO: Correctly support tags like: cloud, image, source, enclosure, probably others
-// Docs: https://cyber.harvard.edu/rss/rss.html
 
-using RSSFeedCreator.Models;
-using System;
-using System.Windows.Forms;
+using System.Xml.Serialization;
 
-namespace RSSFeedCreator
+namespace RSSFeedCreator.Models
 {
-    static class Program
-    {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main()
-        {
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
-        }
-    }
+	[XmlRoot(ElementName = "rss")]
+	public class Rss
+	{
+		[XmlElement(ElementName = "channel")]
+		public Channel Channel { get; set; }
+
+		[XmlAttribute(AttributeName = "version")]
+		public string Version { get; set; } = "2.0";
+
+		[XmlAttribute(AttributeName = "atom", Namespace = "http://www.w3.org/2000/xmlns/")]
+		public string Atom { get; set; } = "http://www.w3.org/2005/Atom";
+	}
 }

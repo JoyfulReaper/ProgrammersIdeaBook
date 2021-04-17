@@ -25,26 +25,68 @@ SOFTWARE.
 
 using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace RSSFeedCreator.Models
 {
-    public class Channel
-    {
-        public string Title { get; set; } // Required
-        public string Description { get; set; } // Required RSS 2.0
-        public string Link { get; set; } // Required
-        public string Copyright { get; set; }
-        public string Language { get; set; } // en-us
-        public string Webmaster { get; set; }
-        public string ManagingEditor { get; set; }
-        public DateTimeOffset PubDate { get; set; } // Sat, 07 Sep 2002 00:00:01 GMT
-        public DateTimeOffset lastBuildDate { get; set; } // Required Atom
-        public string Category { get; set; }
-        public string Generator { get; } = "RSSFeedCreator https://github.com/JoyfulReaper/ProgrammersIdeaBook";
-        public string Docs { get; } = "http://blogs.law.harvard.edu/tech/rss";
-        public string Cloud { get; set; }
-        public int Ttl { get; set; }
-        public string Image { get; set; }
-        public List<Item> Items { get; set; } = new List<Item>();
-    }
+	[XmlRoot(ElementName = "channel")]
+	public class Channel
+	{
+		[XmlElement(ElementName = "title")]
+		public string Title { get; set; }
+
+		[XmlElement(ElementName = "link")]
+		public string Link { get; set; }
+
+		[XmlElement(ElementName = "description")]
+		public string Description { get; set; }
+
+		[XmlElement(ElementName = "copyright")]
+		public string Copyright { get; set; }
+
+		[XmlElement(ElementName = "language")]
+		public string Language { get; set; }
+
+		[XmlElement(ElementName = "managingEditor")]
+		public string ManagingEditor { get; set; }
+
+		[XmlElement(ElementName = "webMaster")]
+		public string WebMaster { get; set; }
+
+		[XmlElement(ElementName = "category")]
+		public string Category { get; set; }
+
+		[XmlElement(ElementName = "generator")]
+		public string Generator { get; } = "RSSFeedCreator https://github.com/JoyfulReaper/ProgrammersIdeaBook";
+
+		[XmlElement(ElementName = "docs")]
+		public string Docs { get; } = "http://blogs.law.harvard.edu/tech/rss";
+
+		[XmlElement(ElementName = "cloud")]
+		public string Cloud { get; set; }
+
+		[XmlElement(ElementName = "ttl")]
+		public string Ttl { get; set; }
+
+		[XmlElement(ElementName = "image")]
+		public string Image { get; set; }
+
+		[XmlElement(ElementName = "lastBuildDate")]
+		public string LastBuildDate { get; set; }
+
+		[XmlElement(ElementName = "item")]
+		public List<Item> Items { get; set; } = new List<Item>();
+
+		[XmlElement(ElementName = "textInput")]
+		public string TextInput { get; set; }
+
+		[XmlElement(ElementName = "skipHours")]
+		public string SkipHours { get; set; }
+
+		[XmlElement(ElementName = "skipDays")]
+		public string SkipDays { get; set; }
+
+		[XmlElement(ElementName = "pubDate")]
+		public string PubDate { get; set; }
+	}
 }

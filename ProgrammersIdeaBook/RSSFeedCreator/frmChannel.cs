@@ -33,24 +33,40 @@ namespace RSSFeedCreator
     public partial class frmChannel : Form
     {
         private readonly frmMain _parent;
-        
+        private readonly Channel _channel;
 
-        public frmChannel(frmMain parent)
+        public frmChannel(frmMain parent, Channel channel)
         {
             InitializeComponent();
             _parent = parent;
+            _channel = channel;
+
+            if(_channel != null)
+            {
+                PopulateTextBoxes();
+            }
+        }
+
+        private void PopulateTextBoxes()
+        {
+            textTitle.Text = _channel.Title;
+            textLink.Text = _channel.Link;
+            textCopyright.Text = _channel.Copyright;
+            textEditor.Text = _channel.ManagingEditor;
+            textWebmaster.Text = _channel.WebMaster;
+            textDesc.Text = _channel.Description;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Channel channel = new Channel()
             {
-                Title = textTitle.Text,
-                Description = textDesc.Text,
-                Link = textLink.Text,
-                Copyright = textCopyright.Text,
-                ManagingEditor = textEditor.Text,
-                Webmaster = textWebmaster.Text
+                Title = StringHelper.AssignNullIfEmpty(textTitle.Text),
+                Description = StringHelper.AssignNullIfEmpty(textDesc.Text),
+                Link = StringHelper.AssignNullIfEmpty(textLink.Text),
+                Copyright = StringHelper.AssignNullIfEmpty(textCopyright.Text),
+                ManagingEditor = StringHelper.AssignNullIfEmpty(textEditor.Text),
+                WebMaster = StringHelper.AssignNullIfEmpty(textWebmaster.Text)
             };
 
             if (!ValidateRequiredFields(channel))

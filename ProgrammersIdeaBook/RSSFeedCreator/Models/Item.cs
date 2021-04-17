@@ -24,20 +24,41 @@ SOFTWARE.
 */
 
 using System;
+using System.Xml.Serialization;
 
 namespace RSSFeedCreator.Models
 {
-    public class Item
-    {
-        public string Title { get; set; } // Required
-        public string Description { get; set; } // Required RSS 2.0
-        public string Link { get; set; } // Required
-        public string Author { get; set; } // Required Atom
-        public string Guid { get; set; } // Required Atom
-        public string Category { get; set; }
-        public string Comments { get; set; }
-        public DateTimeOffset PubDate { get; set; } // Sat, 07 Sep 2002 00:00:01 GMT
-        public string Source { get; set; }
-        public string Enclosure { get; set; }
-    }
+	[XmlRoot(ElementName = "item")]
+	public class Item
+	{
+		[XmlElement(ElementName = "title")]
+		public string Title { get; set; }
+
+		[XmlElement(ElementName = "link")]
+		public string Link { get; set; }
+
+		[XmlElement(ElementName = "description")]
+		public string Description { get; set; }
+
+		[XmlElement(ElementName = "author")]
+		public string Author { get; set; }
+
+		[XmlElement(ElementName = "category")]
+		public string Category { get; set; }
+
+		[XmlElement(ElementName = "comments")]
+		public string Comments { get; set; }
+
+		[XmlElement(ElementName = "source")]
+		public string Source { get; set; }
+
+		[XmlElement(ElementName = "enclosure")]
+		public string Enclosure { get; set; }
+
+		[XmlElement(ElementName = "guid")]
+		public string Guid { get; set; }
+
+		[XmlElement(ElementName = "pubDate")]
+		public string PubDate { get; set; }
+	}
 }
