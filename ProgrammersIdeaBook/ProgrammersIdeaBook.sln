@@ -27,9 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSSFeedCreator", "RSSFeedCr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FractionCalcRazorPages", "FractionCalcRazorPages\FractionCalcRazorPages.csproj", "{6404A690-BD51-4739-BCA9-A9EE8DCF4621}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dec2Bin", "Dec2Bin\Dec2Bin.csproj", "{1EAE8836-7135-4CA5-AA10-D93F55D6A9CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dec2Bin", "Dec2Bin\Dec2Bin.csproj", "{1EAE8836-7135-4CA5-AA10-D93F55D6A9CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeReturnRazorPages", "ChangeReturnRazorPages\ChangeReturnRazorPages.csproj", "{3AB804BE-A5B8-4329-A1F6-CF3B41E12CCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChangeReturnRazorPages", "ChangeReturnRazorPages\ChangeReturnRazorPages.csproj", "{3AB804BE-A5B8-4329-A1F6-CF3B41E12CCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FetchWeather", "FetchWeather\FetchWeather.csproj", "{F12F6598-77B2-4602-9BE8-981CC5A6928B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +95,10 @@ Global
 		{3AB804BE-A5B8-4329-A1F6-CF3B41E12CCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AB804BE-A5B8-4329-A1F6-CF3B41E12CCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AB804BE-A5B8-4329-A1F6-CF3B41E12CCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F12F6598-77B2-4602-9BE8-981CC5A6928B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F12F6598-77B2-4602-9BE8-981CC5A6928B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F12F6598-77B2-4602-9BE8-981CC5A6928B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F12F6598-77B2-4602-9BE8-981CC5A6928B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
