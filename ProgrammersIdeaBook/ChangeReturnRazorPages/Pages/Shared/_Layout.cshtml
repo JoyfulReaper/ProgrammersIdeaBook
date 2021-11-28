@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> _signInManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -8,43 +11,52 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ChangeReturnRazorPages.styles.css" asp-append-version="true" />
 </head>
-<body class="bg-dark">
+<body style="background-color: #808080;">
     <div class="d-flex flex-column overflow-hidden min-vh-100 vh-100">
         <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white box-shadow">
-                <div class="container">
-                    <a class="navbar-brand" asp-area="" asp-page="/Index">Vending Machine</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" href="https://github.com/JoyfulReaper">GitHub</a>
-                            </li>
-                        </ul>
-                        <partial name="_LoginPartial" />
+            <div class="container p-0">
+                <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white box-shadow">
+                    <div class="container">
+                        <a class="navbar-brand" asp-area="" asp-page="/Index">Vending Machine</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                            <ul class="navbar-nav flex-grow-1">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="https://github.com/JoyfulReaper">GitHub</a>
+                                </li>
+                                @if(_signInManager.IsSignedIn(User))
+                                {
+                                 <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/AddItem">Add Item</a>
+                                </li>  
+                                }
+                            </ul>
+                            <partial name="_LoginPartial" />
+                        </div>
                     </div>
-                </div>
-            </nav>
+                </nav>
+            </div>
         </header>
 
         <main role="main" class="flex-grow-1 overflow-auto">
-            <div class="container">
+            <div class="container bg-light h-100" style="box-shadow: -10px 0 8px -8px black, 10px 0 8px -8px black;">
                 @RenderBody()
             </div>
         </main>
 
-
-        <footer class="container-fluid flex-grow-0 flex-shrink-1 footer text-muted bg-light">
+        <div class="container p-0">
+        <footer class="container footer text-muted bg-light">
             <div class="container">
                 &copy; 2021 - Kyle Givler - <a href="https://kgivler.com">Personal Website</a>
             </div>
         </footer>
+        </div>
     </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

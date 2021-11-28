@@ -13,6 +13,15 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
+table {
+    table-layout: fixed;
+    width: 100%;
 }
+
+td {
+    width: 25%;
+}
+
+/*body {
+  margin-bottom: 60px;
+}*/

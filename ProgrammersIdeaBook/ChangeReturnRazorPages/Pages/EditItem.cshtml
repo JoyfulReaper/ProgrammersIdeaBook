@@ -1,0 +1,44 @@
+﻿@page
+@model ChangeReturnRazorPages.Pages.EditItemModel
+
+@{
+    ViewData["Title"] = "EditItem";
+}
+
+<h4>Update Product</h4>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Product.Id" />
+            <div class="mb-3">
+                <label asp-for="Product.Name" class="form-label"></label>
+                <input asp-for="Product.Name" class="form-control" />
+                <span asp-validation-for="Product.Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Product.Price" class="form-label"></label>
+                <input asp-for="Product.Price" class="form-control" />
+                <span asp-validation-for="Product.Price" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Product.Stock" class="form-label"></label>
+                <input asp-for="Product.Stock" class="form-control" />
+                <span asp-validation-for="Product.Stock" class="text-danger"></span>
+            </div>
+            <div class="mt-3">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to Vending Machine</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
