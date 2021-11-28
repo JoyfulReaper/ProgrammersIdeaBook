@@ -1,0 +1,128 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@Html.AntiForgeryToken()
+
+<div class="row">
+    <div class="col">
+        <button id="btnDollar" class="btn btn-primary">$1.00</button>
+        <button id="btnQuarter" class="btn btn-primary">$0.25</button>
+        <button id="btnDime" class="btn btn-primary">$0.10</button>
+        <button id="btnNickle" class="btn btn-primary">$0.05</button>
+        <button id="btnPenny" class="btn btn-primary">$0.01</button>
+       <div><strong>Credit: </strong><span id="credit"></span></div>
+       <div><strong>Change: </strong><br /><span id="change"><br /><br /><br /><br /></span></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <table class="table table-striped table-bordered mt-4">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Products.FirstOrDefault().Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Products.FirstOrDefault().Price)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Products)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            <button data-price="@item.Price" class="btn btn-primary btn-sm buyButton">Buy</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    let credit = 0;
+
+    const update = () => {
+        $('#credit').html(
+        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(credit));
+    }
+
+    $(() => {
+        $('.buyButton').click((e) => {
+            const price = $(e.target).data("price");
+            if(price > credit)
+            {
+                alert("Not enough credits!");
+                return;
+            }
+            const totalChange = credit - price;
+
+            const options = {
+                headers: {
+                    RequestVerificationToken: $('input:hidden[name="__RequestVerificationToken"]').val()
+                },
+                method: "POST",
+                url: "/Index",
+                data: {totalChange: totalChange}
+            }
+
+            $.ajax(options).done((data) => {
+                console.log(data);
+                let out = "";
+                data.forEach((unit) => {
+                    out += "<span>" + unit.pluralName + ":</span> " + unit.quantity + "<br />";
+                });
+
+                if(data.length < 4)
+                {
+                    let add = 4 - data.length;
+                    for(let i = 0; i < add; i++)
+                    {
+                        out += "<br />";
+                    }
+                }
+
+                $('#change').html(out);
+            }).fail(() => {
+                alert("Ajax Call Failed!");
+            })
+        });
+
+        $('#btnDollar').click(() => {
+            credit += 1;
+            update();
+        });
+        $('#btnQuarter').click(() => {
+            credit += .25;
+            update();
+        });
+        $('#btnDime').click(() => {
+            credit += .10;
+            update();
+        });
+        $('#btnNickle').click(() => {
+            credit += .05;
+            update();
+        });
+        $('#btnPenny').click(() => {
+            credit += .01;
+            update();
+        });
+
+    });
+</script>
+}

@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FractionCalcRazorPages", "F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dec2Bin", "Dec2Bin\Dec2Bin.csproj", "{1EAE8836-7135-4CA5-AA10-D93F55D6A9CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeReturnRazorPages", "ChangeReturnRazorPages\ChangeReturnRazorPages.csproj", "{3AB804BE-A5B8-4329-A1F6-CF3B41E12CCB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{1EAE8836-7135-4CA5-AA10-D93F55D6A9CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EAE8836-7135-4CA5-AA10-D93F55D6A9CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EAE8836-7135-4CA5-AA10-D93F55D6A9CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AB804BE-A5B8-4329-A1F6-CF3B41E12CCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AB804BE-A5B8-4329-A1F6-CF3B41E12CCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AB804BE-A5B8-4329-A1F6-CF3B41E12CCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AB804BE-A5B8-4329-A1F6-CF3B41E12CCB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
